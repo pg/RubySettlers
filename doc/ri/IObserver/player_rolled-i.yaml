@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is called by the admin when anyone rolls the dice
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: player
+    body: the acting player
+  - !ruby/struct:SM::Flow::LI 
+    label: roll
+    body: A list (length 2) of the numbers that were rolled
+  type: :LABELED
+full_name: IObserver#player_rolled
+is_singleton: false
+name: player_rolled
+params: (player, roll)
+visibility: public

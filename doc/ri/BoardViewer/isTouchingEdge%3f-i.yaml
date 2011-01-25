@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BoardViewer#isTouchingEdge?
+is_singleton: false
+name: isTouchingEdge?
+params: (x, y, threshold)
+visibility: public

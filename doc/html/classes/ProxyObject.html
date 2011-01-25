@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ProxyObject</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ProxyObject</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/core/proxies/json_rpc_rb.html">
+                lib/core/proxies/json_rpc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This class defines a proxy object that is to be used on the other side of
+the wire Use this object when you want to send an object over the wire, but
+you want to send the internal data of the object. For security purposes,
+you need to specify which methods are allowed over the wire using :<a
+href="ProxyObject.html#M000262">allow_remote_method</a>
+</p>
+<dl>
+<dt>Local Copies</dt><dd>Proxy Objects can create local copies of objects for effiency purposes.
+
+</dd>
+</dl>
+<p>
+The use case for this is: Say you register a <a
+href="Player.html">Player</a> object with an <a href="Admin.html">Admin</a>
+object. On the server, the admin receives a <a
+href="ProxyPlayer.html">ProxyPlayer</a>. It still wants to send the Proxy
+certain methods like, notifications and telling it when to take its turn,
+but it still wants to keep track of the score in a local <a
+href="Player.html">Player</a> <a href="Object.html">Object</a>.
+</p>
+<pre>
+   You can specify which methods to send to the remote (real) player and which messages to send to the
+   local internal player.  This can also be used to prevent remote method calls that take a lot of computation.
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000266">allow_local_method</a>&nbsp;&nbsp;
+      <a href="#M000267">allow_local_methods</a>&nbsp;&nbsp;
+      <a href="#M000264">allow_remote_and_local_method</a>&nbsp;&nbsp;
+      <a href="#M000265">allow_remote_and_local_methods</a>&nbsp;&nbsp;
+      <a href="#M000262">allow_remote_method</a>&nbsp;&nbsp;
+      <a href="#M000263">allow_remote_methods</a>&nbsp;&nbsp;
+      <a href="#M000268">from_json</a>&nbsp;&nbsp;
+      <a href="#M000269">get_local_copy</a>&nbsp;&nbsp;
+      <a href="#M000260">new</a>&nbsp;&nbsp;
+      <a href="#M000261">to_json</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">PROXY_REFERENCE_STRING</td>
+          <td>=</td>
+          <td class="context-item-value">'ProxyReference'</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000266" class="method-detail">
+        <a name="M000266"></a>
+
+        <div class="method-heading">
+          <a href="#M000266" class="method-signature">
+          <span class="method-name">allow_local_method</span><span class="method-args">(method_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Re-route this method to the local copy only.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000266-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000266-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 99</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_local_method</span>(<span class="ruby-identifier">method_name</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_sym</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@local_copy</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000267" class="method-detail">
+        <a name="M000267"></a>
+
+        <div class="method-heading">
+          <a href="#M000267" class="method-signature">
+          <span class="method-name">allow_local_methods</span><span class="method-args">(*method_names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000267-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000267-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 105</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_local_methods</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">method_names</span>)
+    <span class="ruby-identifier">method_names</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allow_local_method</span>(<span class="ruby-identifier">m</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000264" class="method-detail">
+        <a name="M000264"></a>
+
+        <div class="method-heading">
+          <a href="#M000264" class="method-signature">
+          <span class="method-name">allow_remote_and_local_method</span><span class="method-args">(method_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Re-route this method to both the remote and local copy. Returns the result
+from the local copy call.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000264-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000264-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_remote_and_local_method</span>(<span class="ruby-identifier">method_name</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_sym</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@json_connection</span>.<span class="ruby-identifier">json_request</span>(<span class="ruby-ivar">@remote_id</span>, <span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-ivar">@local_copy</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000265" class="method-detail">
+        <a name="M000265"></a>
+
+        <div class="method-heading">
+          <a href="#M000265" class="method-signature">
+          <span class="method-name">allow_remote_and_local_methods</span><span class="method-args">(*method_names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000265-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000265-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_remote_and_local_methods</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">method_names</span>)
+    <span class="ruby-identifier">method_names</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allow_remote_and_local_method</span>(<span class="ruby-identifier">m</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000262" class="method-detail">
+        <a name="M000262"></a>
+
+        <div class="method-heading">
+          <a href="#M000262" class="method-signature">
+          <span class="method-name">allow_remote_method</span><span class="method-args">(method_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Send the given method to the remote (original) object
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000262-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000262-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 75</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_remote_method</span>(<span class="ruby-identifier">method_name</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_sym</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@json_connection</span>.<span class="ruby-identifier">json_request</span>(<span class="ruby-ivar">@remote_id</span>, <span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000263" class="method-detail">
+        <a name="M000263"></a>
+
+        <div class="method-heading">
+          <a href="#M000263" class="method-signature">
+          <span class="method-name">allow_remote_methods</span><span class="method-args">(*method_names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000263-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000263-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 81</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allow_remote_methods</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">method_names</span>)
+    <span class="ruby-identifier">method_names</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allow_remote_method</span>(<span class="ruby-identifier">m</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000268" class="method-detail">
+        <a name="M000268"></a>
+
+        <div class="method-heading">
+          <a href="#M000268" class="method-signature">
+          <span class="method-name">from_json</span><span class="method-args">(json_hash, json_connection)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000268-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000268-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 109</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_json</span>(<span class="ruby-identifier">json_hash</span>, <span class="ruby-identifier">json_connection</span>)
+    <span class="ruby-identifier">local</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:get_local_copy</span>)
+      <span class="ruby-identifier">local</span> = <span class="ruby-identifier">get_local_copy</span>(<span class="ruby-identifier">json_hash</span>, <span class="ruby-identifier">json_connection</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">json_hash</span>[<span class="ruby-value str">'remote_id'</span>], <span class="ruby-identifier">json_connection</span>, <span class="ruby-identifier">local</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000260" class="method-detail">
+        <a name="M000260"></a>
+
+        <div class="method-heading">
+          <a href="#M000260" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(remote_id, json_connection, local_copy)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000260-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000260-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 64</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">remote_id</span>, <span class="ruby-identifier">json_connection</span>, <span class="ruby-identifier">local_copy</span>)
+    <span class="ruby-ivar">@remote_id</span> = <span class="ruby-identifier">remote_id</span>
+    <span class="ruby-ivar">@json_connection</span> = <span class="ruby-identifier">json_connection</span>
+    <span class="ruby-ivar">@local_copy</span> = <span class="ruby-identifier">local_copy</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000269" class="method-detail">
+        <a name="M000269"></a>
+
+        <div class="method-heading">
+          <a href="#M000269" class="method-signature">
+          <span class="method-name">get_local_copy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this method should be overwritten in the sub class if you intend to use
+local methods.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000269-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000269-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 119</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_local_copy</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Not implemented in #{self}&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000261" class="method-detail">
+        <a name="M000261"></a>
+
+        <div class="method-heading">
+          <a href="#M000261" class="method-signature">
+          <span class="method-name">to_json</span><span class="method-args">(*a)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000261-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000261-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+    {<span class="ruby-constant">PROXY_REFERENCE_STRING</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@remote_id</span>}.<span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

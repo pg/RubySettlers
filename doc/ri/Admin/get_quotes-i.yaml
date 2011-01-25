@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: r
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets a List of quotes from the bank and other users Optionally takes a block that iterates through each quote as they come
+full_name: Admin#get_quotes
+is_singleton: false
+name: get_quotes
+params: (player, wantList, giveList) {|r| ...}
+visibility: public

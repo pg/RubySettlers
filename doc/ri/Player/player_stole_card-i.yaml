@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is called by the admin whenever a player steals cards from another player
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: theif
+    body: the player who took the cards
+  - !ruby/struct:SM::Flow::LI 
+    label: victim
+    body: the player who lost cards
+  type: :LABELED
+full_name: Player#player_stole_card
+is_singleton: false
+name: player_stole_card
+params: (theif, victim, num_cards)
+visibility: public

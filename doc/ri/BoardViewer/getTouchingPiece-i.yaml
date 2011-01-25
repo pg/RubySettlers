@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: gets the piece the user has the cursor on,
+- !ruby/struct:SM::Flow::VERB 
+  body: " returns an Edge for a road, [Settlement, node], or [City, node], or nil\n"
+full_name: BoardViewer#getTouchingPiece
+is_singleton: false
+name: getTouchingPiece
+params: (x, y, proximity, turn)
+visibility: public

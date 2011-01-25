@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: cards
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A randomized collection of development cards.
+constants: []
+
+full_name: DevelopmentCardBag
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_card
+name: DevelopmentCardBag
+superclass: Object

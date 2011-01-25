@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BoardManager::save_board
+is_singleton: true
+name: save_board
+params: (board, filename)
+visibility: public

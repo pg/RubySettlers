@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Traverses a road and calculates the length of the longest road touching it.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: edge
+    body: The edge to start on. If the Edge has no road, it returns 0.
+  - !ruby/struct:SM::Flow::LI 
+    label: visitedNodes
+    body: Is a list used in the recursion of this method.
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: It should not be used by anyone calling it.
+full_name: Board#longest_road
+is_singleton: false
+name: longest_road
+params: (edge, visitedNodes=[])
+visibility: public

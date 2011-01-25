@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: FXPlayer</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">FXPlayer</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/fxplayer_rb.html">
+                lib/ui/fxruby/fxplayer.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Player.html">
+                Player
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000189">add_cards</a>&nbsp;&nbsp;
+      <a href="#M000183">add_message</a>&nbsp;&nbsp;
+      <a href="#M000190">build_card_string</a>&nbsp;&nbsp;
+      <a href="#M000194">count</a>&nbsp;&nbsp;
+      <a href="#M000188">del_cards</a>&nbsp;&nbsp;
+      <a href="#M000209">drawHex</a>&nbsp;&nbsp;
+      <a href="#M000208">draw_bandit</a>&nbsp;&nbsp;
+      <a href="#M000206">draw_board</a>&nbsp;&nbsp;
+      <a href="#M000211">draw_city</a>&nbsp;&nbsp;
+      <a href="#M000207">draw_port</a>&nbsp;&nbsp;
+      <a href="#M000210">draw_road</a>&nbsp;&nbsp;
+      <a href="#M000200">game_end</a>&nbsp;&nbsp;
+      <a href="#M000199">game_start</a>&nbsp;&nbsp;
+      <a href="#M000186">get_resource_alias</a>&nbsp;&nbsp;
+      <a href="#M000185">get_turn</a>&nbsp;&nbsp;
+      <a href="#M000187">inform</a>&nbsp;&nbsp;
+      <a href="#M000191">move_bandit</a>&nbsp;&nbsp;
+      <a href="#M000177">new</a>&nbsp;&nbsp;
+      <a href="#M000182">on_canvas_left_click</a>&nbsp;&nbsp;
+      <a href="#M000181">on_canvas_mouse_motion</a>&nbsp;&nbsp;
+      <a href="#M000178">on_frame_update</a>&nbsp;&nbsp;
+      <a href="#M000180">on_keypress</a>&nbsp;&nbsp;
+      <a href="#M000204">placed_city</a>&nbsp;&nbsp;
+      <a href="#M000202">placed_road</a>&nbsp;&nbsp;
+      <a href="#M000203">placed_settlement</a>&nbsp;&nbsp;
+      <a href="#M000198">player_moved_bandit</a>&nbsp;&nbsp;
+      <a href="#M000195">player_received_cards</a>&nbsp;&nbsp;
+      <a href="#M000196">player_rolled</a>&nbsp;&nbsp;
+      <a href="#M000197">player_stole_card</a>&nbsp;&nbsp;
+      <a href="#M000192">select_player</a>&nbsp;&nbsp;
+      <a href="#M000193">select_resource_cards</a>&nbsp;&nbsp;
+      <a href="#M000179">set_canvas_size</a>&nbsp;&nbsp;
+      <a href="#M000184">take_turn</a>&nbsp;&nbsp;
+      <a href="#M000201">update_board</a>&nbsp;&nbsp;
+      <a href="#M000205">update_card_frame</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="BoardViewer.html">BoardViewer</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">IMAGE_FILES</td>
+          <td>=</td>
+          <td class="context-item-value">{OreType=&gt;'ore.tif',                    WheatType=&gt;'wheat.tif',                    WoodType=&gt;'wood.tif',                    BrickType=&gt;'brick.tif',                    DesertType=&gt;'desert.tif',                    SheepType=&gt;'sheep.tif'}</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">admin</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">app</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">current_state</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">frame</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">leftMostCoord</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">proximity</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">scale</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000177" class="method-detail">
+        <a name="M000177"></a>
+
+        <div class="method-heading">
+          <a href="#M000177" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(app, frame, name, admin, cities=4, settlements=5, roads=15)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="FXPlayer.html#M000177">new</a> Interactive FXplayer. This
+is a <a href="Player.html">Player</a> object that inserts a FXFrame onto
+the given frame object. It waits for human interaction for making moves.
+</p>
+<dl>
+<dt>app</dt><dd>The FXApplication object
+
+</dd>
+<dt>frame</dt><dd>The parent FXWindow for this
+
+</dd>
+<dt>name</dt><dd>The player&#8216;s name
+
+</dd>
+<dt>admin</dt><dd>A reference to the game <a href="Admin.html">Admin</a>
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000177-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000177-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">frame</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">admin</span>, <span class="ruby-identifier">cities</span>=<span class="ruby-value">4</span>, <span class="ruby-identifier">settlements</span>=<span class="ruby-value">5</span>, <span class="ruby-identifier">roads</span>=<span class="ruby-value">15</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">admin</span>, <span class="ruby-identifier">cities</span>, <span class="ruby-identifier">settlements</span>, <span class="ruby-identifier">roads</span>)
+    <span class="ruby-identifier">initialize_viewer</span>
+  
+    <span class="ruby-ivar">@board_image</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@frame</span> = <span class="ruby-identifier">frame</span>
+    <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+    <span class="ruby-ivar">@admin</span> = <span class="ruby-identifier">admin</span>
+    <span class="ruby-ivar">@player</span> = <span class="ruby-keyword kw">self</span>
+    <span class="ruby-ivar">@proximity</span> = <span class="ruby-value">10</span>
+    <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+    <span class="ruby-ivar">@canvas_widgets</span> = []
+  <span class="ruby-comment cmt">#  set_board_dimensions(0, 0, 100, 100)</span>
+        
+    <span class="ruby-ivar">@current_state</span> = <span class="ruby-constant">FinishedTurnState</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+    
+    <span class="ruby-identifier">main_frame</span> = <span class="ruby-constant">FXHorizontalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">frame</span>, <span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>, <span class="ruby-identifier">:padding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:vSpacing</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">left_panel</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main_frame</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_X</span>,  <span class="ruby-identifier">:padding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@right_info_panel</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main_frame</span>, <span class="ruby-constant">FRAME_SUNKEN</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">380</span>)
+    <span class="ruby-ivar">@right_info_panel</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_KEYPRESS</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_keypress</span>))
+<span class="ruby-comment cmt">#    @right_info_panel.hide #at work</span>
+
+<span class="ruby-comment cmt">#    @bottom_panel = FXHorizontalFrame.new(left_panel, :opts =&gt;LAYOUT_FILL_X,  :padding =&gt; 0)</span>
+
+
+    <span class="ruby-comment cmt">#The Panel with each player's status</span>
+    <span class="ruby-ivar">@status_panel</span> = <span class="ruby-constant">PlayerStatusPanel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">admin</span>, <span class="ruby-ivar">@right_info_panel</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_X</span>)
+    <span class="ruby-ivar">@message_panel</span> = <span class="ruby-constant">MessagePanel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@right_info_panel</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-ivar">@status_panel</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_KEYPRESS</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_keypress</span>))
+    <span class="ruby-ivar">@message_panel</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_KEYPRESS</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_keypress</span>))
+
+
+    <span class="ruby-comment cmt">#The Cost card on the right hand side</span>
+    <span class="ruby-ivar">@key_image</span> = <span class="ruby-constant">FXJPGIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">filename</span> = <span class="ruby-value str">'key.jpg'</span>
+    <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;lib/img/#{filename}&quot;</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+      <span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+    }
+    <span class="ruby-identifier">scale</span> = <span class="ruby-value">0</span><span class="ruby-value">.8</span>
+    <span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">scale</span>((<span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">*</span><span class="ruby-identifier">scale</span>).<span class="ruby-identifier">to_i</span>, (<span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">*</span><span class="ruby-identifier">scale</span>).<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">create</span>
+    
+<span class="ruby-comment cmt">#    @bottom_canvas = FXCanvas.new(bottom_spring, :opts =&gt; LAYOUT_FILL_X|LAYOUT_FILL_Y|LAYOUT_BOTTOM|LAYOUT_LEFT)</span>
+<span class="ruby-comment cmt">#    @bottom_canvas.connect(SEL_PAINT) do |sender, sel, event|</span>
+<span class="ruby-comment cmt">#       update_card_frame</span>
+<span class="ruby-comment cmt">#    end</span>
+<span class="ruby-comment cmt">#    @bottom_canvas.connect(SEL_KEYPRESS, method(:on_keypress))</span>
+    
+    <span class="ruby-comment cmt"># Drawing canvas</span>
+    <span class="ruby-ivar">@canvas</span> = <span class="ruby-constant">FXCanvas</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">left_panel</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_TOP</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_LEFT</span>)
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_PAINT</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">draw_board</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">calculated_coordinate_data?</span>
+    <span class="ruby-keyword kw">end</span>   
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_KEYPRESS</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_keypress</span>))
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_MOTION</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_canvas_mouse_motion</span>))
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_LEFTBUTTONPRESS</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_canvas_left_click</span>))
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_UPDATE</span>, <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:on_frame_update</span>))
+    <span class="ruby-ivar">@widget_manager</span> = <span class="ruby-constant">WidgetManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-ivar">@canvas</span>, <span class="ruby-keyword kw">self</span>)
+
+    <span class="ruby-ivar">@action_widget</span> = <span class="ruby-constant">ActionWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-ivar">@canvas</span>, <span class="ruby-keyword kw">self</span>)
+    <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">anchor</span> = <span class="ruby-constant">ExpandableWidget</span><span class="ruby-operator">::</span><span class="ruby-constant">ANCHOR_BOTTOM</span> <span class="ruby-operator">|</span> <span class="ruby-constant">ExpandableWidget</span><span class="ruby-operator">::</span><span class="ruby-constant">ANCHOR_LEFT</span>
+    <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">x</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@widget_manager</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@action_widget</span>)
+
+
+    <span class="ruby-ivar">@card_viewer</span> = <span class="ruby-constant">CardViewer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-ivar">@canvas</span>, <span class="ruby-keyword kw">self</span>)
+    <span class="ruby-ivar">@card_viewer</span>.<span class="ruby-identifier">anchor</span> = <span class="ruby-constant">ExpandableWidget</span><span class="ruby-operator">::</span><span class="ruby-constant">ANCHOR_BOTTOM</span> <span class="ruby-operator">|</span> <span class="ruby-constant">ExpandableWidget</span><span class="ruby-operator">::</span><span class="ruby-constant">ANCHOR_LEFT</span>
+    <span class="ruby-ivar">@widget_manager</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@card_viewer</span>)
+    
+    
+    <span class="ruby-ivar">@canvas_widgets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@card_viewer</span>
+    
+    
+    <span class="ruby-ivar">@scale_changed</span> = <span class="ruby-keyword kw">false</span>
+    
+    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">layout</span>
+    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">show</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000189" class="method-detail">
+        <a name="M000189"></a>
+
+        <div class="method-heading">
+          <a href="#M000189" class="method-signature">
+          <span class="method-name">add_cards</span><span class="method-args">(cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tell this player that they received more cards.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000189-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000189-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 240</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_cards</span>(<span class="ruby-identifier">cards</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">update_card_frame</span>  
+    <span class="ruby-ivar">@status_panel</span>.<span class="ruby-identifier">update</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000183" class="method-detail">
+        <a name="M000183"></a>
+
+        <div class="method-heading">
+          <a href="#M000183" class="method-signature">
+          <span class="method-name">add_message</span><span class="method-args">(player_info, text)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a message to the message panel
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000183-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000183-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 182</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">text</span>)
+    <span class="ruby-identifier">text</span> = <span class="ruby-node">&quot;#{player_info.name} #{text}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">player_info</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@color</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@current_turn_msg</span>
+      <span class="ruby-ivar">@current_turn_msg</span>.<span class="ruby-identifier">add_msg</span>(<span class="ruby-identifier">text</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">text</span>
+    <span class="ruby-keyword kw">end</span>
+<span class="ruby-comment cmt">#    @message_panel.appendItem(msg)</span>
+    <span class="ruby-ivar">@message_panel</span>.<span class="ruby-identifier">layout</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000190" class="method-detail">
+        <a name="M000190"></a>
+
+        <div class="method-heading">
+          <a href="#M000190" class="method-signature">
+          <span class="method-name">build_card_string</span><span class="method-args">(card_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000190-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000190-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 246</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_card_string</span>(<span class="ruby-identifier">card_list</span>)
+    <span class="ruby-identifier">counts</span> = <span class="ruby-constant">RESOURCE_TYPES</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">res</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">count</span> = <span class="ruby-identifier">card_list</span>.<span class="ruby-identifier">count</span>(<span class="ruby-identifier">res</span>)
+      (<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@@resource_aliases</span>[<span class="ruby-identifier">res</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
+    <span class="ruby-identifier">counts</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000194" class="method-detail">
+        <a name="M000194"></a>
+
+        <div class="method-heading">
+          <a href="#M000194" class="method-signature">
+          <span class="method-name">count</span><span class="method-args">(list, test)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="FXPlayer.html#M000194">count</a> the number of occurances in the
+list
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000194-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000194-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 290</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">test</span>)
+      <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">test</span>}
+      <span class="ruby-identifier">sum</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000188" class="method-detail">
+        <a name="M000188"></a>
+
+        <div class="method-heading">
+          <a href="#M000188" class="method-signature">
+          <span class="method-name">del_cards</span><span class="method-args">(cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Remove cards from this players hand Return false the there aren&#8216;t
+sufficent cards
+</p>
+<dl>
+<dt>cards</dt><dd>an <a href="Array.html">Array</a> of card types
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000188-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000188-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 232</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">del_cards</span>(<span class="ruby-identifier">cards</span>) 
+    <span class="ruby-identifier">success</span> = <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">update_card_frame</span>
+    <span class="ruby-ivar">@status_panel</span>.<span class="ruby-identifier">update</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">success</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000209" class="method-detail">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+          <a href="#M000209" class="method-signature">
+          <span class="method-name">drawHex</span><span class="method-args">(dc, hex)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000209-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000209-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 567</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">drawHex</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">hex</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;Cannot draw Hex with a nil cardType&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span> = <span class="ruby-identifier">get_real_hex_coords</span>(<span class="ruby-identifier">hex</span>)
+    
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@scale_changed</span> <span class="ruby-keyword kw">or</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@@cached_images</span>[<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span>]
+      <span class="ruby-identifier">img</span> = <span class="ruby-constant">FXTIFIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">filename</span> = <span class="ruby-constant">IMAGE_FILES</span>[<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span>]
+      <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;lib/img/#{filename}&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;File not found: #{filename}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">filename</span>)
+      <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">img</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+      }
+      <span class="ruby-identifier">img</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-ivar">@hex_width</span>, <span class="ruby-ivar">@hex_height</span>)
+      <span class="ruby-identifier">img</span>.<span class="ruby-identifier">create</span>
+      <span class="ruby-ivar">@@cached_images</span>[<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span>] = <span class="ruby-identifier">img</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">img</span> = <span class="ruby-ivar">@@cached_images</span>[<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span>]    
+    
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawIcon</span>(<span class="ruby-identifier">img</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+    <span class="ruby-identifier">f</span> = <span class="ruby-constant">FXFont</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-value str">&quot;arial&quot;</span>, <span class="ruby-value">12</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">setFont</span>(<span class="ruby-identifier">f</span>)
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawText</span>(<span class="ruby-identifier">x</span><span class="ruby-operator">+</span>(<span class="ruby-ivar">@hex_side</span><span class="ruby-operator">*</span><span class="ruby-value">0</span><span class="ruby-value">.8</span>), <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-ivar">@hex_side</span>, <span class="ruby-identifier">hex</span>.<span class="ruby-identifier">number</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hex</span>.<span class="ruby-identifier">card_type</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">DesertType</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000208" class="method-detail">
+        <a name="M000208"></a>
+
+        <div class="method-heading">
+          <a href="#M000208" class="method-signature">
+          <span class="method-name">draw_bandit</span><span class="method-args">(dc, tile)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000208-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000208-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 558</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_bandit</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">tile</span>)
+    <span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span> = <span class="ruby-identifier">get_real_hex_coords</span>(<span class="ruby-identifier">tile</span>)
+    <span class="ruby-identifier">square_size</span> = <span class="ruby-ivar">@hex_side</span> <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.8</span>
+    <span class="ruby-identifier">x</span> <span class="ruby-operator">+=</span> (<span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">square_size</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
+    <span class="ruby-identifier">y</span> <span class="ruby-operator">+=</span> (<span class="ruby-ivar">@hex_height</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">square_size</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">FXColor</span><span class="ruby-operator">::</span><span class="ruby-constant">Black</span>
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">fillRectangle</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">square_size</span>, <span class="ruby-identifier">square_size</span>) 
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000206" class="method-detail">
+        <a name="M000206"></a>
+
+        <div class="method-heading">
+          <a href="#M000206" class="method-signature">
+          <span class="method-name">draw_board</span><span class="method-args">(piece=nil, temp_bandit_hex=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Draw the board
+</p>
+<dl>
+<dt>piece</dt><dd>an optional temporary piece to draw on top of the board it can be an <a
+href="Edge.html">Edge</a> or [<a href="Class.html">Class</a>, <a
+href="Node.html">Node</a>] where the class is either a city or settlement
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000206-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000206-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 458</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_board</span>(<span class="ruby-identifier">piece</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">temp_bandit_hex</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@board</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">calculated_coordinate_data?</span>
+
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@board_image</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@scale_changed</span>
+      <span class="ruby-ivar">@board_image</span> = <span class="ruby-constant">FXBMPImage</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">IMAGE_SHMI</span><span class="ruby-operator">|</span><span class="ruby-constant">IMAGE_SHMP</span>, <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">height</span>) 
+      <span class="ruby-ivar">@board_image</span>.<span class="ruby-identifier">create</span>
+      <span class="ruby-constant">FXDCWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@board_image</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">board_dc</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">board_dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">FXColor</span><span class="ruby-operator">::</span><span class="ruby-constant">DarkBlue</span>
+        <span class="ruby-identifier">board_dc</span>.<span class="ruby-identifier">fillRectangle</span>(<span class="ruby-value">0</span>,<span class="ruby-value">0</span>, <span class="ruby-ivar">@board_image</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@board_image</span>.<span class="ruby-identifier">height</span>)
+        
+        <span class="ruby-comment cmt">#Draw the tiles</span>
+        <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">tiles</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">drawHex</span>(<span class="ruby-identifier">board_dc</span>, <span class="ruby-identifier">t</span>)}
+        
+        <span class="ruby-comment cmt">#Draw the ports</span>
+        <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">all_edges</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">edge</span><span class="ruby-operator">|</span> 
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">all?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">port</span>}
+            <span class="ruby-identifier">draw_port</span>(<span class="ruby-identifier">board_dc</span>, <span class="ruby-identifier">edge</span>)
+          <span class="ruby-keyword kw">end</span>
+        }
+        <span class="ruby-ivar">@scale_changed</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt">#Create a buffer for the canvas to limit the amount of rendering the screen does</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-constant">FXBMPImage</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">IMAGE_SHMI</span><span class="ruby-operator">|</span><span class="ruby-constant">IMAGE_SHMP</span>, 
+                            <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">height</span>) 
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">create</span>
+
+    <span class="ruby-constant">FXDCWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">buffer</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dc</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">FXColor</span><span class="ruby-operator">::</span><span class="ruby-constant">DarkBlue</span>
+<span class="ruby-comment cmt">#      dc.foreground = FXColor::White #At work</span>
+
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">fillRectangle</span>(<span class="ruby-value">0</span>,<span class="ruby-value">0</span>, <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">height</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawImage</span>(<span class="ruby-ivar">@board_image</span>, <span class="ruby-value">0</span>,<span class="ruby-value">0</span>) <span class="ruby-comment cmt">#At work</span>
+      
+      <span class="ruby-ivar">@widget_manager</span>.<span class="ruby-identifier">paint</span>(<span class="ruby-identifier">dc</span>)
+
+      
+      <span class="ruby-comment cmt">#Draw the roads</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">t</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">tiles</span>.<span class="ruby-identifier">values</span>
+        <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">edges</span> 
+          <span class="ruby-identifier">draw_road</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">e</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">road</span>.<span class="ruby-identifier">color</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">road</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>   
+
+      <span class="ruby-comment cmt">#Draw the temp road</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">piece</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">piece</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Edge</span>
+        <span class="ruby-identifier">draw_road</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">piece</span>, <span class="ruby-ivar">@color</span>)
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt">#Draw cities and settlements</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">n</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">board</span>.<span class="ruby-identifier">all_nodes</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span>
+          <span class="ruby-identifier">draw_city</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">n</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span>.<span class="ruby-identifier">color</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt">#Draw the temp city</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">piece</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">piece</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span>
+        <span class="ruby-identifier">city</span>, <span class="ruby-identifier">node</span> = <span class="ruby-identifier">piece</span>
+        <span class="ruby-identifier">draw_city</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">city</span>, <span class="ruby-identifier">node</span>, <span class="ruby-ivar">@color</span>)
+      <span class="ruby-keyword kw">end</span>
+      
+      
+      <span class="ruby-comment cmt">#Draw The bandit</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">temp_bandit_hex</span>
+        <span class="ruby-identifier">draw_bandit</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">temp_bandit_hex</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">t</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">board</span>.<span class="ruby-identifier">tiles</span>.<span class="ruby-identifier">values</span>
+          <span class="ruby-identifier">draw_bandit</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">t</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">has_bandit</span>
+        <span class="ruby-keyword kw">end</span>      
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-constant">FXDCWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@canvas</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dc</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawImage</span>(<span class="ruby-identifier">buffer</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000211" class="method-detail">
+        <a name="M000211"></a>
+
+        <div class="method-heading">
+          <a href="#M000211" class="method-signature">
+          <span class="method-name">draw_city</span><span class="method-args">(dc, city_class, n, color)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Draw a city or a settlement on the DC
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000211-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000211-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 612</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_city</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">city_class</span>, <span class="ruby-identifier">n</span>, <span class="ruby-identifier">color</span>)
+    <span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span> = <span class="ruby-identifier">get_real_node_coords</span>(<span class="ruby-identifier">n</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">city_class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Settlement</span> <span class="ruby-value">? </span><span class="ruby-ivar">@hex_width</span><span class="ruby-operator">/</span><span class="ruby-value">12</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@hex_width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>
+    <span class="ruby-identifier">x1</span>,<span class="ruby-identifier">y1</span> = <span class="ruby-identifier">x</span><span class="ruby-operator">-</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">-</span><span class="ruby-identifier">s</span>
+    <span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span> = <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-identifier">s</span>   
+         
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">COLOR_HASH</span>[<span class="ruby-identifier">color</span>]
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">fillRectangle</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">s</span>, <span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">s</span>)
+   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000207" class="method-detail">
+        <a name="M000207"></a>
+
+        <div class="method-heading">
+          <a href="#M000207" class="method-signature">
+          <span class="method-name">draw_port</span><span class="method-args">(dc, edge)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000207-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000207-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 538</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_port</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">edge</span>)
+    <span class="ruby-identifier">touching_hex</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">hexes</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">nil?</span>}[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span> = <span class="ruby-identifier">getOppositeCoords</span>(<span class="ruby-identifier">touching_hex</span>, <span class="ruby-identifier">edge</span>)
+    <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span> = <span class="ruby-identifier">get_real_hexXY_coords</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+    <span class="ruby-identifier">port</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">port</span>
+
+    <span class="ruby-identifier">img</span> = <span class="ruby-constant">FXTIFIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">&quot;lib/img/port.tif&quot;</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">img</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+    }
+    <span class="ruby-identifier">img</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-ivar">@hex_width</span>, <span class="ruby-ivar">@hex_height</span>)
+    <span class="ruby-identifier">img</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawIcon</span>(<span class="ruby-identifier">img</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+    <span class="ruby-identifier">f</span> = <span class="ruby-constant">FXFont</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-value str">&quot;arial&quot;</span>, <span class="ruby-value">12</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">setFont</span>(<span class="ruby-identifier">f</span>)
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">FXColor</span><span class="ruby-operator">::</span><span class="ruby-constant">White</span>
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawText</span>(<span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">15</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">10</span>, <span class="ruby-identifier">port</span>.<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>])
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000210" class="method-detail">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+          <a href="#M000210" class="method-signature">
+          <span class="method-name">draw_road</span><span class="method-args">(dc, edge, color)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Draw a road on the DC
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000210-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000210-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 593</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_road</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">edge</span>, <span class="ruby-identifier">color</span>)
+    <span class="ruby-identifier">x1</span>,<span class="ruby-identifier">y1</span> = <span class="ruby-identifier">get_real_node_coords</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span> = <span class="ruby-identifier">get_real_node_coords</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">COLOR_HASH</span>[<span class="ruby-identifier">color</span>]
+    <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">y2</span>)
+    <span class="ruby-keyword kw">if</span> [<span class="ruby-value">0</span>,<span class="ruby-value">3</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">coords</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">y2</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">y2</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">y2</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">y2</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>)
+    <span class="ruby-keyword kw">else</span> 
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-identifier">x2</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y2</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-identifier">x2</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y2</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-identifier">x2</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">y2</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawLine</span>(<span class="ruby-identifier">x1</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>, <span class="ruby-identifier">y1</span>, <span class="ruby-identifier">x2</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>, <span class="ruby-identifier">y2</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000200" class="method-detail">
+        <a name="M000200"></a>
+
+        <div class="method-heading">
+          <a href="#M000200" class="method-signature">
+          <span class="method-name">game_end</span><span class="method-args">(winner, points)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform the observer that the game has finished.
+</p>
+<dl>
+<dt>player</dt><dd>the player who won
+
+</dd>
+<dt>points</dt><dd>the number of points they won with.
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000200-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000200-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 345</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_end</span>(<span class="ruby-identifier">winner</span>, <span class="ruby-identifier">points</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">winner</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">self</span>
+      <span class="ruby-constant">FXMessageBox</span><span class="ruby-operator">::</span><span class="ruby-identifier">information</span>(<span class="ruby-ivar">@frame</span>, <span class="ruby-constant">DECOR_ALL</span>, <span class="ruby-value str">&quot;Horray!&quot;</span>, <span class="ruby-node">&quot;You won the game with #{points} points!&quot;</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">FXMessageBox</span><span class="ruby-operator">::</span><span class="ruby-identifier">error</span>(<span class="ruby-ivar">@frame</span>, <span class="ruby-constant">DECOR_ALL</span>, <span class="ruby-value str">&quot;Awwww&quot;</span>, <span class="ruby-node">&quot;#{winner.name} won the game with #{points} points!&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000199" class="method-detail">
+        <a name="M000199"></a>
+
+        <div class="method-heading">
+          <a href="#M000199" class="method-signature">
+          <span class="method-name">game_start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify the observer that the game has begun
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000199-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000199-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 338</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_start</span>
+  
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000186" class="method-detail">
+        <a name="M000186"></a>
+
+        <div class="method-heading">
+          <a href="#M000186" class="method-signature">
+          <span class="method-name">get_resource_alias</span><span class="method-args">(res)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000186-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000186-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 214</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_resource_alias</span>(<span class="ruby-identifier">res</span>)
+    <span class="ruby-ivar">@@resource_aliases</span>[<span class="ruby-identifier">res</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000185" class="method-detail">
+        <a name="M000185"></a>
+
+        <div class="method-heading">
+          <a href="#M000185" class="method-signature">
+          <span class="method-name">get_turn</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform this observer that it is the given player&#8216;s turn
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000185-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000185-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 210</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_turn</span>(<span class="ruby-identifier">player</span>)
+    <span class="ruby-ivar">@current_turn_msg</span> = <span class="ruby-ivar">@message_panel</span>.<span class="ruby-identifier">add_turn</span>(<span class="ruby-identifier">player</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000187" class="method-detail">
+        <a name="M000187"></a>
+
+        <div class="method-heading">
+          <a href="#M000187" class="method-signature">
+          <span class="method-name">inform</span><span class="method-args">(player_info, msg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000187-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000187-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 224</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inform</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000191" class="method-detail">
+        <a name="M000191"></a>
+
+        <div class="method-heading">
+          <a href="#M000191" class="method-signature">
+          <span class="method-name">move_bandit</span><span class="method-args">(old_hex)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tell this player to move the bandit
+</p>
+<dl>
+<dt>old_hex</dt><dd>the hex where the bandit currently sits
+
+</dd>
+</dl>
+<p>
+return a <a href="FXPlayer.html#M000177">new</a> hex TODO: replace this
+with real interaction
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000191-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000191-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 258</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_bandit</span>(<span class="ruby-identifier">old_hex</span>)
+    <span class="ruby-identifier">initial_state</span> = <span class="ruby-ivar">@current_state</span> 
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{name} told to move bandit&quot;</span>)
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;app=#{@app}&quot;</span>)
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{self} Changing state to MovingBanditState&quot;</span>)
+    <span class="ruby-ivar">@current_state</span> = <span class="ruby-constant">MovingBanditState</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">validate_action_widget</span>(<span class="ruby-ivar">@action_widget</span>)
+    <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">chosen_hex</span> 
+      <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.5</span>)
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-value str">'still moving bandit'</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">hex</span> = <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">chosen_hex</span> 
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{self} Changing state to #{initial_state}&quot;</span>)
+    <span class="ruby-ivar">@current_state</span> = <span class="ruby-identifier">initial_state</span>
+    <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">validate_action_widget</span>(<span class="ruby-ivar">@action_widget</span>)
+    <span class="ruby-identifier">hex</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000182" class="method-detail">
+        <a name="M000182"></a>
+
+        <div class="method-heading">
+          <a href="#M000182" class="method-signature">
+          <span class="method-name">on_canvas_left_click</span><span class="method-args">(sender, sel, event)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called whenever there is left click on the main canvas
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000182-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000182-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 177</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_canvas_left_click</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+    <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">on_canvas_left_click</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000181" class="method-detail">
+        <a name="M000181"></a>
+
+        <div class="method-heading">
+          <a href="#M000181" class="method-signature">
+          <span class="method-name">on_canvas_mouse_motion</span><span class="method-args">(sender, sel, event)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called whenever there is mouse motion over the main canvas
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000181-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000181-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_canvas_mouse_motion</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+    <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">on_canvas_mouse_motion</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000178" class="method-detail">
+        <a name="M000178"></a>
+
+        <div class="method-heading">
+          <a href="#M000178" class="method-signature">
+          <span class="method-name">on_frame_update</span><span class="method-args">(sender, sel, event)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000178-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000178-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 137</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_frame_update</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+    <span class="ruby-ivar">@widget_manager</span>.<span class="ruby-identifier">invalidate</span>
+    <span class="ruby-identifier">height</span> = <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> [<span class="ruby-ivar">@card_viewer</span>.<span class="ruby-identifier">height</span>, <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">height</span>].<span class="ruby-identifier">max</span>
+    <span class="ruby-identifier">set_canvas_size</span>(<span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000180" class="method-detail">
+        <a name="M000180"></a>
+
+        <div class="method-heading">
+          <a href="#M000180" class="method-signature">
+          <span class="method-name">on_keypress</span><span class="method-args">(sender, sel, event)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000180-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000180-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 157</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_keypress</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">65474</span> <span class="ruby-comment cmt">#F5</span>
+      <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">on_roll</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">dice</span>.<span class="ruby-identifier">enabled</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">65475</span> <span class="ruby-comment cmt">#F6</span>
+      <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">on_trade</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">trade</span>.<span class="ruby-identifier">enabled</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">65476</span> <span class="ruby-comment cmt">#F7</span>
+      <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">on_buy_dev_card</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">buy_dev_card</span>.<span class="ruby-identifier">enabled</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">65477</span> <span class="ruby-comment cmt">#F8</span>
+      <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">on_done</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">done</span>.<span class="ruby-identifier">enabled</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">65475</span> <span class="ruby-comment cmt">#F9</span>
+      <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000204" class="method-detail">
+        <a name="M000204"></a>
+
+        <div class="method-heading">
+          <a href="#M000204" class="method-signature">
+          <span class="method-name">placed_city</span><span class="method-args">(player_info, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a city was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the city
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000204-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000204-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 388</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_city</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-value str">&quot;placed a city&quot;</span>)
+    <span class="ruby-identifier">draw_board</span>
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">repaint</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+          <a href="#M000202" class="method-signature">
+          <span class="method-name">placed_road</span><span class="method-args">(player_info, x, y, edge)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a road was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the road
+
+</dd>
+<dt>x, y, edge</dt><dd>The edge coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000202-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000202-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 368</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_road</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">edge</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-value str">&quot;placed a road&quot;</span>)
+    <span class="ruby-identifier">draw_board</span>
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">repaint</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000203" class="method-detail">
+        <a name="M000203"></a>
+
+        <div class="method-heading">
+          <a href="#M000203" class="method-signature">
+          <span class="method-name">placed_settlement</span><span class="method-args">(player_info, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a settlement was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the settlement
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000203-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000203-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 378</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_settlement</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-value str">&quot;placed a settlement&quot;</span>)
+    <span class="ruby-identifier">draw_board</span>
+    <span class="ruby-ivar">@canvas</span>.<span class="ruby-identifier">repaint</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000198" class="method-detail">
+        <a name="M000198"></a>
+
+        <div class="method-heading">
+          <a href="#M000198" class="method-signature">
+          <span class="method-name">player_moved_bandit</span><span class="method-args">(player_info, new_hex)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000198-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000198-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 330</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_moved_bandit</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">new_hex</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">draw_board</span>
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000195" class="method-detail">
+        <a name="M000195"></a>
+
+        <div class="method-heading">
+          <a href="#M000195" class="method-signature">
+          <span class="method-name">player_received_cards</span><span class="method-args">(player_info, cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin anytime a player receives cards.
+</p>
+<dl>
+<dt>player</dt><dd>the player that received the cards
+
+</dd>
+<dt>cards</dt><dd>a list of Card Classes
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000195-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000195-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 308</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_received_cards</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">cards</span>)
+   <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-node">&quot;received #{cards.size} cards&quot;</span>)    
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000196" class="method-detail">
+        <a name="M000196"></a>
+
+        <div class="method-heading">
+          <a href="#M000196" class="method-signature">
+          <span class="method-name">player_rolled</span><span class="method-args">(player_info, roll)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin when anyone rolls the dice
+</p>
+<dl>
+<dt>player</dt><dd>the acting player
+
+</dd>
+<dt>roll</dt><dd>A list (length 2) of the numbers that were rolled
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000196-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000196-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 315</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_rolled</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">roll</span>)
+    <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-node">&quot;rolled a #{roll.sum}&quot;</span>)    
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000197" class="method-detail">
+        <a name="M000197"></a>
+
+        <div class="method-heading">
+          <a href="#M000197" class="method-signature">
+          <span class="method-name">player_stole_card</span><span class="method-args">(theif, victim, num_cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin whenever a player steals cards from another
+player
+</p>
+<dl>
+<dt>theif</dt><dd>the player who took the cards
+
+</dd>
+<dt>victim</dt><dd>the player who lost cards
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000197-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000197-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 322</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_stole_card</span>(<span class="ruby-identifier">theif</span>, <span class="ruby-identifier">victim</span>, <span class="ruby-identifier">num_cards</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">num_cards</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">theif</span>, <span class="ruby-node">&quot;stole a card from #{victim.name}&quot;</span>)    
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">add_message</span>(<span class="ruby-identifier">theif</span>, <span class="ruby-node">&quot;stole #{num_cards} cards from #{victim.name}&quot;</span>)    
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000192" class="method-detail">
+        <a name="M000192"></a>
+
+        <div class="method-heading">
+          <a href="#M000192" class="method-signature">
+          <span class="method-name">select_player</span><span class="method-args">(players)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ask the player to choose a player among the given list of <a
+href="PlayerInfo.html">PlayerInfo</a> objects
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000192-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000192-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 277</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_player</span>(<span class="ruby-identifier">players</span>)
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{name} told to select a player from #{players.join(',')}&quot;</span>)
+    <span class="ruby-identifier">other</span> = <span class="ruby-identifier">players</span>.<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">self</span>}
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;I'm being forced to select myself&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-identifier">other</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000193" class="method-detail">
+        <a name="M000193"></a>
+
+        <div class="method-heading">
+          <a href="#M000193" class="method-signature">
+          <span class="method-name">select_resource_cards</span><span class="method-args">(cards, count)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ask the player to select some cards from a list. This is used when a player
+must discard
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000193-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000193-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 286</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_resource_cards</span>(<span class="ruby-identifier">cards</span>, <span class="ruby-identifier">count</span>)
+    <span class="ruby-identifier">card_classes</span> = <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">uniq</span>
+  
+    <span class="ruby-comment cmt">#count the number of occurances in the list</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">test</span>)
+      <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">test</span>}
+      <span class="ruby-identifier">sum</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">items</span> = <span class="ruby-identifier">card_classes</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">t</span>, <span class="ruby-identifier">get_resource_alias</span>(<span class="ruby-identifier">t</span>), <span class="ruby-identifier">count</span>(<span class="ruby-identifier">cards</span>, <span class="ruby-identifier">t</span>)]}
+    <span class="ruby-identifier">selected_cards</span> = <span class="ruby-constant">CardSelectorDialog</span>.<span class="ruby-identifier">get_card_counts</span>(<span class="ruby-ivar">@app</span>, 
+                                               <span class="ruby-node">&quot;Select #{count} resources to discard&quot;</span>, 
+                                               <span class="ruby-identifier">items</span>, <span class="ruby-identifier">count</span>)
+    <span class="ruby-comment cmt">#remove unwanted cards from the list                                               </span>
+    <span class="ruby-identifier">selected_cards</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">type</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">type</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">c</span> }.<span class="ruby-identifier">flatten</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000179" class="method-detail">
+        <a name="M000179"></a>
+
+        <div class="method-heading">
+          <a href="#M000179" class="method-signature">
+          <span class="method-name">set_canvas_size</span><span class="method-args">(width, height)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this method will update the canvas size and re-calcuate the board
+dimensions
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000179-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000179-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 145</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_canvas_size</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
+    <span class="ruby-identifier">dimensions</span> = [<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>]
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dimensions</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@last_canvas_dimensions</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@gui_board</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">'Changing Dimensions'</span>
+      <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">flush</span>
+      <span class="ruby-identifier">set_board_dimensions</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
+      <span class="ruby-ivar">@scale_changed</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">update_board</span>(<span class="ruby-ivar">@board</span>)
+      <span class="ruby-ivar">@last_canvas_dimensions</span> = <span class="ruby-identifier">dimensions</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000184" class="method-detail">
+        <a name="M000184"></a>
+
+        <div class="method-heading">
+          <a href="#M000184" class="method-signature">
+          <span class="method-name">take_turn</span><span class="method-args">(turn)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000184-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000184-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 194</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_turn</span>(<span class="ruby-identifier">turn</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">turn</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">turn</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">SetupTurn</span>)
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{self} Changing state to SetupTurnState&quot;</span>)  
+      <span class="ruby-ivar">@current_state</span> = <span class="ruby-constant">SetupTurnState</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">validate_action_widget</span>(<span class="ruby-ivar">@action_widget</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{self} Changing state to NormalTurnState&quot;</span>)
+      <span class="ruby-ivar">@current_state</span> = <span class="ruby-constant">NormalTurnState</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-ivar">@current_state</span>.<span class="ruby-identifier">validate_action_widget</span>(<span class="ruby-ivar">@action_widget</span>)
+      
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">update_board</span>(<span class="ruby-ivar">@board</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000201" class="method-detail">
+        <a name="M000201"></a>
+
+        <div class="method-heading">
+          <a href="#M000201" class="method-signature">
+          <span class="method-name">update_board</span><span class="method-args">(board)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Update this observer&#8216;s version of the board
+</p>
+<dl>
+<dt>board</dt><dd>the <a href="FXPlayer.html#M000177">new</a> version of the board
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000201-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000201-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 355</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_board</span>(<span class="ruby-identifier">board</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-identifier">set_board</span>(<span class="ruby-identifier">board</span>)
+    <span class="ruby-ivar">@action_widget</span>.<span class="ruby-identifier">validate</span>
+    <span class="ruby-identifier">draw_board</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">calculated_coordinate_data?</span>
+    <span class="ruby-ivar">@status_panel</span>.<span class="ruby-identifier">update</span>
+    <span class="ruby-ivar">@right_info_panel</span>.<span class="ruby-identifier">layout</span>
+    <span class="ruby-ivar">@right_info_panel</span>.<span class="ruby-identifier">repaint</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000205" class="method-detail">
+        <a name="M000205"></a>
+
+        <div class="method-heading">
+          <a href="#M000205" class="method-signature">
+          <span class="method-name">update_card_frame</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000205-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000205-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/fxplayer.rb, line 395</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_card_frame</span>
+  <span class="ruby-keyword kw">return</span>
+    <span class="ruby-comment cmt">#Create a buffer for the canvas to limit the amount of rendering the screen does</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-constant">FXBMPImage</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">IMAGE_SHMI</span><span class="ruby-operator">|</span><span class="ruby-constant">IMAGE_SHMP</span>, 
+                            <span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">height</span>) 
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">create</span>
+
+    <span class="ruby-constant">FXDCWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">buffer</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dc</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-constant">FXColor</span><span class="ruby-operator">::</span><span class="ruby-constant">White</span>
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">fillRectangle</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">width</span>, <span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">height</span>)
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawImage</span>(<span class="ruby-ivar">@key_image</span>,<span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">-</span><span class="ruby-ivar">@key_image</span>.<span class="ruby-identifier">width</span>,<span class="ruby-value">0</span>) <span class="ruby-comment cmt">#at work</span>
+      
+      <span class="ruby-identifier">res_cards</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">dev_cards</span> = <span class="ruby-value">0</span>
+      <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">type</span>, <span class="ruby-identifier">amount</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">res_cards</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">amount</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RESOURCE_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">type</span>)
+        <span class="ruby-identifier">dev_cards</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">amount</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">DevelopmentCard</span>)
+      }
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">res_cards</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">n</span> = <span class="ruby-identifier">res_cards</span>
+        <span class="ruby-identifier">theta_d</span> = <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span> <span class="ruby-operator">/</span> <span class="ruby-value">10</span>
+        <span class="ruby-identifier">r</span> = <span class="ruby-value">280</span>
+  
+        <span class="ruby-identifier">theta_d_2_over_n</span> = <span class="ruby-identifier">theta_d</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">n</span>
+        <span class="ruby-identifier">theta_i</span> = (<span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">theta_d</span>
+        <span class="ruby-identifier">k</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">card_type</span>, <span class="ruby-identifier">num</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@cards</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RESOURCE_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">card_type</span>)
+              <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">num</span>
+                <span class="ruby-identifier">theta</span> = (<span class="ruby-identifier">theta_d_2_over_n</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">k</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">theta_i</span>
+                <span class="ruby-identifier">theta_deg</span> = (<span class="ruby-identifier">theta</span> <span class="ruby-operator">*</span> <span class="ruby-value">180</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span>).<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">x</span> = (<span class="ruby-identifier">r</span> <span class="ruby-operator">*</span> <span class="ruby-constant">Math</span>.<span class="ruby-identifier">cos</span>(<span class="ruby-identifier">theta</span>) <span class="ruby-operator">*</span> <span class="ruby-value">2.5</span>) <span class="ruby-operator">+</span> <span class="ruby-value">300</span>
+                <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@bottom_canvas</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">r</span> <span class="ruby-operator">*</span> <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sin</span>(<span class="ruby-identifier">theta</span>)) 
+                
+                <span class="ruby-identifier">img</span> = <span class="ruby-constant">FXJPGIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">IMAGE_KEEP</span>)
+                <span class="ruby-identifier">filename</span> = <span class="ruby-ivar">@@card_image_files</span>[<span class="ruby-identifier">card_type</span>]
+                <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;lib/img/#{filename}&quot;</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+                  <span class="ruby-identifier">img</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+                }
+                <span class="ruby-identifier">scale</span> = <span class="ruby-value">1.5</span>
+                <span class="ruby-identifier">img</span>.<span class="ruby-identifier">scale</span>((<span class="ruby-identifier">img</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">*</span><span class="ruby-identifier">scale</span>).<span class="ruby-identifier">to_i</span>, (<span class="ruby-identifier">img</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">*</span><span class="ruby-identifier">scale</span>).<span class="ruby-identifier">to_i</span>)
+                <span class="ruby-identifier">img</span>.<span class="ruby-identifier">create</span>
+                <span class="ruby-identifier">img</span>.<span class="ruby-identifier">render</span>
+  <span class="ruby-comment cmt">#              img.rotate(270)</span>
+                
+  <span class="ruby-comment cmt">#            @resource_images[card_type].rotate(theta_deg)</span>
+               <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawImage</span>(<span class="ruby-identifier">img</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) <span class="ruby-comment cmt">#At work</span>
+ <span class="ruby-comment cmt">#             @resource_images[card_type].rotate(-theta_deg)</span>
+              <span class="ruby-identifier">k</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-constant">FXDCWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@bottom_canvas</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dc</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">drawImage</span>(<span class="ruby-identifier">buffer</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

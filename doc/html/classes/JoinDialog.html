@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: JoinDialog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">JoinDialog</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/join_dialog_rb.html">
+                lib/ui/fxruby/join_dialog.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                FXWizard
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Join a multiplayer game
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000067">get_info</a>&nbsp;&nbsp;
+      <a href="#M000068">join</a>&nbsp;&nbsp;
+      <a href="#M000066">new</a>&nbsp;&nbsp;
+      <a href="#M000069">onFinish</a>&nbsp;&nbsp;
+      <a href="#M000070">save_settings</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Responder</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_SERVERS</td>
+          <td>=</td>
+          <td class="context-item-value">['localhost:7643', '71.93.107.101:7643']</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="#M000066" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(app, frame)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/join_dialog.rb, line 12</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">frame</span>)
+    <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+    <span class="ruby-ivar">@frame</span> = <span class="ruby-identifier">frame</span>
+    <span class="ruby-identifier">img</span> = <span class="ruby-constant">FXPNGIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">app</span>, <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">&quot;lib/img/join_wizard.png&quot;</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">img</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+    }
+    <span class="ruby-identifier">img</span>.<span class="ruby-identifier">create</span>    
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">app</span>, <span class="ruby-value str">&quot;Join a multiplayer game&quot;</span>, <span class="ruby-identifier">img</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">600</span>, <span class="ruby-identifier">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">276</span>)
+    
+    <span class="ruby-identifier">selection_frame</span> = <span class="ruby-constant">FXHorizontalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">container</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-identifier">server_frame</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">selection_frame</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_Y</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>)
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Select a server&quot;</span>)
+    <span class="ruby-identifier">server_list</span> = <span class="ruby-constant">FXList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-constant">DEFAULT_SERVERS</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">server_list</span>.<span class="ruby-identifier">appendItem</span>(<span class="ruby-identifier">s</span>)}
+    <span class="ruby-ivar">@server_name</span> = <span class="ruby-constant">FXTextField</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value">20</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">FRAME_SUNKEN</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span>)
+    
+    <span class="ruby-comment cmt">#The right info panel</span>
+    <span class="ruby-identifier">rvf</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">selection_frame</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-identifier">info_frame</span> = <span class="ruby-constant">FXGroupBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">rvf</span>, <span class="ruby-value str">&quot;Game info&quot;</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">GROUPBOX_TITLE_CENTER</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_GROOVE</span>)
+    <span class="ruby-ivar">@get_info_button</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">rvf</span>, <span class="ruby-value str">'Get Info'</span>)
+    <span class="ruby-identifier">mat</span> = <span class="ruby-constant">FXMatrix</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info_frame</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;Board&quot;</span>)
+    <span class="ruby-ivar">@board_label</span> = <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;&quot;</span>)
+
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;Players&quot;</span>)
+    <span class="ruby-ivar">@players_label</span> = <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;&quot;</span>)
+
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;Max Points&quot;</span>)
+    <span class="ruby-ivar">@max_points_label</span> = <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>, <span class="ruby-value str">&quot;&quot;</span>)
+
+    <span class="ruby-identifier">server_list</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_CHANGED</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-ivar">@get_info_button</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">server</span> = <span class="ruby-identifier">server_list</span>.<span class="ruby-identifier">getItemText</span>(<span class="ruby-identifier">server_list</span>.<span class="ruby-identifier">currentItem</span>)
+      <span class="ruby-ivar">@server_name</span>.<span class="ruby-identifier">text</span> = 
+      <span class="ruby-identifier">server_parts</span> = <span class="ruby-ivar">@server_name</span>
+      <span class="ruby-identifier">maxPlayers</span>, <span class="ruby-identifier">players</span>, <span class="ruby-identifier">board</span>, <span class="ruby-identifier">points</span> = <span class="ruby-identifier">get_info</span>(<span class="ruby-ivar">@server_name</span>.<span class="ruby-identifier">text</span>)
+      <span class="ruby-ivar">@players_label</span>.<span class="ruby-identifier">text</span> = (<span class="ruby-identifier">players</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">maxPlayers</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">players</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">maxPlayers</span>
+      <span class="ruby-ivar">@board_label</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">board</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">board</span>
+      <span class="ruby-ivar">@max_points_label</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">points</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">player_info</span> = <span class="ruby-constant">FXHorizontalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">container</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-value str">&quot;Player name:&quot;</span>)
+    <span class="ruby-ivar">@player_name_text</span> = <span class="ruby-constant">FXTextField</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-value">15</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">FRAME_SUNKEN</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span>)
+    
+    
+    
+    <span class="ruby-constant">FXMAPFUNC</span>(<span class="ruby-constant">SEL_COMMAND</span>, <span class="ruby-constant">ID_ACCEPT</span>, <span class="ruby-identifier">:onFinish</span>)
+    <span class="ruby-identifier">finishButton</span>.<span class="ruby-identifier">text</span> = <span class="ruby-value str">'Join Game'</span>
+    <span class="ruby-comment cmt">#FXMAPFUNC(SEL_COMMAND, ID_CANCEL, :onCancel) if __FILE__ == $0    </span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="#M000067" class="method-signature">
+          <span class="method-name">get_info</span><span class="method-args">(host, port=7643)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Retrieve game info for a given server.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000067-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/join_dialog.rb, line 69</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_info</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">7643</span>)
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">admin</span> = <span class="ruby-constant">DRbObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-node">&quot;druby://#{host}:#{port}&quot;</span>)
+      <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">admin</span>.<span class="ruby-identifier">maxPlayers</span>, <span class="ruby-identifier">admin</span>.<span class="ruby-identifier">players</span>, <span class="ruby-identifier">admin</span>.<span class="ruby-identifier">board</span>, <span class="ruby-identifier">admin</span>.<span class="ruby-identifier">maxPoints</span>]
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">DRb</span><span class="ruby-operator">::</span><span class="ruby-constant">DRbConnError</span>
+      <span class="ruby-keyword kw">return</span> [<span class="ruby-value">0</span>, [], <span class="ruby-keyword kw">nil</span>, <span class="ruby-value">0</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="#M000068" class="method-signature">
+          <span class="method-name">join</span><span class="method-args">(host, port, player_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Join a game
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/join_dialog.rb, line 79</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">join</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-identifier">player_name</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Connecting to #{host}:#{port}&quot;</span>
+    <span class="ruby-constant">DRb</span>.<span class="ruby-identifier">start_service</span>()
+    <span class="ruby-identifier">admin</span> = <span class="ruby-constant">DRbObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-node">&quot;druby://#{host}:#{port}&quot;</span>)
+    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">clear_player_frame</span>
+    <span class="ruby-identifier">p</span> = <span class="ruby-constant">FXPlayer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-ivar">@frame</span>, <span class="ruby-identifier">player_name</span>, <span class="ruby-identifier">admin</span>)
+    <span class="ruby-identifier">admin</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">p</span>)
+<span class="ruby-comment cmt">#x    until admin.is_game_done; sleep(0.1); end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="#M000069" class="method-signature">
+          <span class="method-name">onFinish</span><span class="method-args">(sender, selector, data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/join_dialog.rb, line 89</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">onFinish</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">save_settings</span>
+    <span class="ruby-identifier">join</span>(<span class="ruby-ivar">@server_name</span>.<span class="ruby-identifier">text</span>, <span class="ruby-value">7643</span>, <span class="ruby-ivar">@player_name_text</span>.<span class="ruby-identifier">text</span>)
+    <span class="ruby-identifier">hide</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="#M000070" class="method-signature">
+          <span class="method-name">save_settings</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000070-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/join_dialog.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save_settings</span>
+  
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

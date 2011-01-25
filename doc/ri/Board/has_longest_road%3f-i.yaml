@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Board#has_longest_road?
+is_singleton: false
+name: has_longest_road?
+params: (color)
+visibility: public

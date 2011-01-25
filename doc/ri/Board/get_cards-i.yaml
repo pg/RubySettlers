@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets a list of cards
+full_name: Board#get_cards
+is_singleton: false
+name: get_cards
+params: (number, color)
+visibility: public

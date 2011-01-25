@@ -1,0 +1,56 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: admin
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hasRolled
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: isDone
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: player
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: Document this"
+constants: []
+
+full_name: Turn
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: accept_quote
+- !ruby/object:RI::MethodSummary 
+  name: active_cards
+- !ruby/object:RI::MethodSummary 
+  name: buy_development_card
+- !ruby/object:RI::MethodSummary 
+  name: done
+- !ruby/object:RI::MethodSummary 
+  name: get_quotes
+- !ruby/object:RI::MethodSummary 
+  name: get_quotes_from_bank
+- !ruby/object:RI::MethodSummary 
+  name: move_bandit
+- !ruby/object:RI::MethodSummary 
+  name: place_city!
+- !ruby/object:RI::MethodSummary 
+  name: place_road!
+- !ruby/object:RI::MethodSummary 
+  name: place_settlement!
+- !ruby/object:RI::MethodSummary 
+  name: play_development_card!
+- !ruby/object:RI::MethodSummary 
+  name: roll_dice
+name: Turn
+superclass: Object

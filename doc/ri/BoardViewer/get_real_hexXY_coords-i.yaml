@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the xy coordinates (in pixels) of the given hex coordinates This is used to draw a specific hex
+full_name: BoardViewer#get_real_hexXY_coords
+is_singleton: false
+name: get_real_hexXY_coords
+params: (hex_x, hex_y)
+visibility: public

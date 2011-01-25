@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is called by the admin anytime any player recieves cards.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: player
+    body: the player that recieved the cards
+  - !ruby/struct:SM::Flow::LI 
+    label: cards
+    body: a list of Card Classes
+  type: :LABELED
+full_name: IObserver#player_recieved_cards
+is_singleton: false
+name: player_recieved_cards
+params: (player, cards)
+visibility: public

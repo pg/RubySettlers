@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: gets a list of board objects and their corresponding filenames
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: expansion
+    body: the game definition to filter the boards by
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: if expansion if nil, then this will get all available boards
+full_name: BoardManager::get_boards
+is_singleton: true
+name: get_boards
+params: (expansion=nil)
+visibility: public

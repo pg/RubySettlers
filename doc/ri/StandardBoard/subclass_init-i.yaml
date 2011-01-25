@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initializes all the sub-class specific data. i.e. name, expansion, tile-locations, tile-numbers etc.
+full_name: StandardBoard#subclass_init
+is_singleton: false
+name: subclass_init
+params: ()
+visibility: public

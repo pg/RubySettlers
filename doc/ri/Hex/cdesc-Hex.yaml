@@ -1,0 +1,66 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: card_type
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: coords
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: edges
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: has_bandit
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: nodes
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: number
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Node numbers
+- !ruby/struct:SM::Flow::VERB 
+  body: "   5---------0\n   /         \\\n  /           \\\n"
+- !ruby/struct:SM::Flow::P 
+  body: 4/ \1
+- !ruby/struct:SM::Flow::VERB 
+  body: " \\             /\n  \\           /\n   \\         /\n   3---------2\n"
+constants: []
+
+full_name: Hex
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: <=>
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: connect_hex
+- !ruby/object:RI::MethodSummary 
+  name: connect_to_nodes
+- !ruby/object:RI::MethodSummary 
+  name: get_2_cards
+- !ruby/object:RI::MethodSummary 
+  name: get_card
+- !ruby/object:RI::MethodSummary 
+  name: get_cartesian
+- !ruby/object:RI::MethodSummary 
+  name: get_prob
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: Hex
+superclass: Object

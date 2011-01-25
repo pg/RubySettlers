@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
+  <object class="wxDialog" name="aboutDialog" subclass="AboutDialog">
+    <style>wxDEFAULT_DIALOG_STYLE</style>
+    <size>255,121</size>
+    <title>About</title>
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <flag>wxGROW|wxLEFT|wxRIGHT|wxTOP</flag>
+        <border>15</border>
+        <object class="wxStaticText" name="label_1">
+          <font>
+            <size>20</size>
+            <family>swiss</family>
+            <weight>bold</weight>
+            <face>Tahoma</face>
+          </font>
+          <fg>#FF0000</fg>
+          <label>Ruby Settlers</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_LEFT|wxALL</flag>
+        <border>15</border>
+        <object class="wxStaticText" name="label_2">
+          <label>   -by John J Kennedy (JohnnyK3@gmail.com)</label>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="help_dialog" subclass="HelpContents">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>400,300</size>
+    <title>Help Contents</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxHtmlWindow" name="ID_HTMLWINDOW1">
+          <size>200,150</size>
+          <style>wxHW_SCROLLBAR_AUTO|wxSUNKEN_BORDER</style>
+          <url>doc/help/index.html</url>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="JoinDialog" subclass="JoinGameDialog">
+    <style>wxCAPTION|wxSYSTEM_MENU|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <title>Join Game</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxHORIZONTAL</orient>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>0</border>
+        <object class="wxStaticBitmap" name="wxID_STATIC">
+          <size>100,230</size>
+          <bitmap>lib/img/join_wizard.png</bitmap>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxBoxSizer">
+          <orient>wxVERTICAL</orient>
+          <object class="sizeritem">
+            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+            <border>1</border>
+            <object class="wxPanel" name="top">
+              <style>wxTAB_TRAVERSAL</style>
+              <object class="wxNotebook" name="ID_NOTEBOOK1">
+                <size>280,185</size>
+                <style>wxNB_DEFAULT</style>
+                <object class="notebookpage">
+                  <label>Server</label>
+                  <object class="wxPanel" name="ID_PANEL2">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxFlexGridSizer">
+                      <cols>2</cols>
+                      <rows>2</rows>
+                      <object class="sizeritem">
+                        <object class="wxStaticText" name="server_name_label">
+                          <label>Server</label>
+                        </object>
+                        <flag>wxALL</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxTextCtrl" name="server_name">
+                          <value>localhost</value>
+                        </object>
+                        <flag>wxALL</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxStaticText" name="port_label">
+                          <label>Port number</label>
+                        </object>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxTextCtrl" name="port_number">
+                          <value>7643</value>
+                        </object>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="notebookpage">
+                  <label>Player Info</label>
+                  <object class="wxPanel" name="ID_PANEL1">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxFlexGridSizer">
+                      <cols>2</cols>
+                      <rows>2</rows>
+                      <object class="sizeritem">
+                        <object class="wxStaticText" name="player_name_label">
+                          <label>Player Name</label>
+                        </object>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxTextCtrl" name="player_name"/>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxStaticText" name="preferred_color_label">
+                          <label>Preferred Color</label>
+                        </object>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                      <object class="sizeritem">
+                        <object class="wxChoice" name="preferred_color">
+                          <content/>
+                        </object>
+                        <flag>wxALL|wxALIGN_TOP</flag>
+                        <border>5</border>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="sizeritem">
+            <flag>wxALIGN_RIGHT|wxALL</flag>
+            <border>0</border>
+            <object class="wxPanel" name="bottom">
+              <style>wxTAB_TRAVERSAL</style>
+              <object class="wxBoxSizer">
+                <orient>wxHORIZONTAL</orient>
+                <object class="sizeritem">
+                  <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxButton" name="wxID_OK">
+                    <tooltip>Join the game!</tooltip>
+                    <label>Join</label>
+                    <default>1</default>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxButton" name="wxID_CANCEL">
+                    <label>Cancel</label>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="help_contents" subclass="HelpContents">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>400,300</size>
+    <title>Help Contents</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxHtmlWindow" name="ID_HTMLWINDOW1">
+          <size>200,150</size>
+          <style>wxHW_SCROLLBAR_AUTO|wxSUNKEN_BORDER</style>
+          <url>doc/help/index.html</url>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="HostDialog" subclass="HostGameDialog">
+    <style>wxCAPTION|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>440,226</size>
+    <title>Host Game</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxHORIZONTAL</orient>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>0</border>
+        <object class="wxStaticBitmap" name="wxID_STATIC">
+          <size>100,230</size>
+          <bitmap>lib/img/host_wizard.png</bitmap>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxBoxSizer">
+          <orient>wxVERTICAL</orient>
+          <object class="sizeritem">
+            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+            <border>0</border>
+            <object class="wxPanel" name="top">
+              <style>wxTAB_TRAVERSAL</style>
+              <object class="wxNotebook" name="ID_NOTEBOOK1">
+                <size>330,187</size>
+                <style>wxNB_DEFAULT</style>
+                <object class="notebookpage">
+                  <label>Game</label>
+                  <object class="wxPanel" name="GameTab">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxFlexGridSizer">
+                      <cols>2</cols>
+                      <rows>2</rows>
+                      <vgap>0</vgap>
+                      <hgap>0</hgap>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="board_label">
+                          <label>Board</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxChoice" name="board_choice">
+                          <content/>
+                          <size>150,-1</size>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="points_label">
+                          <label>Points to win</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxSpinCtrl" name="point_spinner">
+                          <size>150,-1</size>
+                          <style>wxSP_ARROW_KEYS</style>
+                          <value>0</value>
+                          <min>0</min>
+                          <max>30</max>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="notebookpage">
+                  <label>Players</label>
+                  <object class="wxPanel" name="PlayerTab">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxGridSizer">
+                      <cols>2</cols>
+                      <rows>2</rows>
+                      <vgap>0</vgap>
+                      <hgap>0</hgap>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="num_players_label">
+                          <label>How many players</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxSpinCtrl" name="num_players_spinner">
+                          <size>100,-1</size>
+                          <style>wxSP_ARROW_KEYS</style>
+                          <value>0</value>
+                          <min>0</min>
+                          <max>30</max>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="bot_num_label">
+                          <label>How many bots</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxSpinCtrl" name="bot_num_spinner">
+                          <size>100,-1</size>
+                          <style>wxSP_ARROW_KEYS</style>
+                          <value>0</value>
+                          <min>0</min>
+                          <max>30</max>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="bot_brain_label">
+                          <label>Bot Intelligence</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxChoice" name="bot_brain_choice">
+                          <content/>
+                          <size>100,-1</size>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxCheckBox" name="add_yourself_checkbox">
+                          <label>Add yourself to the game?</label>
+                          <checked>1</checked>
+                        </object>
+                      </object>
+                      <object class="spacer">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="your_name_label">
+                          <label>Your Name</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxTextCtrl" name="your_name_text">
+                          <size>100,-1</size>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="preferred_color_label">
+                          <label>Preferred Color</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxChoice" name="color_choice">
+                          <content/>
+                          <size>100,-1</size>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="notebookpage">
+                  <label>Rules</label>
+                  <object class="wxPanel" name="RuleTab">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxFlexGridSizer">
+                      <cols>2</cols>
+                      <rows>2</rows>
+                      <vgap>0</vgap>
+                      <hgap>0</hgap>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxCheckBox" name="reroll_on_2_checkbox">
+                          <label>Re-roll on a 2 or a 12 if no one collects?</label>
+                          <checked>0</checked>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="notebookpage">
+                  <label>Server</label>
+                  <object class="wxPanel" name="SystemTab">
+                    <style>wxTAB_TRAVERSAL</style>
+                    <object class="wxFlexGridSizer">
+                      <cols>3</cols>
+                      <rows>2</rows>
+                      <vgap>0</vgap>
+                      <hgap>0</hgap>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxLEFT|wxTOP|wxBOTTOM</flag>
+                        <border>5</border>
+                        <object class="wxStaticText" name="port_label">
+                          <label>Port number</label>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxRIGHT|wxTOP|wxBOTTOM</flag>
+                        <border>5</border>
+                        <object class="wxTextCtrl" name="port_text">
+                          <size>100,-1</size>
+                        </object>
+                      </object>
+                      <object class="spacer">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxLEFT|wxTOP|wxBOTTOM</flag>
+                        <border>5</border>
+                        <object class="wxCheckBox" name="enable_logging_label">
+                          <label>Enable Logging?</label>
+                          <checked>1</checked>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxTOP|wxBOTTOM</flag>
+                        <border>0</border>
+                        <object class="wxChoice" name="log_level_choice">
+                          <content/>
+                          <size>160,-1</size>
+                        </object>
+                      </object>
+                      <object class="spacer">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxLEFT|wxTOP|wxBOTTOM</flag>
+                        <border>5</border>
+                        <object class="wxRadioButton" name="to_std_out_check">
+                          <label>Log to the Standard Out?</label>
+                          <value>1</value>
+                        </object>
+                      </object>
+                      <object class="spacer">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                      </object>
+                      <object class="spacer">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP|wxLEFT|wxTOP|wxBOTTOM</flag>
+                        <border>5</border>
+                        <object class="wxRadioButton" name="log_to_file">
+                          <label>Log to a file?</label>
+                          <value>0</value>
+                        </object>
+                      </object>
+                      <object class="sizeritem">
+                        <flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+                        <border>0</border>
+                        <object class="wxBoxSizer">
+                          <orient>wxHORIZONTAL</orient>
+                          <object class="sizeritem">
+                            <flag>wxALIGN_TOP|wxRIGHT|wxTOP|wxBOTTOM</flag>
+                            <border>5</border>
+                            <object class="wxTextCtrl" name="log_filename">
+                              <size>100,-1</size>
+                            </object>
+                          </object>
+                          <object class="sizeritem">
+                            <flag>wxALIGN_TOP|wxTOP|wxBOTTOM</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="browse_button">
+                              <size>60,-1</size>
+                              <enabled>0</enabled>
+                              <label>Browse</label>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="sizeritem">
+            <flag>wxALIGN_RIGHT|wxALL</flag>
+            <border>2</border>
+            <object class="wxPanel" name="bottom">
+              <style>wxTAB_TRAVERSAL</style>
+              <object class="wxBoxSizer">
+                <orient>wxHORIZONTAL</orient>
+                <object class="sizeritem">
+                  <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxButton" name="wxID_OK">
+                    <tooltip>Start the game server</tooltip>
+                    <label>Host</label>
+                    <default>1</default>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxButton" name="wxID_CANCEL">
+                    <label>Cancel</label>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="card_dialog" subclass="CardSelectorDialog">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>400,300</size>
+    <title>Card Selector</title>
+    <centered>1</centered>
+    <object class="wxFlexGridSizer">
+      <cols>3</cols>
+      <rows>6</rows>
+      <vgap>0</vgap>
+      <hgap>0</hgap>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="wood_label">
+          <label>Wood</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="wood_value_label">
+          <label>0</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxSlider" name="wood_slider">
+          <style>wxSL_HORIZONTAL|wxSL_AUTOTICKS</style>
+          <value>0</value>
+          <min>0</min>
+          <max>10</max>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="wheat_label">
+          <label>Wheat</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="wheat_value_label">
+          <label>0</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxSlider" name="wheat_slider">
+          <style>wxSL_HORIZONTAL|wxSL_AUTOTICKS</style>
+          <value>0</value>
+          <min>0</min>
+          <max>10</max>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="sheep_label">
+          <label>Sheep</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="sheep_value_label">
+          <label>0</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxSlider" name="sheep_slider">
+          <style>wxSL_HORIZONTAL|wxSL_AUTOTICKS</style>
+          <value>0</value>
+          <min>0</min>
+          <max>10</max>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="ore_label">
+          <label>Ore</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="ore_value_label">
+          <label>0</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxSlider" name="ore_slider">
+          <style>wxSL_HORIZONTAL|wxSL_AUTOTICKS</style>
+          <value>0</value>
+          <min>0</min>
+          <max>10</max>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="brick_label">
+          <label>Brick</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxStaticText" name="brick_value_label">
+          <label>0</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxSlider" name="brick_slider">
+          <style>wxSL_HORIZONTAL|wxSL_AUTOTICKS</style>
+          <value>0</value>
+          <min>0</min>
+          <max>10</max>
+        </object>
+      </object>
+      <object class="spacer">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <size>5,5</size>
+      </object>
+      <object class="spacer">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <size>5,5</size>
+      </object>
+      <object class="sizeritem">
+        <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+        <border>5</border>
+        <object class="wxButton" name="wxID_OK">
+          <label>OK</label>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="trade_dialog" subclass="TradeDialog">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>-1,200</size>
+    <title>Trade Dialog</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxHORIZONTAL</orient>
+      <object class="sizeritem">
+        <flag>wxALIGN_TOP|wxALL</flag>
+        <border>4</border>
+        <object class="wxPanel" name="ID_PANEL2">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <weight>bold</weight>
+                  <face>Tahoma</face>
+                </font>
+                <label>I'm looking for ...</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="wood_want_check">
+                <label>Wood</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="brick_want_check">
+                <label>Brick</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="wheat_want_check">
+                <label>Wheat</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="sheep_want_check">
+                <label>Sheep</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="ore_want_check">
+                <label>Ore</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxGROW|wxALL</flag>
+              <border>5</border>
+              <object class="wxStaticLine" name="wxID_STATIC">
+                <style>wxLI_HORIZONTAL</style>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <weight>bold</weight>
+                  <face>Tahoma</face>
+                </font>
+                <label>And I'll give ...</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="wood_give_check">
+                <label>Wood</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="brick_give_check">
+                <label>Brick</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="wheat_give_check">
+                <label>Wheat</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="sheep_give_check">
+                <label>Sheep</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxCheckBox" name="ore_give_check">
+                <label>Ore</label>
+                <checked>0</checked>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxButton" name="quote_request_button">
+                <label>Request Quotes</label>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxGROW|wxALL</flag>
+        <border>3</border>
+        <object class="wxStaticLine" name="wxID_STATIC">
+          <style>wxLI_VERTICAL</style>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxGROW|wxALL</flag>
+        <border>5</border>
+        <object class="wxPanel" name="ID_PANEL5">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <label>Quotes</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+              <border>0</border>
+              <option>5</option>
+              <object class="wxPanel" name="ID_PANEL3">
+                <style>wxTAB_TRAVERSAL</style>
+                <object class="wxFlexGridSizer">
+                  <cols>1</cols>
+                  <rows>2</rows>
+                  <vgap>0</vgap>
+                  <hgap>0</hgap>
+                  <growablecols>1</growablecols>
+                  <growablerows>0</growablerows>
+                  <object class="sizeritem">
+                    <flag>wxGROW|wxGROW|wxLEFT|wxRIGHT|wxTOP</flag>
+                    <border>5</border>
+                    <object class="wxListBox" name="quote_list">
+                      <content/>
+                      <size>400,105</size>
+                      <style>wxLB_MULTIPLE</style>
+                    </object>
+                  </object>
+                  <object class="sizeritem">
+                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_BOTTOM|wxALL</flag>
+                    <border>3</border>
+                    <object class="wxButton" name="quote_accept_button">
+                      <label>Accept Quote</label>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <label>Chat</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxGROW|wxALL</flag>
+              <border>5</border>
+              <object class="wxPanel" name="ID_PANEL4">
+                <style>wxTAB_TRAVERSAL</style>
+                <object class="wxBoxSizer">
+                  <orient>wxVERTICAL</orient>
+                  <object class="sizeritem">
+                    <flag>wxGROW|wxRIGHT|wxBOTTOM</flag>
+                    <border>5</border>
+                    <object class="wxTextCtrl" name="chat_text_box">
+                      <size>-1,105</size>
+                      <style>wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxHSCROLL|wxTE_CHARWRAP|wxTE_WORDWRAP</style>
+                      <bg>#000070</bg>
+                    </object>
+                  </object>
+                  <object class="sizeritem">
+                    <flag>wxGROW|wxALL</flag>
+                    <border>0</border>
+                    <object class="wxPanel" name="chat_input_panel">
+                      <style>wxTAB_TRAVERSAL</style>
+                      <object class="wxFlexGridSizer">
+                        <cols>2</cols>
+                        <rows>1</rows>
+                        <vgap>0</vgap>
+                        <hgap>0</hgap>
+                        <growablecols>0</growablecols>
+                        <object class="sizeritem">
+                          <flag>wxGROW|wxALIGN_TOP</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="chat_input_text">
+                            <style>wxTE_PROCESS_ENTER</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <flag>wxALIGN_RIGHT|wxALIGN_TOP|wxLEFT</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="chat_send_button">
+                            <label>Send</label>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+  <object class="wxFrame" name="mainFrame" subclass="MainFrame">
+    <style>wxDEFAULT_FRAME_STYLE|wxMINIMIZE_BOX|wxMAXIMIZE_BOX|wxCLOSE_BOX</style>
+    <size>1000,800</size>
+    <title>Ruby Settlers</title>
+    <object class="wxMenuBar" name="mainFrame_menubar">
+      <object class="wxMenu">
+        <label>Game</label>
+        <object class="wxMenuItem" name="quickStartMenuItem">
+          <label>Quick Start</label>
+        </object>
+        <object class="wxMenuItem" name="joinMenuItem">
+          <label>Join a Network Game</label>
+        </object>
+        <object class="wxMenuItem" name="hostMenuItem">
+          <label>Host a Network Game</label>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenuItem" name="wxID_EXIT">
+          <label>Exit</label>
+        </object>
+      </object>
+      <object class="wxMenu">
+        <label>Actions</label>
+        <object class="wxMenuItem" name="roll_menu_item">
+          <label>Roll Dice</label>
+        </object>
+        <object class="wxMenuItem" name="trade_menu_item">
+          <label>Trade Resources</label>
+        </object>
+        <object class="wxMenuItem" name="buy_dev_card_menu_item">
+          <label>Buy Development Card</label>
+        </object>
+        <object class="wxMenuItem" name="done_menu_item">
+          <label>Done Turn</label>
+        </object>
+        <object class="wxMenuItem" name="soldier_menu_item">
+          <label>Play Soldier</label>
+        </object>
+        <object class="wxMenuItem" name="monopoly_menu_item">
+          <label>Play Resource Monopoly</label>
+        </object>
+        <object class="wxMenuItem" name="yearofplenty_menu_item">
+          <label>Play Year of Plenty</label>
+        </object>
+        <object class="wxMenuItem" name="roadbuilding_menu_item">
+          <label>Play Road Building</label>
+        </object>
+      </object>
+      <object class="wxMenu">
+        <label>Options</label>
+        <object class="wxMenuItem" name="BoardBuilderMenu">
+          <label>Board Builder</label>
+        </object>
+        <object class="wxMenuItem" name="UserPrefMenu">
+          <label>User Preferences</label>
+        </object>
+      </object>
+      <object class="wxMenu">
+        <label>Help</label>
+        <object class="wxMenuItem" name="HelpContentsMenu">
+          <label>Contents </label>
+        </object>
+        <object class="wxMenuItem" name="wxID_ABOUT">
+          <label>About</label>
+        </object>
+      </object>
+    </object>
+    <object class="wxPanel" name="board_panel" subclass="BoardPanel">
+      <style>wxTAB_TRAVERSAL</style>
+    </object>
+    <object class="wxPanel" name="player_panel" subclass="PlayerPanel">
+      <style>wxTAB_TRAVERSAL</style>
+      <object class="wxBoxSizer">
+        <orient>wxVERTICAL</orient>
+      </object>
+      <bg>#000050</bg>
+    </object>
+    <object class="wxPanel" name="chat_panel">
+      <style>wxTAB_TRAVERSAL</style>
+      <object class="wxFlexGridSizer">
+        <cols>1</cols>
+        <rows>2</rows>
+        <object class="sizeritem">
+          <flag>wxGROW|wxGROW|wxALL</flag>
+          <object class="wxTextCtrl" name="ChatText">
+            <style>wxTE_MULTILINE|wxTE_READONLY|wxHSCROLL|wxTE_AUTO_URL|wxTE_WORDWRAP|wxNO_BORDER|wxTRANSPARENT_WINDOW|wxTE_CHARWRAP</style>
+            <bg>#000050</bg>
+          </object>
+        </object>
+        <object class="sizeritem">
+          <flag>wxGROW|wxALIGN_CENTER_VERTICAL</flag>
+          <border>0</border>
+          <object class="wxFlexGridSizer">
+            <cols>2</cols>
+            <rows>1</rows>
+            <vgap>0</vgap>
+            <hgap>0</hgap>
+            <growablecols>0</growablecols>
+            <object class="sizeritem">
+              <flag>wxGROW|wxGROW|wxALL</flag>
+              <border>2</border>
+              <object class="wxTextCtrl" name="ChatInput">
+                <style>wxTE_PROCESS_ENTER</style>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>2</border>
+              <object class="wxButton" name="chat_button">
+                <size>40,-1</size>
+                <label>Send</label>
+              </object>
+            </object>
+          </object>
+        </object>
+        <growablerows>0</growablerows>
+        <growablecols>0</growablecols>
+      </object>
+      <bg>#000050</bg>
+    </object>
+    <object class="wxPanel" name="log_panel">
+      <size>200,-1</size>
+      <style>wxNO_BORDER|wxTAB_TRAVERSAL</style>
+      <object class="wxFlexGridSizer">
+        <cols>1</cols>
+        <rows>1</rows>
+        <vgap>0</vgap>
+        <hgap>0</hgap>
+        <growablecols>0</growablecols>
+        <growablerows>0</growablerows>
+        <object class="sizeritem">
+          <flag>wxGROW|wxGROW</flag>
+          <border>0</border>
+          <object class="wxTextCtrl" name="event_log_text" subclass="EventLogText">
+            <style>wxTE_MULTILINE|wxTE_READONLY|wxTE_RICH|wxTRANSPARENT_WINDOW</style>
+            <bg>#000050</bg>
+          </object>
+        </object>
+      </object>
+      <bg>#000050</bg>
+    </object>
+    <object class="wxPanel" name="card_panel" subclass="CardPanel">
+      <style>wxNO_BORDER|wxTAB_TRAVERSAL</style>
+    </object>
+    <object class="wxPanel" name="actions_panel" subclass="ActionPanel">
+      <style>wxNO_BORDER|wxTAB_TRAVERSAL</style>
+      <object class="wxBoxSizer">
+        <orient>wxVERTICAL</orient>
+        <object class="sizeritem">
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+              <object class="wxBitmapButton" name="roll_button">
+                <size>40,40</size>
+                <tooltip>Roll Dice</tooltip>
+                <help>Roll Dice</help>
+                <bitmap></bitmap>
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <face>Tahoma</face>
+                </font>
+                <fg>#FFFFFF</fg>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+              <object class="wxBitmapButton" name="trade_button">
+                <size>40,40</size>
+                <tooltip>Trade Resources</tooltip>
+                <help>Trade Resources</help>
+                <bitmap></bitmap>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+              <object class="wxBitmapButton" name="buy_dev_card_button">
+                <size>40,40</size>
+                <tooltip>Buy a Development Card</tooltip>
+                <bitmap></bitmap>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+              <object class="wxBitmapButton" name="done_button">
+                <size>40,40</size>
+                <tooltip>Finish your turn</tooltip>
+                <bitmap></bitmap>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <object class="wxStaticText" name="waiting_text">
+                <label>Waiting for turn...</label>
+                <size>300, 100</size>
+                <style>wxALIGN_CENTRE</style>
+                <fg>#FFFFFF</fg>
+                <font>
+                  <size>20</size>
+                  <family>swiss</family>
+                  <style>normal</style>
+                  <weight>normal</weight>
+                  <underlined>0</underlined>
+                  <face>Tahoma</face>
+                  <encoding>WINDOWS-1252</encoding>
+                </font>
+              </object>
+              <flag>wxALL|wxALIGN_CENTRE_VERTICAL</flag>
+            </object>
+          </object>
+        </object>
+        <object class="sizeritem">
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <object class="wxBitmapButton" name="soldier_button">
+                <bitmap></bitmap>
+                <size>40,40</size>
+                <fg>#FFFFFF</fg>
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <face>Tahoma</face>
+                </font>
+                <tooltip>Play Soldier Card</tooltip>
+              </object>
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBitmapButton" name="yearofplenty_button">
+                <bitmap></bitmap>
+                <size>40,40</size>
+                <fg>#FFFFFF</fg>
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <face>Tahoma</face>
+                </font>
+                <tooltip>Play Year of Plenty Card</tooltip>
+              </object>
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBitmapButton" name="monopoly_button">
+                <bitmap></bitmap>
+                <size>40,40</size>
+                <fg>#FFFFFF</fg>
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <face>Tahoma</face>
+                </font>
+                <tooltip>Play Resource Monopoly</tooltip>
+              </object>
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBitmapButton" name="roadbuilding_button">
+                <bitmap></bitmap>
+                <size>40,40</size>
+                <fg>#FFFFFF</fg>
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <face>Tahoma</face>
+                </font>
+                <tooltip>Play Road Building Card</tooltip>
+              </object>
+              <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+              <border>5</border>
+            </object>
+          </object>
+        </object>
+      </object>
+      <bg>#000050</bg>
+    </object>
+  </object>
+  <object class="wxDialog" name="player_selector" subclass="PlayerSelector">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <title>Please Select a Player</title>
+    <centered>1</centered>
+    <tooltip>Please Select a Player</tooltip>
+    <object class="wxBoxSizer" name="player_sizer">
+      <orient>wxVERTICAL</orient>
+    </object>
+  </object>
+  <object class="wxDialog" name="single_card_selector" subclass="SingleCardSelectorDialog">
+    <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <exstyle>wxWS_EX_BLOCK_EVENTS</exstyle>
+    <size>400,300</size>
+    <title>Single Card Selector</title>
+    <centered>1</centered>
+    <object class="wxBoxSizer">
+      <orient>wxHORIZONTAL</orient>
+    </object>
+  </object>
+  <object class="wxDialog" name="startup_dialog" subclass="StartupDialog">
+    <title>Getting Started</title>
+    <centered>1</centered>
+    <size>400,300</size>
+    <style>wxCAPTION|wxSYSTEM_MENU|wxRESIZE_BORDER|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <object class="wxBitmapButton" name="startup_quick_start_button">
+          <bitmap></bitmap>
+          <size>250,50</size>
+          <style>wxRAISED_BORDER</style>
+          <tooltip>Start a new game, right now!</tooltip>
+        </object>
+        <border>5</border>
+      </object>
+      <object class="sizeritem">
+        <object class="wxBitmapButton" name="startup_host_button">
+          <bitmap></bitmap>
+          <size>250,50</size>
+          <style>wxRAISED_BORDER</style>
+          <tooltip>Host a multiplayer game</tooltip>
+        </object>
+        <border>5</border>
+      </object>
+      <object class="sizeritem">
+        <object class="wxBitmapButton" name="startup_join_button">
+          <bitmap></bitmap>
+          <size>250,50</size>
+          <style>wxRAISED_BORDER</style>
+          <tooltip>Join an existing game</tooltip>
+        </object>
+        <border>5</border>
+      </object>
+    </object>
+  </object>
+  <object class="wxDialog" name="make_trade_offer_dialog" subclass="MakeTradeOfferDialog">
+    <title>Make an offer</title>
+    <centered>1</centered>
+    <size>-1,200</size>
+    <style>wxCAPTION|wxSYSTEM_MENU|wxRESIZE_BORDER|wxCLOSE_BOX|wxDIALOG_MODAL|wxTAB_TRAVERSAL</style>
+    <object class="wxFlexGridSizer">
+      <object class="sizeritem">
+        <flag>wxALIGN_TOP|wxALL</flag>
+        <border>4</border>
+        <object class="wxPanel" name="ID_PANEL2">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <object class="sizeritem">
+              <flag>wxALIGN_LEFT|wxALL</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <weight>bold</weight>
+                  <face>Tahoma</face>
+                </font>
+                <label>I'll give you ...</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <object class="wxFlexGridSizer">
+                <cols>2</cols>
+                <rows>5</rows>
+                <object class="sizeritem">
+                  <object class="wxSpinCtrl" name="wood_give_spinner">
+                    <size>40,22</size>
+                  </object>
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Wood</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="brick_give_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Brick</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="wheat_give_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Wheat</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxSpinCtrl" name="sheep_give_spinner">
+                    <size>40,22</size>
+                  </object>
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Sheep</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="ore_give_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Ore</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+              </object>
+            </object>
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+              <object class="wxStaticLine"/>
+              <flag>wxTOP|wxBOTTOM|wxEXPAND</flag>
+              <border>10</border>
+            </object>
+            <object class="sizeritem">
+              <object class="wxStaticText" name="wxID_STATIC">
+                <font>
+                  <size>8</size>
+                  <family>swiss</family>
+                  <weight>bold</weight>
+                  <face>Tahoma</face>
+                </font>
+                <label>If you give me...</label>
+              </object>
+              <flag>wxALL</flag>
+              <border>5</border>
+            </object>
+            <object class="sizeritem">
+              <object class="wxFlexGridSizer">
+                <cols>2</cols>
+                <rows>5</rows>
+                <object class="sizeritem">
+                  <object class="wxSpinCtrl" name="wood_want_spinner">
+                    <size>40,22</size>
+                  </object>
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Wood</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="brick_want_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Brick</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="wheat_want_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Wheat</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxSpinCtrl" name="sheep_want_spinner">
+                    <size>40,22</size>
+                  </object>
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Sheep</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+                <object class="sizeritem">
+                  <flag>wxALIGN_LEFT|wxALL</flag>
+                  <border>5</border>
+                  <object class="wxSpinCtrl" name="ore_want_spinner">
+                    <size>40,22</size>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Ore</label>
+                  </object>
+                  <flag>wxALIGN_CENTRE|wxALIGN_LEFT</flag>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxLEFT|wxRIGHT|wxGROW</flag>
+        <border>15</border>
+        <object class="wxStaticLine" name="wxID_STATIC">
+          <style>wxLI_VERTICAL</style>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <flag>wxGROW|wxALL</flag>
+        <border>5</border>
+        <object class="wxPanel" name="ID_PANEL5">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxFlexGridSizer">
+            <object class="sizeritem">
+              <object class="wxTextCtrl" name="notice_text">
+                <size>300,100</size>
+                <style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_LEFT|wxTE_CENTRE|wxTE_WORDWRAP|wxNO_BORDER|wxTRANSPARENT_WINDOW</style>
+                <fg>#FFFFFF</fg>
+                <bg>#000070</bg>
+                <font>
+                  <size>12</size>
+                  <family>default</family>
+                  <style>normal</style>
+                  <weight>normal</weight>
+                  <underlined>0</underlined>
+                </font>
+              </object>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+            </object>
+            <object class="sizeritem">
+              <flag>wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT</flag>
+              <border>5</border>
+              <object class="wxStaticText" name="wxID_STATIC">
+                <label>Chat</label>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <flag>wxBOTTOM|wxLEFT|wxRIGHT|wxEXPAND|wxGROW</flag>
+              <border>5</border>
+              <object class="wxPanel" name="ID_PANEL4">
+                <style>wxTAB_TRAVERSAL</style>
+                <object class="wxBoxSizer">
+                  <orient>wxVERTICAL</orient>
+                  <object class="sizeritem">
+                    <flag>wxGROW|wxRIGHT|wxBOTTOM</flag>
+                    <border>5</border>
+                    <object class="wxTextCtrl" name="chat_text_box">
+                      <size>400,150</size>
+                      <style>wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxHSCROLL|wxTE_CHARWRAP|wxTE_WORDWRAP</style>
+                      <bg>#000070</bg>
+                    </object>
+                  </object>
+                  <object class="sizeritem">
+                    <flag>wxALL|wxEXPAND|wxGROW</flag>
+                    <border>0</border>
+                    <object class="wxPanel" name="chat_input_panel">
+                      <style>wxTAB_TRAVERSAL</style>
+                      <object class="wxFlexGridSizer">
+                        <cols>2</cols>
+                        <rows>1</rows>
+                        <vgap>0</vgap>
+                        <hgap>0</hgap>
+                        <growablecols>0</growablecols>
+                        <object class="sizeritem">
+                          <flag>wxEXPAND|wxGROW|wxALIGN_TOP</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="chat_input_text">
+                            <style>wxTE_PROCESS_ENTER</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <flag>wxALIGN_RIGHT|wxALIGN_TOP|wxLEFT</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="chat_send_button">
+                            <label>Send</label>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBoxSizer">
+                <orient>wxHORIZONTAL</orient>
+                <object class="spacer">
+                  <size>0,0</size>
+                  <flag>wxEXPAND|wxGROW</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="make_offer_button">
+                    <label>Make an offer</label>
+                  </object>
+                  <flag>wxALL|wxALIGN_LEFT|wxALIGN_BOTTOM</flag>
+                  <border>5</border>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="wxID_CANCEL">
+                    <label>REJECT TRADE</label>
+                  </object>
+                  <flag>wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM</flag>
+                  <border>5</border>
+                </object>
+              </object>
+              <flag>wxALIGN_RIGHT|wxALIGN_BOTTOM</flag>
+            </object>
+            <cols>1</cols>
+            <rows>3</rows>
+            <growablerows>2</growablerows>
+            <growablecols>0</growablecols>
+            <growablecols>1</growablecols>
+          </object>
+        </object>
+      </object>
+      <cols>3</cols>
+      <rows>1</rows>
+      <growablecols>2</growablecols>
+    </object>
+  </object>
+</resource>

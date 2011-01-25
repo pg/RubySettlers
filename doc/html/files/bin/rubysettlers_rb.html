@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: rubysettlers.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>rubysettlers.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>bin/rubysettlers.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Mar 17 14:34:13 -0400 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Copyright (C) 2007 John J Kennedy III
+</p>
+<p>
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3 of the License, or (at your option)
+any later version.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+</p>
+<p>
+You should have received a copy of the GNU General Public License along
+with this program. If not, see &lt;<a
+href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.
+</p>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      <a href="board_builder_rb.html">bin/board_builder</a>&nbsp;&nbsp;
+      <a href="../lib/core/admin_rb.html">lib/core/admin</a>&nbsp;&nbsp;
+      <a href="../lib/core/player_rb.html">lib/core/player</a>&nbsp;&nbsp;
+      <a href="../lib/core/bots_rb.html">lib/core/bots</a>&nbsp;&nbsp;
+      <a href="../lib/core/game_definition_rb.html">lib/core/game_definition</a>&nbsp;&nbsp;
+      <a href="../lib/ui/fxruby/fxplayer_rb.html">lib/ui/fxruby/fxplayer</a>&nbsp;&nbsp;
+      <a href="../lib/ui/fxruby/fxutils_rb.html">lib/ui/fxruby/fxutils</a>&nbsp;&nbsp;
+      <a href="../lib/boards/board_manager_rb.html">lib/boards/board_manager</a>&nbsp;&nbsp;
+      logger&nbsp;&nbsp;
+      timeout&nbsp;&nbsp;
+      fox16&nbsp;&nbsp;
+      <a href="../lib/ui/fxruby/host_dialog_rb.html">lib/ui/fxruby/host_dialog</a>&nbsp;&nbsp;
+      <a href="../lib/ui/fxruby/join_dialog_rb.html">lib/ui/fxruby/join_dialog</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Fox</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">RELEASE_VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">0.2</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+The release version of this project. Currently, there are no
+&#8216;builds&#8217; per say, the code just runs as is So, for now, the
+syntax is: major_version.minor_version
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: giveNum
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: giveType
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: recieveNum
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: recieveType
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: tradee
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Represents a quote for trading cards
+constants: []
+
+full_name: Quote
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: Quote
+superclass: Object

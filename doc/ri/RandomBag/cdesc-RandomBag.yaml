@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: items
+  rw: R
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A bag of items that can be grabbed at random
+constants: []
+
+full_name: RandomBag
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: grab
+name: RandomBag
+superclass: Object

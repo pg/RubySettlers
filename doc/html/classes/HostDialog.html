@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: HostDialog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">HostDialog</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/host_dialog_rb.html">
+                lib/ui/fxruby/host_dialog.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                FXWizard
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000475">get_defaults</a>&nbsp;&nbsp;
+      <a href="#M000477">get_settings</a>&nbsp;&nbsp;
+      <a href="#M000476">load_settings</a>&nbsp;&nbsp;
+      <a href="#M000471">new</a>&nbsp;&nbsp;
+      <a href="#M000473">onCancel</a>&nbsp;&nbsp;
+      <a href="#M000472">onFinish</a>&nbsp;&nbsp;
+      <a href="#M000478">save_settings</a>&nbsp;&nbsp;
+      <a href="#M000474">set_combo_from_string</a>&nbsp;&nbsp;
+      <a href="#M000479">start_server</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Responder</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SETTINGS_FILENAME</td>
+          <td>=</td>
+          <td class="context-item-value">'server.settings'</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000471" class="method-detail">
+        <a name="M000471"></a>
+
+        <div class="method-heading">
+          <a href="#M000471" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(app, frame=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000471-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000471-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">frame</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+    <span class="ruby-ivar">@main_frame</span> = <span class="ruby-identifier">frame</span>
+    <span class="ruby-identifier">img</span> = <span class="ruby-constant">FXPNGIcon</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">app</span>, <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-constant">FXFileStream</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">&quot;lib/img/host_wizard.png&quot;</span>, <span class="ruby-constant">FXStreamLoad</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stream</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">img</span>.<span class="ruby-identifier">loadPixels</span>(<span class="ruby-identifier">stream</span>) 
+    }
+    <span class="ruby-identifier">img</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">app</span>, <span class="ruby-value str">&quot;Host a multiplayer game&quot;</span>, <span class="ruby-identifier">img</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">600</span>, <span class="ruby-identifier">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">300</span>)
+   
+    <span class="ruby-identifier">default_button</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">buttonFrame</span>, <span class="ruby-value str">&quot;Set Defaults&quot;</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">FRAME_SUNKEN</span>)
+    <span class="ruby-identifier">default_button</span>.<span class="ruby-identifier">font</span> = <span class="ruby-constant">FXFont</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">getApp</span>(), <span class="ruby-value str">&quot;arial&quot;</span>, <span class="ruby-value">8</span>)
+    <span class="ruby-identifier">default_button</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">load_settings</span>(<span class="ruby-identifier">get_defaults</span>)
+    <span class="ruby-keyword kw">end</span>
+   
+    <span class="ruby-comment cmt">#1st Frame</span>
+    <span class="ruby-identifier">server_frame</span> = <span class="ruby-constant">FXMatrix</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">container</span>, <span class="ruby-value">2</span>, <span class="ruby-constant">MATRIX_BY_COLUMNS</span>)
+    <span class="ruby-ivar">@player_num</span> = <span class="ruby-identifier">number_field</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Number of players:&quot;</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-ivar">@points_to_win</span> = <span class="ruby-identifier">number_field</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Points to win:&quot;</span>, <span class="ruby-value">10</span>)
+    <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">number_field</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Port&quot;</span>, <span class="ruby-value">7643</span>)
+    <span class="ruby-identifier">games</span> = <span class="ruby-identifier">get_game_definitions</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">gd</span><span class="ruby-operator">|</span> <span class="ruby-identifier">gd</span>.<span class="ruby-identifier">name</span>}
+    
+    <span class="ruby-comment cmt">#TODO: make this combo box visible when there are multiple expansions</span>
+    <span class="ruby-ivar">@game_def</span> = <span class="ruby-identifier">combo_box</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Expansion:&quot;</span>, <span class="ruby-identifier">games</span>, <span class="ruby-value">0</span>, <span class="ruby-value">15</span>, <span class="ruby-keyword kw">true</span>)
+    <span class="ruby-ivar">@board</span> = <span class="ruby-identifier">combo_box</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Board:&quot;</span>, [], <span class="ruby-value">0</span>, <span class="ruby-value">20</span>)
+    <span class="ruby-ivar">@board_objects</span> = <span class="ruby-constant">BoardManager</span>.<span class="ruby-identifier">get_boards</span>
+    <span class="ruby-ivar">@board_objects</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">append_item</span>(<span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span>) 
+    }
+    <span class="ruby-comment cmt">#Update the boards when the expansion changes</span>
+    <span class="ruby-ivar">@game_def</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">clearItems</span>
+      <span class="ruby-constant">BoardManager</span>.<span class="ruby-identifier">get_boards</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">append_item</span>(<span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span>)      
+      }
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@num_bots</span> = <span class="ruby-identifier">number_field</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Number of bots:&quot;</span>, <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>)
+    <span class="ruby-comment cmt">#TODO: make this combo box visible when there are multiple AI types</span>
+    <span class="ruby-ivar">@bot_intelligence</span> = <span class="ruby-identifier">combo_box</span>(<span class="ruby-identifier">server_frame</span>, <span class="ruby-value str">&quot;Bot intelligence:&quot;</span>, [<span class="ruby-value str">&quot;Random&quot;</span>],<span class="ruby-value">0</span>, <span class="ruby-value">15</span>, <span class="ruby-keyword kw">true</span>)
+
+    <span class="ruby-comment cmt">#Variation Frame</span>
+    <span class="ruby-identifier">variations</span> = <span class="ruby-constant">FXGroupBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">container</span>, <span class="ruby-value str">&quot;Rule Variations&quot;</span>, <span class="ruby-constant">GROUPBOX_TITLE_CENTER</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_GROOVE</span>)
+    <span class="ruby-ivar">@reroll_2_12</span> = <span class="ruby-constant">FXCheckButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">variations</span>, <span class="ruby-value str">&quot;Re-roll on a 2 or a 12 if no one collects?&quot;</span>)
+<span class="ruby-comment cmt">#    @player_join = FXCheckButton.new(player, &quot;Join the game when finished?&quot;)</span>
+
+
+ <span class="ruby-comment cmt">#   game_frame = FXMatrix.new(variations, 2, MATRIX_BY_COLUMNS)</span>
+    
+    
+    <span class="ruby-comment cmt">#User Frame</span>
+    
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">$0</span>
+      <span class="ruby-identifier">player</span> = <span class="ruby-constant">FXGroupBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">container</span>, <span class="ruby-value str">&quot;Player options&quot;</span>, <span class="ruby-constant">GROUPBOX_TITLE_CENTER</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_GROOVE</span>)
+      <span class="ruby-ivar">@player_join</span> = <span class="ruby-constant">FXCheckButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player</span>, <span class="ruby-value str">&quot;Join the game when finished?&quot;</span>)
+      <span class="ruby-ivar">@player_name</span> = <span class="ruby-identifier">text_field</span>(<span class="ruby-identifier">player</span>, <span class="ruby-value str">&quot;Player name&quot;</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-ivar">@player_color</span> = <span class="ruby-identifier">combo_box</span>(<span class="ruby-identifier">player</span>, <span class="ruby-value str">&quot;Preferred color&quot;</span>, <span class="ruby-constant">Admin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">availableColors</span>)    
+    <span class="ruby-keyword kw">end</span>    
+    
+    <span class="ruby-constant">FXMAPFUNC</span>(<span class="ruby-constant">SEL_COMMAND</span>, <span class="ruby-constant">ID_ACCEPT</span>, <span class="ruby-identifier">:onFinish</span>)
+    <span class="ruby-identifier">finishButton</span>.<span class="ruby-identifier">text</span> = <span class="ruby-value str">'Start!'</span>
+    <span class="ruby-constant">FXMAPFUNC</span>(<span class="ruby-constant">SEL_COMMAND</span>, <span class="ruby-constant">ID_CANCEL</span>, <span class="ruby-identifier">:onCancel</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$0</span>
+
+    <span class="ruby-comment cmt">#Load last settings</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">SETTINGS_FILENAME</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">load_settings</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">f</span>))
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-identifier">load_settings</span>(<span class="ruby-identifier">get_defaults</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000475" class="method-detail">
+        <a name="M000475"></a>
+
+        <div class="method-heading">
+          <a href="#M000475" class="method-signature">
+          <span class="method-name">get_defaults</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000475-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000475-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 135</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_defaults</span>
+    {<span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'7643'</span>,
+     <span class="ruby-identifier">:player_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'4'</span>,
+     <span class="ruby-identifier">:points_to_win</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'10'</span>,
+     <span class="ruby-identifier">:game_def</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">StandardGame</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">name</span>,
+     <span class="ruby-identifier">:board</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'lib/boards/standard.board'</span>,
+     <span class="ruby-identifier">:num_bots</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'2'</span>,
+     <span class="ruby-identifier">:bot_intelligence</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Random'</span>,
+     <span class="ruby-identifier">:reroll_2_12</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+     <span class="ruby-identifier">:player_join</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+     <span class="ruby-identifier">:player_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">''</span>,
+     <span class="ruby-identifier">:player_color</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">''</span>
+     }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000477" class="method-detail">
+        <a name="M000477"></a>
+
+        <div class="method-heading">
+          <a href="#M000477" class="method-signature">
+          <span class="method-name">get_settings</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Collect the settings from the UI
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000477-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000477-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 170</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_settings</span>
+    <span class="ruby-identifier">settings</span> = {<span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@port</span>.<span class="ruby-identifier">text</span>,
+                <span class="ruby-identifier">:player_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@player_num</span>.<span class="ruby-identifier">text</span>,
+                <span class="ruby-identifier">:points_to_win</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@points_to_win</span>.<span class="ruby-identifier">text</span>,
+                <span class="ruby-identifier">:game_def</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@game_def</span>.<span class="ruby-identifier">getItemText</span>(<span class="ruby-ivar">@game_def</span>.<span class="ruby-identifier">currentItem</span>),
+                <span class="ruby-identifier">:board</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@board_objects</span>[<span class="ruby-ivar">@board</span>.<span class="ruby-identifier">currentItem</span>][<span class="ruby-value">1</span>],
+                <span class="ruby-identifier">:num_bots</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@num_bots</span>.<span class="ruby-identifier">text</span>,
+                <span class="ruby-identifier">:bot_intelligence</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@bot_intelligence</span>.<span class="ruby-identifier">getItemText</span>(<span class="ruby-ivar">@bot_intelligence</span>.<span class="ruby-identifier">currentItem</span>),
+                <span class="ruby-identifier">:reroll_2_12</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@reroll_2_12</span>.<span class="ruby-identifier">checked?</span>}
+                
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">$0</span>
+      <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_join</span>] = <span class="ruby-ivar">@player_join</span>.<span class="ruby-identifier">checked?</span>
+      <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_name</span>] = <span class="ruby-ivar">@player_name</span>.<span class="ruby-identifier">text</span>
+      <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_color</span>] = <span class="ruby-ivar">@player_color</span>.<span class="ruby-identifier">getItemText</span>(<span class="ruby-ivar">@player_color</span>.<span class="ruby-identifier">currentItem</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">settings</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000476" class="method-detail">
+        <a name="M000476"></a>
+
+        <div class="method-heading">
+          <a href="#M000476" class="method-signature">
+          <span class="method-name">load_settings</span><span class="method-args">(settings_hash=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+load saved settings from a hash
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000476-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000476-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 151</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_settings</span>(<span class="ruby-identifier">settings_hash</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@port</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:port</span>].<span class="ruby-identifier">to_s</span>
+    <span class="ruby-ivar">@player_num</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:player_num</span>].<span class="ruby-identifier">to_s</span>
+    <span class="ruby-ivar">@points_to_win</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:points_to_win</span>].<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">set_combo_from_string</span>(<span class="ruby-ivar">@game_def</span>, <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:game_def</span>])
+    <span class="ruby-identifier">b</span> = <span class="ruby-constant">BoardManager</span>.<span class="ruby-identifier">load_board</span>(<span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:board</span>])
+    <span class="ruby-identifier">set_combo_from_string</span>(<span class="ruby-ivar">@board</span>, <span class="ruby-identifier">b</span>.<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@num_bots</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:num_bots</span>].<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">set_combo_from_string</span>(<span class="ruby-ivar">@bot_intelligence</span>, <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:bot_intelligence</span>])
+    
+    <span class="ruby-ivar">@reroll_2_12</span>.<span class="ruby-identifier">setCheck</span>(<span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:reroll_2_12</span>])
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">$0</span>
+      <span class="ruby-ivar">@player_join</span>.<span class="ruby-identifier">setCheck</span>(<span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:player_join</span>])
+      <span class="ruby-ivar">@player_name</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:player_name</span>]
+      <span class="ruby-identifier">set_combo_from_string</span>(<span class="ruby-ivar">@player_color</span>, <span class="ruby-identifier">settings_hash</span>[<span class="ruby-identifier">:player_color</span>])
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000473" class="method-detail">
+        <a name="M000473"></a>
+
+        <div class="method-heading">
+          <a href="#M000473" class="method-signature">
+          <span class="method-name">onCancel</span><span class="method-args">(sender, selector, data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000473-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000473-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 122</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">onCancel</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">abort</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$0</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000472" class="method-detail">
+        <a name="M000472"></a>
+
+        <div class="method-heading">
+          <a href="#M000472" class="method-signature">
+          <span class="method-name">onFinish</span><span class="method-args">(sender, selector, data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000472-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000472-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">onFinish</span>(<span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">save_settings</span>
+    <span class="ruby-identifier">server_dialog</span> = <span class="ruby-identifier">start_server</span>
+    
+    <span class="ruby-identifier">settings</span> = <span class="ruby-identifier">get_settings</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_join</span>]
+      <span class="ruby-constant">DRb</span>.<span class="ruby-identifier">start_service</span>()
+      <span class="ruby-identifier">admin</span> = <span class="ruby-constant">DRbObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-node">&quot;druby://localhost:#{settings[:port]}&quot;</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@main_frame</span>
+        <span class="ruby-ivar">@main_frame</span>.<span class="ruby-identifier">clear_player_frame</span> 
+        <span class="ruby-identifier">p</span> = <span class="ruby-constant">FXPlayer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-ivar">@main_frame</span>, <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_name</span>], <span class="ruby-identifier">admin</span>)
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">preferred_color</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_color</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">'TODO: create a new frame here'</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">admin</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">p</span>)
+    <span class="ruby-keyword kw">end</span>
+        
+    <span class="ruby-identifier">server_dialog</span>.<span class="ruby-identifier">add_bots</span>(<span class="ruby-identifier">settings</span>)
+    <span class="ruby-identifier">hide</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000478" class="method-detail">
+        <a name="M000478"></a>
+
+        <div class="method-heading">
+          <a href="#M000478" class="method-signature">
+          <span class="method-name">save_settings</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000478-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000478-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save_settings</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">SETTINGS_FILENAME</span>, <span class="ruby-value str">'w'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">get_settings</span>, <span class="ruby-identifier">f</span>)
+    <span class="ruby-keyword kw">end</span>  
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000474" class="method-detail">
+        <a name="M000474"></a>
+
+        <div class="method-heading">
+          <a href="#M000474" class="method-signature">
+          <span class="method-name">set_combo_from_string</span><span class="method-args">(combo, wanted_string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the value of a combo box based on a string
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000474-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000474-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 127</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_combo_from_string</span>(<span class="ruby-identifier">combo</span>, <span class="ruby-identifier">wanted_string</span>)
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">combo</span>.<span class="ruby-identifier">numItems</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">combo</span>.<span class="ruby-identifier">getItemText</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">wanted_string</span>
+        <span class="ruby-identifier">combo</span>.<span class="ruby-identifier">currentItem</span> = <span class="ruby-identifier">i</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>  
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000479" class="method-detail">
+        <a name="M000479"></a>
+
+        <div class="method-heading">
+          <a href="#M000479" class="method-signature">
+          <span class="method-name">start_server</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000479-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000479-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 194</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_server</span>
+    <span class="ruby-identifier">sd</span> = <span class="ruby-constant">ServerDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-identifier">get_settings</span>)
+    <span class="ruby-identifier">sd</span>.<span class="ruby-identifier">create</span>
+    <span class="ruby-identifier">sd</span>.<span class="ruby-identifier">show</span>(<span class="ruby-constant">PLACEMENT_SCREEN</span>)
+    <span class="ruby-identifier">sd</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

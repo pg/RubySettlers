@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the Node object at the given coordinates
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: x,y
+    body: The cartesian coordinates that specify a Hex
+  - !ruby/struct:SM::Flow::LI 
+    label: n
+    body: The node number on that Hex
+  type: :LABELED
+full_name: Board#getNode
+is_singleton: false
+name: getNode
+params: (x, y, n)
+visibility: public

@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The Standard Board
+constants: []
+
+full_name: StandardBoard
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: init_bags
+- !ruby/object:RI::MethodSummary 
+  name: subclass_init
+name: StandardBoard
+superclass: Board

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Helper methods for string
+constants: []
+
+full_name: String
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ends_with
+- !ruby/object:RI::MethodSummary 
+  name: remove
+- !ruby/object:RI::MethodSummary 
+  name: remove!
+- !ruby/object:RI::MethodSummary 
+  name: starts_with
+name: String
+superclass: Object

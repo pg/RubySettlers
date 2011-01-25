@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the 2D UI dimensions that the board is shown in All other methods rely on the board position to make assumptions about the pixel placement. So, this method must be set before any UI methods are called.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: left
+    body: the left most position (in pixels) of the board.
+  - !ruby/struct:SM::Flow::LI 
+    label: top
+    body: the top most position (in pixels) of the board
+  - !ruby/struct:SM::Flow::LI 
+    label: width
+    body: the pixel width of the board.
+  - !ruby/struct:SM::Flow::LI 
+    label: height
+    body: the pixel height of the board.
+  type: :LABELED
+full_name: BoardViewer#set_board_dimensions
+is_singleton: false
+name: set_board_dimensions
+params: (left, top, width, height)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Player::new
+is_singleton: true
+name: new
+params: (name, admin, cities=4, settlements=5, roads=15)
+visibility: public

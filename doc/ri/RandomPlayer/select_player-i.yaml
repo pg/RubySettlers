@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ask the player to choose a player among the given list
+full_name: RandomPlayer#select_player
+is_singleton: false
+name: select_player
+params: (players)
+visibility: public

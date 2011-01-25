@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: city
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: coords
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: edges
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hexes
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: port
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This Corresponds to a node on the board where settlements and cities can be placed.
+constants: []
+
+full_name: Node
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_adjecent_nodes
+- !ruby/object:RI::MethodSummary 
+  name: get_hex_prob
+name: Node
+superclass: Object

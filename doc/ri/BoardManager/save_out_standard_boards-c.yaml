@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates files for all the standard boards
+full_name: BoardManager::save_out_standard_boards
+is_singleton: true
+name: save_out_standard_boards
+params: ()
+visibility: public

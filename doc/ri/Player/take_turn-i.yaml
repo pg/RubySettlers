@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Player#take_turn
+is_singleton: false
+name: take_turn
+params: (turn)
+visibility: public

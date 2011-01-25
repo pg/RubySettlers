@@ -1,0 +1,57 @@
+Ruby Settlers
+=============
+
+	Ruby Settlers is a implementation of the popular board game,
+Settlers of Catan.  It is written in ruby and is intended to run as a
+standalone application or an online, multiplayer game.
+
+
+
+
+Playing the Game!
+------------------------
+This is the main application.  From here, you can start single player games and  
+start/join multiplayer games.
+Use this command:
+	ruby bin/rubysettlers.rb
+
+	
+
+Starting a Server
+-----------------
+To start a server for a single game, use this command:
+	ruby server.rb
+
+
+
+Running the Test Suite
+----------------------
+There is an extensive collection of unit, integration, and stress
+tests.  They can be found in the $project_root$/tests directory.  To
+run them all, use this command:
+	
+	ruby tests/all_tests.rb
+
+Individual test suites are kept in files named <name>_tests.rb.  To
+run these files separately, use this command:
+
+	ruby tests\<name>_tests.rb
+
+	
+	
+	
+System Requirements
+-------------------
+Running from source:
+	You can run the app inside the standard ruby interpreter and for that, 
+	you'll need Ruby and FXRuby
+
+	Ruby - The standard ruby can be installed from www.ruby-lang.org
+	FXRuby - is the Ruby bridge to the FOX GUI toolkit.  If you have RubyGems 
+			 installed you can just run the command: 
+			 	gem install fxruby
+			 	
+On Windows, you can just run the rubysettlers.exe.  But, it's just a "compiled" 
+version of the ruby code.
+	
+	

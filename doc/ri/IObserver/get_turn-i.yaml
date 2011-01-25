@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Inform this observer that it is the given player's turn
+full_name: IObserver#get_turn
+is_singleton: false
+name: get_turn
+params: (player)
+visibility: public

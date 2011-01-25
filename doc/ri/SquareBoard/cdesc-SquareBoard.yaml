@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: a &quot;Square&quot; board where x and y dimenstions are the same.
+constants: []
+
+full_name: SquareBoard
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: init_bags
+- !ruby/object:RI::MethodSummary 
+  name: subclass_init
+name: SquareBoard
+superclass: StandardBoard

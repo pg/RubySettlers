@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Starts the game thread with the registered players.
+full_name: Admin#start_game
+is_singleton: false
+name: start_game
+params: ()
+visibility: public

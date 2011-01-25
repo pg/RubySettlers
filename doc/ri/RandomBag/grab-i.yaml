@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RandomBag#grab
+is_singleton: false
+name: grab
+params: ()
+visibility: public

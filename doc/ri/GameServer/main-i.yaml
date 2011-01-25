@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: GameServer#main
+is_singleton: false
+name: main
+params: (opt=opt)
+visibility: public

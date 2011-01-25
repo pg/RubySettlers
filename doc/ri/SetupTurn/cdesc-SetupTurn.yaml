@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: placed_road
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: placed_settlement
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: SetupTurn
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: buy_development_card
+- !ruby/object:RI::MethodSummary 
+  name: can_place_road?
+- !ruby/object:RI::MethodSummary 
+  name: check_state
+- !ruby/object:RI::MethodSummary 
+  name: done
+- !ruby/object:RI::MethodSummary 
+  name: pay_for
+- !ruby/object:RI::MethodSummary 
+  name: place_city!
+- !ruby/object:RI::MethodSummary 
+  name: place_road!
+- !ruby/object:RI::MethodSummary 
+  name: place_settlement!
+- !ruby/object:RI::MethodSummary 
+  name: roll_dice
+name: SetupTurn
+superclass: Turn

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: HighestProbablitySetup#do_setup_turn
+is_singleton: false
+name: do_setup_turn
+params: (turn)
+visibility: public

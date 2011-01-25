@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Admin</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Admin</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/core/admin_rb.html">
+                lib/core/admin.rb
+                </a>
+        <br />
+                <a href="../files/lib/core/proxies/settlers_json_rb.html">
+                lib/core/proxies/settlers_json.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Game <a href="Admin.html">Admin</a> This object oversees the game play and
+enforces the rules.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000431">check_for_winner</a>&nbsp;&nbsp;
+      <a href="#M000433">get_quotes</a>&nbsp;&nbsp;
+      <a href="#M000434">get_quotes_from_bank</a>&nbsp;&nbsp;
+      <a href="#M000432">get_score</a>&nbsp;&nbsp;
+      <a href="#M000435">has_winner?</a>&nbsp;&nbsp;
+      <a href="#M000438">inform_all</a>&nbsp;&nbsp;
+      <a href="#M000426">new</a>&nbsp;&nbsp;
+      <a href="#M000437">other_players</a>&nbsp;&nbsp;
+      <a href="#M000428">register</a>&nbsp;&nbsp;
+      <a href="#M000429">register_observer</a>&nbsp;&nbsp;
+      <a href="#M000427">roll_dice</a>&nbsp;&nbsp;
+      <a href="#M000430">start_game</a>&nbsp;&nbsp;
+      <a href="#M000439">to_json</a>&nbsp;&nbsp;
+      <a href="#M000436">who_has_largest_army?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">availableColors</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">board</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">currentTurn</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">dice_hist</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+A Dice histogram. This is a record of the dice rolls that occur in the game
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">gameThread</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">is_game_done</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">maxPlayers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">maxPoints</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">observers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">players</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">prices</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000426" class="method-detail">
+        <a name="M000426"></a>
+
+        <div class="method-heading">
+          <a href="#M000426" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(board, maxPlayers, maxPoints=10, turn_timeout=240)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="Admin.html#M000426">new</a> game <a
+href="Admin.html">Admin</a> This class only lasts for one single game. Once
+it&#8216;s over, you have to create a <a href="Admin.html#M000426">new</a>
+<a href="Admin.html">Admin</a> for another game.
+</p>
+<dl>
+<dt>board</dt><dd>The <a href="Board.html">Board</a> object that will be used in this game
+
+</dd>
+<dt>maxPlayers</dt><dd>The number of Players required to start the game.
+
+</dd>
+</dl>
+<p>
+The game will NOT start untill all players have registered.
+</p>
+<dl>
+<dt>maxPoints</dt><dd>The number of points to play to.
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000426-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000426-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 45</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">board</span>, <span class="ruby-identifier">maxPlayers</span>, <span class="ruby-identifier">maxPoints</span>=<span class="ruby-value">10</span>, <span class="ruby-identifier">turn_timeout</span>=<span class="ruby-value">240</span>)
+    <span class="ruby-ivar">@prices</span> = {
+      <span class="ruby-constant">City</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-constant">OreType</span>]<span class="ruby-operator">*</span><span class="ruby-value">3</span> <span class="ruby-operator">+</span> [<span class="ruby-constant">WheatType</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span>,
+      <span class="ruby-constant">Settlement</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-constant">WheatType</span>, <span class="ruby-constant">BrickType</span>, <span class="ruby-constant">WoodType</span>, <span class="ruby-constant">SheepType</span>],
+      <span class="ruby-constant">Road</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-constant">WoodType</span>, <span class="ruby-constant">BrickType</span>],
+      <span class="ruby-constant">DevelopmentCard</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-constant">OreType</span>, <span class="ruby-constant">SheepType</span>, <span class="ruby-constant">WheatType</span>]    
+    }
+    <span class="ruby-ivar">@dice_hist</span> = {}
+    <span class="ruby-ivar">@dice_hist</span>.<span class="ruby-identifier">default</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@players</span>=[]
+    <span class="ruby-ivar">@observers</span>=[]
+    <span class="ruby-ivar">@board</span> = <span class="ruby-identifier">board</span>
+    <span class="ruby-ivar">@maxPlayers</span> = <span class="ruby-identifier">maxPlayers</span>
+    <span class="ruby-ivar">@availableColors</span> = [<span class="ruby-value str">&quot;blue&quot;</span>, <span class="ruby-value str">&quot;red&quot;</span>, <span class="ruby-value str">&quot;white&quot;</span>, <span class="ruby-value str">&quot;orange&quot;</span>, <span class="ruby-value str">&quot;green&quot;</span>]
+    <span class="ruby-ivar">@currentTurn</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@maxPoints</span> = <span class="ruby-identifier">maxPoints</span>
+    <span class="ruby-ivar">@is_game_done</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-ivar">@gameThread</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@turn_timeout</span> = <span class="ruby-identifier">turn_timeout</span>
+    <span class="ruby-ivar">@game_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000431" class="method-detail">
+        <a name="M000431"></a>
+
+        <div class="method-heading">
+          <a href="#M000431" class="method-signature">
+          <span class="method-name">check_for_winner</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Check to see if someone one. If so, end the game
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000431-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000431-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 137</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_for_winner</span>
+    <span class="ruby-identifier">winner</span> = <span class="ruby-identifier">has_winner?</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">winner</span>
+      <span class="ruby-identifier">points</span> = <span class="ruby-identifier">get_score</span>(<span class="ruby-identifier">winner</span>)
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Game finished: winner#{winner} points:#{points}&quot;</span>)
+      <span class="ruby-ivar">@observers</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">game_end</span>(<span class="ruby-identifier">winner</span>.<span class="ruby-identifier">info</span>, <span class="ruby-identifier">points</span>)}
+      <span class="ruby-ivar">@is_game_done</span> = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000433" class="method-detail">
+        <a name="M000433"></a>
+
+        <div class="method-heading">
+          <a href="#M000433" class="method-signature">
+          <span class="method-name">get_quotes</span><span class="method-args">(player, wantList, giveList) {|r| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets a List of quotes from the bank and other users Optionally takes a
+block that iterates through each quote as they come
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000433-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000433-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 162</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_quotes</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">wantList</span>, <span class="ruby-identifier">giveList</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;wantList:#{wantList}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">wantList</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Array</span> 
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;giveList:#{giveList}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">giveList</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Array</span> 
+    <span class="ruby-identifier">result</span>=[]
+    <span class="ruby-identifier">giveList</span> = <span class="ruby-identifier">giveList</span>.<span class="ruby-identifier">flatten</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">w</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">wantList</span>.<span class="ruby-identifier">flatten</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">g</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">giveList</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;want:#{w}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">w</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Class</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;give:#{g}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Class</span>
+        <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">get_quotes_from_bank</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">w</span>, <span class="ruby-identifier">g</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">reject!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">player</span>.<span class="ruby-identifier">cards</span>[<span class="ruby-identifier">q</span>.<span class="ruby-identifier">receiveType</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">receiveNum</span>}
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">r</span>} <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    
+    <span class="ruby-comment cmt">#Add user quotes</span>
+    <span class="ruby-identifier">other_players</span>(<span class="ruby-identifier">player</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">userQuotes</span> = <span class="ruby-identifier">p</span>.<span class="ruby-identifier">get_user_quotes</span>(<span class="ruby-identifier">wantList</span>, <span class="ruby-identifier">giveList</span>)
+      <span class="ruby-identifier">userQuotes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">r</span>} <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">userQuotes</span>
+    }
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000434" class="method-detail">
+        <a name="M000434"></a>
+
+        <div class="method-heading">
+          <a href="#M000434" class="method-signature">
+          <span class="method-name">get_quotes_from_bank</span><span class="method-args">(player, wantType, giveType)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a List of <a href="Quote.html">Quote</a> objects from the bank for
+a specific player
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000434-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000434-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 187</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_quotes_from_bank</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">wantType</span>, <span class="ruby-identifier">giveType</span>)
+    <span class="ruby-comment cmt">#start with the bank's 4:1 offer</span>
+    <span class="ruby-identifier">result</span>=[<span class="ruby-constant">Quote</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">giveType</span>, <span class="ruby-value">4</span>, <span class="ruby-identifier">wantType</span>, <span class="ruby-value">1</span>)]
+
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">get_ports</span>(<span class="ruby-identifier">player</span>.<span class="ruby-identifier">color</span>)
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">giveType</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">q</span> = <span class="ruby-constant">Quote</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">giveType</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">rate</span>, <span class="ruby-identifier">wantType</span>, <span class="ruby-value">1</span>)  
+        <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">q</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">q</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt">#Remove any redundant quotes</span>
+    <span class="ruby-comment cmt">#i.e. if result has a 2:1 quote, we don't need a 4:1 quote</span>
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">q2</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">q2</span>.<span class="ruby-identifier">receiveNum</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">receiveNum</span> <span class="ruby-keyword kw">and</span>
+          <span class="ruby-identifier">q2</span>.<span class="ruby-identifier">giveType</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">giveType</span> <span class="ruby-keyword kw">and</span>
+          <span class="ruby-identifier">q2</span>.<span class="ruby-identifier">receiveType</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">receiveType</span>}}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000432" class="method-detail">
+        <a name="M000432"></a>
+
+        <div class="method-heading">
+          <a href="#M000432" class="method-signature">
+          <span class="method-name">get_score</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the score of the given player
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000432-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000432-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 148</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_score</span>(<span class="ruby-identifier">player</span>)
+    <span class="ruby-identifier">score</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">has_longest_road?</span>(<span class="ruby-identifier">player</span>.<span class="ruby-identifier">color</span>)
+    <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">who_has_largest_army?</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">player</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">n</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">all_nodes</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span>.<span class="ruby-identifier">color</span><span class="ruby-operator">==</span><span class="ruby-identifier">player</span>.<span class="ruby-identifier">color</span>
+        <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">city</span>.<span class="ruby-identifier">getPoints</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">score</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000435" class="method-detail">
+        <a name="M000435"></a>
+
+        <div class="method-heading">
+          <a href="#M000435" class="method-signature">
+          <span class="method-name">has_winner?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Does this game have a winner yet. If so, return the player that one, nil
+otherwise.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000435-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000435-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 208</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_winner?</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">get_score</span>(<span class="ruby-identifier">p</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@maxPoints</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000438" class="method-detail">
+        <a name="M000438"></a>
+
+        <div class="method-heading">
+          <a href="#M000438" class="method-signature">
+          <span class="method-name">inform_all</span><span class="method-args">(entity, msg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Send a message to every player using the inform method NOTE: this may go
+away later on
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000438-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000438-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 240</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inform_all</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>
+      <span class="ruby-identifier">p</span>.<span class="ruby-identifier">inform</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000437" class="method-detail">
+        <a name="M000437"></a>
+
+        <div class="method-heading">
+          <a href="#M000437" class="method-signature">
+          <span class="method-name">other_players</span><span class="method-args">(player) {|p if p != player| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+An iterator for all other players
+</p>
+<dl>
+<dt>player</dt><dd>the player to exclude
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000437-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000437-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 234</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">other_players</span>(<span class="ruby-identifier">player</span>)
+    <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">player</span> }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000428" class="method-detail">
+        <a name="M000428"></a>
+
+        <div class="method-heading">
+          <a href="#M000428" class="method-signature">
+          <span class="method-name">register</span><span class="method-args">(*players)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register a player or players with this game.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000428-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000428-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 73</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">players</span>)
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">players</span>
+      <span class="ruby-ivar">@observers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">p</span>
+      <span class="ruby-ivar">@players</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">p</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">preferred_color</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@availableColors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">preferred_color</span>)
+         <span class="ruby-identifier">p</span>.<span class="ruby-identifier">color</span> = <span class="ruby-identifier">p</span>.<span class="ruby-identifier">preferred_color</span>
+         <span class="ruby-ivar">@availableColors</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">preferred_color</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">color</span> = <span class="ruby-ivar">@availableColors</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">rand</span>(<span class="ruby-ivar">@availableColors</span>.<span class="ruby-identifier">length</span>))
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@observers</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">player_joined</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">info</span>)}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@maxPlayers</span>
+        <span class="ruby-ivar">@game_mutex</span>.<span class="ruby-identifier">synchronize</span> {
+          <span class="ruby-identifier">start_game</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@gameThread</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>
+        }     
+        <span class="ruby-keyword kw">return</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000429" class="method-detail">
+        <a name="M000429"></a>
+
+        <div class="method-heading">
+          <a href="#M000429" class="method-signature">
+          <span class="method-name">register_observer</span><span class="method-args">(observer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register an <a href="IObserver.html">IObserver</a> to watch this game.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000429-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000429-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_observer</span>(<span class="ruby-identifier">observer</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>(<span class="ruby-value str">'observer does not implement IObserver'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">observer</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">IObserver</span>)
+    <span class="ruby-ivar">@observers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">observer</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000427" class="method-detail">
+        <a name="M000427"></a>
+
+        <div class="method-heading">
+          <a href="#M000427" class="method-signature">
+          <span class="method-name">roll_dice</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a list of the two dice rolls
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000427-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000427-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 68</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">roll_dice</span>
+    <span class="ruby-identifier">roll_set_dice</span>([<span class="ruby-identifier">rand</span>(<span class="ruby-value">5</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">5</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>])
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000430" class="method-detail">
+        <a name="M000430"></a>
+
+        <div class="method-heading">
+          <a href="#M000430" class="method-signature">
+          <span class="method-name">start_game</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Starts the game thread with the registered players.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000430-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000430-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_game</span>
+    <span class="ruby-ivar">@gameThread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> {  
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">info</span>(<span class="ruby-value str">&quot;Starting Game&quot;</span>)
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Using Board: #{@board.name}&quot;</span>)
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;#{players.size} players&quot;</span>)
+      
+      <span class="ruby-ivar">@observers</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">game_start</span>}
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">update_board</span>(<span class="ruby-ivar">@board</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">roundCount</span> = <span class="ruby-value">0</span>
+        <span class="ruby-comment cmt">#setup</span>
+        <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>
+          <span class="ruby-identifier">give_turn</span>(<span class="ruby-constant">SetupTurn</span>, <span class="ruby-identifier">p</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">reverse</span>
+          <span class="ruby-identifier">give_turn</span>(<span class="ruby-constant">SetupTurn</span>, <span class="ruby-identifier">p</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">until</span> <span class="ruby-ivar">@is_game_done</span>
+          <span class="ruby-identifier">roundCount</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+          <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@players</span>
+            <span class="ruby-identifier">give_turn</span>(<span class="ruby-constant">Turn</span>, <span class="ruby-identifier">p</span>)
+            <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">pl</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pl</span>.<span class="ruby-identifier">next_turn</span>(<span class="ruby-identifier">p</span>)}
+            <span class="ruby-identifier">check_for_winner</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Round #{roundCount} Highest Score:#{@players.map{|p| get_score(p)}.max}&quot;</span>)  
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Error in server &quot;</span>, <span class="ruby-identifier">err</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">backtrace</span>
+      <span class="ruby-keyword kw">end</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000439" class="method-detail">
+        <a name="M000439"></a>
+
+        <div class="method-heading">
+          <a href="#M000439" class="method-signature">
+          <span class="method-name">to_json</span><span class="method-args">(*a)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000439-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000439-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/settlers_json.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+    {<span class="ruby-value str">'fromclass'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'AdminProxy'</span>,
+     <span class="ruby-value str">'remote_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object_id</span>
+    }.<span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000436" class="method-detail">
+        <a name="M000436"></a>
+
+        <div class="method-heading">
+          <a href="#M000436" class="method-signature">
+          <span class="method-name">who_has_largest_army?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds the player with the largest army, or nil if no one has it.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000436-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000436-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/admin.rb, line 216</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">who_has_largest_army?</span>
+    <span class="ruby-comment cmt">#The largest number of soldier cards</span>
+    <span class="ruby-identifier">highest_count</span> = <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count_soliders</span>(<span class="ruby-identifier">p</span>)}.<span class="ruby-identifier">max</span>
+    <span class="ruby-identifier">who_has_the_most</span> = []
+    <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">player</span><span class="ruby-operator">|</span>  
+      <span class="ruby-identifier">who_has_the_most</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">player</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count_soliders</span>(<span class="ruby-identifier">player</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">highest_count</span>
+    }
+    
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">who_has_the_most</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">highest_count</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">3</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">who_has_the_most</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-comment cmt">#multple people have the most soldiers</span>
+      <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

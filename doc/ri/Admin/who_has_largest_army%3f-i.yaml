@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Finds the player with the largest army, or nil if no one has it.
+full_name: Admin#who_has_largest_army?
+is_singleton: false
+name: who_has_largest_army?
+params: ()
+visibility: public

@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: JSONConnection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">JSONConnection</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/core/proxies/json_rpc_rb.html">
+                lib/core/proxies/json_rpc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A Connection that communicates to other JSONConnections through a socket
+This is used for both server and client side.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000061">get_next_message</a>&nbsp;&nbsp;
+      <a href="#M000057">get_real_object</a>&nbsp;&nbsp;
+      <a href="#M000062">handle_json_request</a>&nbsp;&nbsp;
+      <a href="#M000063">handle_ruby_request</a>&nbsp;&nbsp;
+      <a href="#M000058">json_request</a>&nbsp;&nbsp;
+      <a href="#M000059">listen</a>&nbsp;&nbsp;
+      <a href="#M000055">new</a>&nbsp;&nbsp;
+      <a href="#M000056">nextID</a>&nbsp;&nbsp;
+      <a href="#M000060">should_listen</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">log</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="#M000055" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(socket, log=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000055-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 141</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">log</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@sock</span> = <span class="ruby-identifier">socket</span>
+    <span class="ruby-ivar">@currentRequestID</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@requests</span> = []
+    <span class="ruby-ivar">@log</span> = <span class="ruby-identifier">log</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="#M000061" class="method-signature">
+          <span class="method-name">get_next_message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Blocks and waits for the next json-rpc message in the buffer
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 245</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_next_message</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">buffer</span> = <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">1</span>)
+      <span class="ruby-identifier">depth</span> = <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">buffer</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-identifier">depth</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">buffer</span>[<span class="ruby-value">-1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'}'</span>
+        <span class="ruby-identifier">depth</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">buffer</span>[<span class="ruby-value">-1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'{'</span>
+      <span class="ruby-keyword kw">end</span>    
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">should_listen</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Connection closed'</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">buffer</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="#M000057" class="method-signature">
+          <span class="method-name">get_real_object</span><span class="method-args">(a)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If the given object is a proxy object or <a href="Object.html">Object</a>
+reference, This gets that proxy or reference, otherwise, it returns o
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000057-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 156</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">a</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">a</span>[<span class="ruby-value str">'fromclass'</span>]
+      <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Building object from json: #{a['fromclass']}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@log</span>
+      <span class="ruby-identifier">klass</span> = <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">a</span>[<span class="ruby-value str">'fromclass'</span>].<span class="ruby-identifier">to_sym</span>)
+      <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">from_json</span>(<span class="ruby-identifier">a</span>, <span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+      <span class="ruby-identifier">a</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">o</span>)}
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">new_hash</span> = {}
+      <span class="ruby-identifier">new_hash</span>.<span class="ruby-identifier">default</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">default</span>
+      <span class="ruby-identifier">a</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">new_hash</span>[<span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">key</span>)] = <span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">a</span>[<span class="ruby-identifier">key</span>])
+      }
+      <span class="ruby-identifier">new_hash</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">14</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ProxyObject</span><span class="ruby-operator">::</span><span class="ruby-constant">PROXY_REFERENCE_STRING</span>
+      <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">_id2ref</span>(<span class="ruby-identifier">a</span>[<span class="ruby-value">16</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">a</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="#M000062" class="method-signature">
+          <span class="method-name">handle_json_request</span><span class="method-args">(json_msg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handle an incomming json request
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 265</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_json_request</span>(<span class="ruby-identifier">json_msg</span>)
+    <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Received request :#{json_msg}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@log</span>
+    <span class="ruby-identifier">args</span> = <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'params'</span>]
+    <span class="ruby-identifier">error</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">target_id</span> = <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'target_object_id'</span>]
+      <span class="ruby-identifier">method</span> = <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'method'</span>]
+
+      <span class="ruby-comment cmt">#Iterate through all the json_args</span>
+      <span class="ruby-comment cmt">#If we have a reference to our object, get that object</span>
+      <span class="ruby-comment cmt">#If we have a reference to a proxy, try to get that proxy or create a new one.</span>
+      <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">a</span>) }
+      
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">handle_ruby_request</span>(<span class="ruby-identifier">target_id</span>, <span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)    
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-identifier">error</span> = <span class="ruby-node">&quot;#{$!}$$#{$!.backtrace.join('$$')}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">response_json</span> = {<span class="ruby-value str">'result'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>,
+                     <span class="ruby-value str">'error'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>,
+                     <span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'id'</span>] }.<span class="ruby-identifier">to_json</span>
+    <span class="ruby-comment cmt">#    write_now 'Sending response: '+response_json</span>
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">response_json</span>)
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">flush</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="#M000063" class="method-signature">
+          <span class="method-name">handle_ruby_request</span><span class="method-args">(target_id, method, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Make an actual call to a real Ruby object on the local system.
+</p>
+<pre>
+ TODO: I need to secure this somehow in the future.
+       This could potentially be a security bug.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000063-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 294</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_ruby_request</span>(<span class="ruby-identifier">target_id</span>, <span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-comment cmt">#Find the real object</span>
+    <span class="ruby-identifier">target</span> = <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">_id2ref</span>(<span class="ruby-identifier">target_id</span>)
+    <span class="ruby-identifier">target</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="#M000058" class="method-signature">
+          <span class="method-name">json_request</span><span class="method-args">(target_id, method, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Send a RPC call over the connection to the targeted remote object
+</p>
+<dl>
+<dt>target_id</dt><dd>The id on the remote system of the intended object
+
+</dd>
+<dt>method</dt><dd>the method symbol to run
+
+</dd>
+<dt>args</dt><dd>the arguments to the rpc call (These are actual Ruby objects)
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000058-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 181</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">json_request</span>(<span class="ruby-identifier">target_id</span>, <span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">req_id</span> = <span class="ruby-identifier">nextID</span>
+    
+    <span class="ruby-identifier">data</span> = { <span class="ruby-value str">'method'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">to_s</span>,
+            <span class="ruby-value str">'params'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">args</span>,
+            <span class="ruby-value str">'target_object_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">target_id</span>, <span class="ruby-comment cmt">#The object id of the remote object</span>
+            <span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">req_id</span>}.<span class="ruby-identifier">to_json</span>
+    <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Sending request: #{data}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@log</span>
+    <span class="ruby-identifier">req</span> = <span class="ruby-constant">JSONRequest</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">req_id</span>)
+    <span class="ruby-ivar">@requests</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">req</span>
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">flush</span>
+    <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">has_response</span>
+      <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0</span><span class="ruby-value">.01</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#    write_now &quot;Returning response '#{req.response}'&quot;</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-identifier">req</span>.<span class="ruby-identifier">response</span>
+    <span class="ruby-ivar">@requests</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">response</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="#M000059" class="method-signature">
+          <span class="method-name">listen</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method listens for all incomming request and response messages
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 204</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">listen</span>
+    <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
+      <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">should_listen</span>
+        <span class="ruby-identifier">msg</span> = <span class="ruby-identifier">get_next_message</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>
+          <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> {
+            <span class="ruby-identifier">json_msg</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">msg</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json_msg</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value str">'id'</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">json_msg</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value str">'method'</span>)
+              <span class="ruby-identifier">handle_json_request</span>(<span class="ruby-identifier">json_msg</span>)
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-comment cmt">#We have a response</span>
+              <span class="ruby-comment cmt">#            @log.debug(&quot;Received response '#{msg}'&quot;)</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json_msg</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value str">'error'</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'error'</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+                <span class="ruby-identifier">parts</span> = <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'error'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">'$$'</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@log</span>
+                  <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">error</span>(<span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span>])
+                  <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">error</span>(<span class="ruby-identifier">parts</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span>]
+              <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">original_request</span> = <span class="ruby-ivar">@requests</span>.<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">req</span><span class="ruby-operator">|</span> 
+                  <span class="ruby-identifier">req</span>.<span class="ruby-identifier">req_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'id'</span>].<span class="ruby-identifier">to_i</span>
+                }
+                <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Could not find matching request: #{json_msg['id']} in #{@requests}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">original_request</span>
+                <span class="ruby-identifier">response</span> = <span class="ruby-identifier">get_real_object</span>(<span class="ruby-identifier">json_msg</span>[<span class="ruby-value str">'result'</span>])
+                <span class="ruby-identifier">original_request</span>.<span class="ruby-identifier">response</span> = <span class="ruby-identifier">response</span>
+                <span class="ruby-identifier">original_request</span>.<span class="ruby-identifier">has_response</span> = <span class="ruby-keyword kw">true</span>
+              <span class="ruby-keyword kw">end</span>
+              
+            <span class="ruby-keyword kw">end</span>
+          }
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="#M000056" class="method-signature">
+          <span class="method-name">nextID</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates and returns the next request ID
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000056-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 149</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nextID</span>
+    <span class="ruby-ivar">@currentRequestID</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@currentRequestID</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="#M000060" class="method-signature">
+          <span class="method-name">should_listen</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 240</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_listen</span>
+    <span class="ruby-keyword kw">true</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

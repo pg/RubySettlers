@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: are the given coordinates touching a node? if so, return [node, node-x, node-y] where x and y are the real x and y of the node
+full_name: BoardViewer#isTouchingNode?
+is_singleton: false
+name: isTouchingNode?
+params: (x, y, proximity)
+visibility: public

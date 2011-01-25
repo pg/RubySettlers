@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ask the player to select some cards from a list. This is used when a player must discard or resource monopoly or year of plenty
+full_name: RandomPlayer#select_resource_cards
+is_singleton: false
+name: select_resource_cards
+params: (cards, count)
+visibility: public

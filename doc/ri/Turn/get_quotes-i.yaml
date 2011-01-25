@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: q
+comment: 
+- !ruby/struct:SM::Flow::VERB 
+  body: " Gets a list of quotes from the bank and other users\n Optionally takes a block that iterates through each quote as they come\n"
+- !ruby/struct:SM::Flow::P 
+  body: (List, List) -&gt; List
+full_name: Turn#get_quotes
+is_singleton: false
+name: get_quotes
+params: (wantList, giveList) {|q| ...}
+visibility: public

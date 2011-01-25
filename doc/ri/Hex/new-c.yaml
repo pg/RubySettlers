@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Hex::new
+is_singleton: true
+name: new
+params: (card, number, has_bandit=false)
+visibility: public

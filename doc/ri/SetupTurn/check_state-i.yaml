@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: SetupTurn#check_state
+is_singleton: false
+name: check_state
+params: (s)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: How many resource cards does this player have?
+full_name: Player#count_resources
+is_singleton: false
+name: count_resources
+params: ()
+visibility: public

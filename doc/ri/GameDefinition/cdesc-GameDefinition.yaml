@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: name
+  rw: R
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class defines a game type or expansion pack. For instance, there could be a GameDefinition for the Standard version of Settlers or Cities and Knights, SeaFearers, or even a custom game. The standard game definition is found in this file, but all others should be located in the expansions directory
+constants: []
+
+full_name: GameDefinition
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: make_admin
+name: GameDefinition
+superclass: 

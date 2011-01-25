@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: randAdd
+    body: add a number of completely random tiles
+  type: :LABELED
+full_name: TileBag::new
+is_singleton: true
+name: new
+params: (randAdd=0)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Pick at a hex number at random
+full_name: NSizeNumberBag#new_number
+is_singleton: false
+name: new_number
+params: ()
+visibility: public

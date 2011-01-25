@@ -1,0 +1,111 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: board
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The number of all cards owned by this player. &lt;CardClass, count&gt;
+  name: cards
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: color
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: currentTurn
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: msgLog
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: name
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: piecesLeft
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: played_dev_cards
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: preferred_color
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: purchased_pieces
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Player
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: IObserver
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_cards
+- !ruby/object:RI::MethodSummary 
+  name: build_card_string
+- !ruby/object:RI::MethodSummary 
+  name: can_afford?
+- !ruby/object:RI::MethodSummary 
+  name: count_resources
+- !ruby/object:RI::MethodSummary 
+  name: del_cards
+- !ruby/object:RI::MethodSummary 
+  name: game_end
+- !ruby/object:RI::MethodSummary 
+  name: game_start
+- !ruby/object:RI::MethodSummary 
+  name: get_turn
+- !ruby/object:RI::MethodSummary 
+  name: get_user_quotes
+- !ruby/object:RI::MethodSummary 
+  name: inform
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: move_bandit
+- !ruby/object:RI::MethodSummary 
+  name: next_turn
+- !ruby/object:RI::MethodSummary 
+  name: placed_city
+- !ruby/object:RI::MethodSummary 
+  name: placed_road
+- !ruby/object:RI::MethodSummary 
+  name: placed_settlement
+- !ruby/object:RI::MethodSummary 
+  name: player_joined
+- !ruby/object:RI::MethodSummary 
+  name: player_recieved_cards
+- !ruby/object:RI::MethodSummary 
+  name: player_rolled
+- !ruby/object:RI::MethodSummary 
+  name: player_stole_card
+- !ruby/object:RI::MethodSummary 
+  name: resource_cards
+- !ruby/object:RI::MethodSummary 
+  name: select_player
+- !ruby/object:RI::MethodSummary 
+  name: select_resource_cards
+- !ruby/object:RI::MethodSummary 
+  name: take_turn
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: to_xml
+- !ruby/object:RI::MethodSummary 
+  name: update_board
+name: Player
+superclass: Object

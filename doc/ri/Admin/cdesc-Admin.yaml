@@ -1,0 +1,86 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: availableColors
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: board
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: currentTurn
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A Dice histogram. This is a record of the dice rolls that occur in the game
+  name: dice_hist
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: gameThread
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: is_game_done
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: maxPlayers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: maxPoints
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: observers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: players
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: prices
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Game Admin This object oversees the game play and enforces the rules.
+constants: []
+
+full_name: Admin
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: check_for_winner
+- !ruby/object:RI::MethodSummary 
+  name: get_quotes
+- !ruby/object:RI::MethodSummary 
+  name: get_quotes_from_bank
+- !ruby/object:RI::MethodSummary 
+  name: get_score
+- !ruby/object:RI::MethodSummary 
+  name: has_winner?
+- !ruby/object:RI::MethodSummary 
+  name: inform_all
+- !ruby/object:RI::MethodSummary 
+  name: other_players
+- !ruby/object:RI::MethodSummary 
+  name: register
+- !ruby/object:RI::MethodSummary 
+  name: register_observer
+- !ruby/object:RI::MethodSummary 
+  name: roll_dice
+- !ruby/object:RI::MethodSummary 
+  name: start_game
+- !ruby/object:RI::MethodSummary 
+  name: who_has_largest_army?
+name: Admin
+superclass: Object

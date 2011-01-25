@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Finds the longest road in a specific direction
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: initial_direction
+    body: should be 1 or 0
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: In 99.9% of the time, this method is fast. But if you have a huge board with 50+ connected roads of the same color, this method could take up to a minute to finish. Returns an int
+full_name: Board#find_longest_road
+is_singleton: false
+name: find_longest_road
+params: (edge, initial_direction=nil, visitedNodes=[])
+visibility: public

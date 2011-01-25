@@ -1,0 +1,42 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: coords
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hexes
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: nodes
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: road
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A cache of the longest road lengths connected to this edge This is used to speed up the longest road calculations.
+  name: road_lengths
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An Edge is basically just a collection of 2 nodes that belongs to a hex
+constants: []
+
+full_name: Edge
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_adjecent_edges
+- !ruby/object:RI::MethodSummary 
+  name: visit_road
+name: Edge
+superclass: Object

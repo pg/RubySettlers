@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ServerDialog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ServerDialog</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/host_dialog_rb.html">
+                lib/ui/fxruby/host_dialog.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                FXMainWindow
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The window that starts and displays an active server and it&#8216;s output.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000280">add_bots</a>&nbsp;&nbsp;
+      <a href="#M000282">add_msg</a>&nbsp;&nbsp;
+      <a href="#M000279">create_admin</a>&nbsp;&nbsp;
+      <a href="#M000285">game_end</a>&nbsp;&nbsp;
+      <a href="#M000284">game_start</a>&nbsp;&nbsp;
+      <a href="#M000287">get_turn</a>&nbsp;&nbsp;
+      <a href="#M000278">new</a>&nbsp;&nbsp;
+      <a href="#M000291">placed_city</a>&nbsp;&nbsp;
+      <a href="#M000289">placed_road</a>&nbsp;&nbsp;
+      <a href="#M000290">placed_settlement</a>&nbsp;&nbsp;
+      <a href="#M000286">player_joined</a>&nbsp;&nbsp;
+      <a href="#M000281">player_recieved_cards</a>&nbsp;&nbsp;
+      <a href="#M000283">player_rolled</a>&nbsp;&nbsp;
+      <a href="#M000292">player_stole_card</a>&nbsp;&nbsp;
+      <a href="#M000288">update_board</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="IObserver.html">IObserver</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000278" class="method-detail">
+        <a name="M000278"></a>
+
+        <div class="method-heading">
+          <a href="#M000278" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(app, settings)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000278-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000278-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 212</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">settings</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">app</span>, <span class="ruby-value str">&quot;Ruby Settlers Server&quot;</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">DECOR_ALL</span>, <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">500</span>, <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">300</span>)
+    <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Stop Server&quot;</span>).<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">__FILE__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$0</span>
+        <span class="ruby-identifier">abort</span> 
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@drb</span>
+          <span class="ruby-ivar">@drb</span>.<span class="ruby-identifier">stop_service</span> 
+          <span class="ruby-identifier">add_msg</span>(<span class="ruby-value str">&quot;Server stopped&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@msg_list</span> = <span class="ruby-constant">FXList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-identifier">create_admin</span>(<span class="ruby-identifier">settings</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000280" class="method-detail">
+        <a name="M000280"></a>
+
+        <div class="method-heading">
+          <a href="#M000280" class="method-signature">
+          <span class="method-name">add_bots</span><span class="method-args">(settings)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000280-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000280-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 245</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_bots</span>(<span class="ruby-identifier">settings</span>)
+    <span class="ruby-identifier">num_bots</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:num_bots</span>].<span class="ruby-identifier">to_i</span>
+
+    <span class="ruby-comment cmt">#Add Bots</span>
+    <span class="ruby-identifier">botname_size</span> = <span class="ruby-ivar">@@botnames</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">num_bots</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">num_bots</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">botname_size</span>
+        <span class="ruby-identifier">name</span> = <span class="ruby-ivar">@@botnames</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-ivar">@@botnames</span>.<span class="ruby-identifier">length</span>)]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">name</span> = <span class="ruby-ivar">@@botnames</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">rand</span>(<span class="ruby-ivar">@@botnames</span>.<span class="ruby-identifier">size</span>))
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt">#TODO: when I have other bot types, account for intelligence here</span>
+      <span class="ruby-identifier">p</span> = <span class="ruby-constant">RandomPlayer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-ivar">@admin</span>)
+      <span class="ruby-ivar">@admin</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">p</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000282" class="method-detail">
+        <a name="M000282"></a>
+
+        <div class="method-heading">
+          <a href="#M000282" class="method-signature">
+          <span class="method-name">add_msg</span><span class="method-args">(msg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000282-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000282-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 269</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_msg</span>(<span class="ruby-identifier">msg</span>)
+    <span class="ruby-ivar">@msg_list</span>.<span class="ruby-identifier">appendItem</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;%H:%M:%S - #{msg}&quot;</span>))
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000279" class="method-detail">
+        <a name="M000279"></a>
+
+        <div class="method-heading">
+          <a href="#M000279" class="method-signature">
+          <span class="method-name">create_admin</span><span class="method-args">(settings)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000279-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000279-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 228</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_admin</span>(<span class="ruby-identifier">settings</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-constant">BoardManager</span>.<span class="ruby-identifier">load_board</span>(<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:board</span>])
+    <span class="ruby-identifier">players</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:player_num</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">points</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:points_to_win</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">port</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:port</span>].<span class="ruby-identifier">to_i</span>
+    
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-value str">&quot;Starting Server&quot;</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;Board: #{board.name}&quot;</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;Players: #{players}&quot;</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;Points: #{points}&quot;</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;Port: #{port}&quot;</span>)
+
+    <span class="ruby-ivar">@admin</span> = <span class="ruby-constant">Admin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">board</span>, <span class="ruby-identifier">players</span>, <span class="ruby-identifier">points</span>)
+    <span class="ruby-ivar">@admin</span>.<span class="ruby-identifier">register_observer</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-ivar">@drb</span> = <span class="ruby-constant">DRb</span>.<span class="ruby-identifier">start_service</span>(<span class="ruby-node">&quot;druby://localhost:#{port}&quot;</span>, <span class="ruby-ivar">@admin</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000285" class="method-detail">
+        <a name="M000285"></a>
+
+        <div class="method-heading">
+          <a href="#M000285" class="method-signature">
+          <span class="method-name">game_end</span><span class="method-args">(winner, points)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform the observer that the game has finished.
+</p>
+<dl>
+<dt>player</dt><dd>the player who won
+
+</dd>
+<dt>points</dt><dd>the number of points they won with.
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000285-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000285-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 288</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_end</span>(<span class="ruby-identifier">winner</span>, <span class="ruby-identifier">points</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{winner.name} won the game with #{points} points&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000284" class="method-detail">
+        <a name="M000284"></a>
+
+        <div class="method-heading">
+          <a href="#M000284" class="method-signature">
+          <span class="method-name">game_start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify the observer that the game has begun
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000284-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000284-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 281</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_start</span>
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-value str">&quot;Game is starting&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000287" class="method-detail">
+        <a name="M000287"></a>
+
+        <div class="method-heading">
+          <a href="#M000287" class="method-signature">
+          <span class="method-name">get_turn</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform this observer that it is the given player&#8216;s turn
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000287-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000287-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 298</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_turn</span>(<span class="ruby-identifier">player</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;New turn for #{player.name}&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000291" class="method-detail">
+        <a name="M000291"></a>
+
+        <div class="method-heading">
+          <a href="#M000291" class="method-signature">
+          <span class="method-name">placed_city</span><span class="method-args">(player, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a city was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the city
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000291-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000291-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 325</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_city</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} placed a city at (#{x}, #{y}, #{node})&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000289" class="method-detail">
+        <a name="M000289"></a>
+
+        <div class="method-heading">
+          <a href="#M000289" class="method-signature">
+          <span class="method-name">placed_road</span><span class="method-args">(player, x, y, edge)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a road was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the road
+
+</dd>
+<dt>x, y, edge</dt><dd>The edge coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000289-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000289-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 311</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_road</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">edge</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} placed a road at (#{x}, #{y}, #{edge})&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000290" class="method-detail">
+        <a name="M000290"></a>
+
+        <div class="method-heading">
+          <a href="#M000290" class="method-signature">
+          <span class="method-name">placed_settlement</span><span class="method-args">(player, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a settlement was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the settlement
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000290-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000290-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 318</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_settlement</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} placed a settlement at (#{x}, #{y}, #{node})&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000286" class="method-detail">
+        <a name="M000286"></a>
+
+        <div class="method-heading">
+          <a href="#M000286" class="method-signature">
+          <span class="method-name">player_joined</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform this observer that a player has joined the game.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000286-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000286-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 293</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_joined</span>(<span class="ruby-identifier">player</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} has joined the game&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000281" class="method-detail">
+        <a name="M000281"></a>
+
+        <div class="method-heading">
+          <a href="#M000281" class="method-signature">
+          <span class="method-name">player_recieved_cards</span><span class="method-args">(player, cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin anytime a player recieves cards.
+</p>
+<dl>
+<dt>player</dt><dd>the player that recieved the cards
+
+</dd>
+<dt>cards</dt><dd>a list of Card Classes
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000281-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000281-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 265</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_recieved_cards</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">cards</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} recieved cards&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000283" class="method-detail">
+        <a name="M000283"></a>
+
+        <div class="method-heading">
+          <a href="#M000283" class="method-signature">
+          <span class="method-name">player_rolled</span><span class="method-args">(player, roll)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin when anyone rolls the dice
+</p>
+<dl>
+<dt>player</dt><dd>the acting player
+
+</dd>
+<dt>roll</dt><dd>A list (length 2) of the numbers that were rolled
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000283-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000283-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 276</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_rolled</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">roll</span>)
+    <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{player.name} rolled a #{roll.sum}&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000292" class="method-detail">
+        <a name="M000292"></a>
+
+        <div class="method-heading">
+          <a href="#M000292" class="method-signature">
+          <span class="method-name">player_stole_card</span><span class="method-args">(theif, victim, num_cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin whenever a player steals cards from another
+player
+</p>
+<dl>
+<dt>theif</dt><dd>the player who took the cards
+
+</dd>
+<dt>victim</dt><dd>the player who lost cards
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000292-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000292-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 333</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_stole_card</span>(<span class="ruby-identifier">theif</span>, <span class="ruby-identifier">victim</span>, <span class="ruby-identifier">num_cards</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">num_cards</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{theif.name} stole a card from #{victim.name}&quot;</span>)    
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">add_msg</span>(<span class="ruby-node">&quot;#{theif.name} stole #{num_cards} cards from #{victim.name}&quot;</span>)    
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000288" class="method-detail">
+        <a name="M000288"></a>
+
+        <div class="method-heading">
+          <a href="#M000288" class="method-signature">
+          <span class="method-name">update_board</span><span class="method-args">(board)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Update this observer&#8216;s version of the board
+</p>
+<dl>
+<dt>board</dt><dd>the <a href="ServerDialog.html#M000278">new</a> version of the board
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000288-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000288-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/host_dialog.rb, line 304</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_board</span>(<span class="ruby-identifier">board</span>)
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

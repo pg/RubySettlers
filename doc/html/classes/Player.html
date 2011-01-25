@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Player</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Player</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/core/player_rb.html">
+                lib/core/player.rb
+                </a>
+        <br />
+                <a href="../files/lib/core/proxies/settlers_json_rb.html">
+                lib/core/proxies/settlers_json.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000215">addPiecesLeft</a>&nbsp;&nbsp;
+      <a href="#M000220">add_cards</a>&nbsp;&nbsp;
+      <a href="#M000222">build_card_string</a>&nbsp;&nbsp;
+      <a href="#M000223">can_afford?</a>&nbsp;&nbsp;
+      <a href="#M000219">cards</a>&nbsp;&nbsp;
+      <a href="#M000213">copyPiecesLeft</a>&nbsp;&nbsp;
+      <a href="#M000241">count_resources</a>&nbsp;&nbsp;
+      <a href="#M000221">del_cards</a>&nbsp;&nbsp;
+      <a href="#M000234">game_end</a>&nbsp;&nbsp;
+      <a href="#M000233">game_start</a>&nbsp;&nbsp;
+      <a href="#M000236">get_turn</a>&nbsp;&nbsp;
+      <a href="#M000225">get_user_quotes</a>&nbsp;&nbsp;
+      <a href="#M000217">info</a>&nbsp;&nbsp;
+      <a href="#M000216">inform</a>&nbsp;&nbsp;
+      <a href="#M000244">inspect</a>&nbsp;&nbsp;
+      <a href="#M000226">move_bandit</a>&nbsp;&nbsp;
+      <a href="#M000212">new</a>&nbsp;&nbsp;
+      <a href="#M000218">next_turn</a>&nbsp;&nbsp;
+      <a href="#M000214">piecesLeft</a>&nbsp;&nbsp;
+      <a href="#M000240">placed_city</a>&nbsp;&nbsp;
+      <a href="#M000238">placed_road</a>&nbsp;&nbsp;
+      <a href="#M000239">placed_settlement</a>&nbsp;&nbsp;
+      <a href="#M000235">player_joined</a>&nbsp;&nbsp;
+      <a href="#M000229">player_moved_bandit</a>&nbsp;&nbsp;
+      <a href="#M000230">player_received_cards</a>&nbsp;&nbsp;
+      <a href="#M000231">player_rolled</a>&nbsp;&nbsp;
+      <a href="#M000232">player_stole_card</a>&nbsp;&nbsp;
+      <a href="#M000242">resource_cards</a>&nbsp;&nbsp;
+      <a href="#M000228">select_player</a>&nbsp;&nbsp;
+      <a href="#M000227">select_resource_cards</a>&nbsp;&nbsp;
+      <a href="#M000224">take_turn</a>&nbsp;&nbsp;
+      <a href="#M000245">to_json</a>&nbsp;&nbsp;
+      <a href="#M000243">to_s</a>&nbsp;&nbsp;
+      <a href="#M000237">update_board</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="IObserver.html">IObserver</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">board</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">color</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+The number of all <a href="Player.html#M000219">cards</a> owned by this
+player. &lt;CardClass, count&gt;
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">currentTurn</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">game_finished</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">msgLog</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">name</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">played_dev_cards</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">preferred_color</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">preferred_color</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">purchased_pieces</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000212" class="method-detail">
+        <a name="M000212"></a>
+
+        <div class="method-heading">
+          <a href="#M000212" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(name, admin, cities=4, settlements=5, roads=15)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000212-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000212-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">admin</span>, <span class="ruby-identifier">cities</span>=<span class="ruby-value">4</span>, <span class="ruby-identifier">settlements</span>=<span class="ruby-value">5</span>, <span class="ruby-identifier">roads</span>=<span class="ruby-value">15</span>)
+    <span class="ruby-ivar">@cards</span>={}
+    <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">default</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@admin</span> = <span class="ruby-identifier">admin</span>
+    <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+    <span class="ruby-ivar">@color</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@purchased_pieces</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@piecesLeft</span>={<span class="ruby-constant">City</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">cities</span>, <span class="ruby-constant">Settlement</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">settlements</span>, <span class="ruby-constant">Road</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">roads</span>}
+    <span class="ruby-ivar">@piecesLeft</span>.<span class="ruby-identifier">default</span>=<span class="ruby-value">0</span>
+    <span class="ruby-ivar">@played_dev_cards</span> = []
+    <span class="ruby-ivar">@msgLog</span> = []
+    <span class="ruby-ivar">@preferred_color</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@cards_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@pieces_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="#M000215" class="method-signature">
+          <span class="method-name">addPiecesLeft</span><span class="method-args">(pieceKlass, amount)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000215-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000215-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 80</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">addPiecesLeft</span>(<span class="ruby-identifier">pieceKlass</span>, <span class="ruby-identifier">amount</span>)
+    <span class="ruby-ivar">@pieces_mutex</span>.<span class="ruby-identifier">synchronize</span>{
+      <span class="ruby-ivar">@piecesLeft</span>[<span class="ruby-identifier">pieceKlass</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">amount</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000220" class="method-detail">
+        <a name="M000220"></a>
+
+        <div class="method-heading">
+          <a href="#M000220" class="method-signature">
+          <span class="method-name">add_cards</span><span class="method-args">(cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tell this player that they received more <a
+href="Player.html#M000219">cards</a>.
+</p>
+<dl>
+<dt><a href="Player.html#M000219">cards</a></dt><dd>an <a href="Array.html">Array</a> of card types
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000220-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000220-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 111</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_cards</span>(<span class="ruby-identifier">cards</span>)
+    <span class="ruby-ivar">@cards_mutex</span>.<span class="ruby-identifier">synchronize</span> {
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;cards is empty&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;cards contains a nil element&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;value is nil for: #{c}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cards</span>[<span class="ruby-identifier">c</span>].<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{name} Adding cards #{cards}&quot;</span>)
+      <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@cards</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000222" class="method-detail">
+        <a name="M000222"></a>
+
+        <div class="method-heading">
+          <a href="#M000222" class="method-signature">
+          <span class="method-name">build_card_string</span><span class="method-args">(card_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000222-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000222-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_card_string</span>(<span class="ruby-identifier">card_list</span>)
+      <span class="ruby-value str">&quot;Implement me!&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000223" class="method-detail">
+        <a name="M000223"></a>
+
+        <div class="method-heading">
+          <a href="#M000223" class="method-signature">
+          <span class="method-name">can_afford?</span><span class="method-args">(pieces)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Can this player afford the given pieces?
+</p>
+<dl>
+<dt>pieces</dt><dd>an <a href="Array.html">Array</a> of buyable piece classes (Cities,
+Settlements, etc.)
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000223-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000223-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 149</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">can_afford?</span>(<span class="ruby-identifier">pieces</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;pieces cannot be nil&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">cost</span>={}
+    <span class="ruby-identifier">cost</span>.<span class="ruby-identifier">default</span>=<span class="ruby-value">0</span>
+    <span class="ruby-identifier">prices</span> = <span class="ruby-ivar">@admin</span>.<span class="ruby-identifier">prices</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">piece</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">pieces</span>
+      <span class="ruby-identifier">cards</span> = <span class="ruby-identifier">prices</span>[<span class="ruby-identifier">piece</span>]      
+      <span class="ruby-identifier">cards</span> = <span class="ruby-identifier">prices</span>[<span class="ruby-identifier">piece</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">card</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">cards</span>
+        <span class="ruby-identifier">cost</span>[<span class="ruby-identifier">card</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">card</span>, <span class="ruby-identifier">count</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">cost</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cards</span>[<span class="ruby-identifier">card</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">count</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000219" class="method-detail">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+          <a href="#M000219" class="method-signature">
+          <span class="method-name">cards</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000219-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000219-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 103</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cards</span>
+    <span class="ruby-ivar">@cards_mutex</span>.<span class="ruby-identifier">synchronize</span> {
+      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@cards</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000213" class="method-detail">
+        <a name="M000213"></a>
+
+        <div class="method-heading">
+          <a href="#M000213" class="method-signature">
+          <span class="method-name">copyPiecesLeft</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000213-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000213-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 68</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copyPiecesLeft</span>
+    <span class="ruby-ivar">@pieces_mutex</span>.<span class="ruby-identifier">synchronize</span>{
+      <span class="ruby-ivar">@piecesLeft</span>.<span class="ruby-identifier">dup</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000241" class="method-detail">
+        <a name="M000241"></a>
+
+        <div class="method-heading">
+          <a href="#M000241" class="method-signature">
+          <span class="method-name">count_resources</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+How many resource <a href="Player.html#M000219">cards</a> does this player
+have?
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000241-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000241-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 275</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count_resources</span>
+    <span class="ruby-identifier">resource_cards</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000221" class="method-detail">
+        <a name="M000221"></a>
+
+        <div class="method-heading">
+          <a href="#M000221" class="method-signature">
+          <span class="method-name">del_cards</span><span class="method-args">(cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Remove <a href="Player.html#M000219">cards</a> from this players hand
+Return false the there aren&#8216;t sufficent <a
+href="Player.html#M000219">cards</a>
+</p>
+<dl>
+<dt><a href="Player.html#M000219">cards</a></dt><dd>an <a href="Array.html">Array</a> of card types
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000221-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000221-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 126</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">del_cards</span>(<span class="ruby-identifier">cards</span>)
+    <span class="ruby-ivar">@cards_mutex</span>.<span class="ruby-identifier">synchronize</span> {
+      <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{name} Losing cards #{cards}&quot;</span>)
+      <span class="ruby-identifier">sum</span> = {}
+      <span class="ruby-identifier">sum</span>.<span class="ruby-identifier">default</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>}
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">card</span>, <span class="ruby-identifier">count</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">sum</span>
+        <span class="ruby-comment cmt">#fail for insuffecient cards</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">RuleException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'Player does not have enough cards to delete'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@cards</span>[<span class="ruby-identifier">card</span>]
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt">#otherwise...</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">card</span>, <span class="ruby-identifier">count</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">sum</span>
+        <span class="ruby-ivar">@cards</span>[<span class="ruby-identifier">card</span>] <span class="ruby-operator">-=</span> <span class="ruby-identifier">count</span>
+      <span class="ruby-keyword kw">end</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000234" class="method-detail">
+        <a name="M000234"></a>
+
+        <div class="method-heading">
+          <a href="#M000234" class="method-signature">
+          <span class="method-name">game_end</span><span class="method-args">(winner, points)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform the observer that the game has finished.
+</p>
+<dl>
+<dt>player</dt><dd>the player who won
+
+</dd>
+<dt>points</dt><dd>the number of points they won with.
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000234-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000234-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 233</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_end</span>(<span class="ruby-identifier">winner</span>, <span class="ruby-identifier">points</span>)
+    <span class="ruby-ivar">@game_finished</span> = <span class="ruby-keyword kw">true</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000233" class="method-detail">
+        <a name="M000233"></a>
+
+        <div class="method-heading">
+          <a href="#M000233" class="method-signature">
+          <span class="method-name">game_start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify the observer that the game has begun
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000233-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000233-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 226</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">game_start</span>
+    <span class="ruby-ivar">@game_finished</span> = <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000236" class="method-detail">
+        <a name="M000236"></a>
+
+        <div class="method-heading">
+          <a href="#M000236" class="method-signature">
+          <span class="method-name">get_turn</span><span class="method-args">(player_info)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform this observer that it is the given player&#8216;s turn
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000236-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000236-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 243</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_turn</span>(<span class="ruby-identifier">player_info</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000225" class="method-detail">
+        <a name="M000225"></a>
+
+        <div class="method-heading">
+          <a href="#M000225" class="method-signature">
+          <span class="method-name">get_user_quotes</span><span class="method-args">(wantList, giveList)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This should be overidden in the implementations
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000225-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000225-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_user_quotes</span>(<span class="ruby-identifier">wantList</span>, <span class="ruby-identifier">giveList</span>)
+    []
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000217" class="method-detail">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+          <a href="#M000217" class="method-signature">
+          <span class="method-name">info</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+TODO: make this not get re-created every time
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000217-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000217-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">info</span>
+    <span class="ruby-constant">PlayerInfo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000216" class="method-detail">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+          <a href="#M000216" class="method-signature">
+          <span class="method-name">inform</span><span class="method-args">(entity, msg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+send a message to this player
+</p>
+<dl>
+<dt>entity</dt><dd>Who the message is about. This can either be a player or admin
+
+</dd>
+<dt>msg</dt><dd>The text of the message
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000216-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000216-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 89</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inform</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-ivar">@msgLog</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-identifier">$log</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;MESSAGE FOR:(#{name}:#{color})  #{msg}&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000244" class="method-detail">
+        <a name="M000244"></a>
+
+        <div class="method-heading">
+          <a href="#M000244" class="method-signature">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+for some reason, this was throwing a stack level too deep
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000244-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000244-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 290</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000226" class="method-detail">
+        <a name="M000226"></a>
+
+        <div class="method-heading">
+          <a href="#M000226" class="method-signature">
+          <span class="method-name">move_bandit</span><span class="method-args">(old_hex)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tell this player to move the bandit
+</p>
+<dl>
+<dt>old_hex</dt><dd>the hex where the bandit currently sits
+
+</dd>
+</dl>
+<p>
+return a <a href="Player.html#M000212">new</a> hex
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000226-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000226-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 179</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_bandit</span>(<span class="ruby-identifier">old_hex</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Not Implemented'</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000218" class="method-detail">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+          <a href="#M000218" class="method-signature">
+          <span class="method-name">next_turn</span><span class="method-args">(player_info)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this player that it is someone elses turn.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000218-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000218-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_turn</span>(<span class="ruby-identifier">player_info</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="#M000214" class="method-signature">
+          <span class="method-name">piecesLeft</span><span class="method-args">(pieceKlass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000214-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000214-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 74</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">piecesLeft</span>(<span class="ruby-identifier">pieceKlass</span>)
+    <span class="ruby-ivar">@pieces_mutex</span>.<span class="ruby-identifier">synchronize</span>{
+      <span class="ruby-ivar">@piecesLeft</span>[<span class="ruby-identifier">pieceKlass</span>]
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000240" class="method-detail">
+        <a name="M000240"></a>
+
+        <div class="method-heading">
+          <a href="#M000240" class="method-signature">
+          <span class="method-name">placed_city</span><span class="method-args">(player_info, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a city was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the city
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000240-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000240-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 270</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_city</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">place_city!</span>(<span class="ruby-constant">City</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_info</span>.<span class="ruby-identifier">color</span>), <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000238" class="method-detail">
+        <a name="M000238"></a>
+
+        <div class="method-heading">
+          <a href="#M000238" class="method-signature">
+          <span class="method-name">placed_road</span><span class="method-args">(player_info, x, y, edge)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a road was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the road
+
+</dd>
+<dt>x, y, edge</dt><dd>The edge coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000238-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000238-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 256</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_road</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">edge</span>)
+    <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">place_road!</span>(<span class="ruby-constant">Road</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_info</span>.<span class="ruby-identifier">color</span>), <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">edge</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000239" class="method-detail">
+        <a name="M000239"></a>
+
+        <div class="method-heading">
+          <a href="#M000239" class="method-signature">
+          <span class="method-name">placed_settlement</span><span class="method-args">(player_info, x, y, node)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Notify this observer that a settlement was placed
+</p>
+<dl>
+<dt>player</dt><dd>The player that placed the settlement
+
+</dd>
+<dt>x, y, node</dt><dd>The node coordinates
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000239-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000239-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 263</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">placed_settlement</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+    <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">place_city!</span>(<span class="ruby-constant">Settlement</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_info</span>.<span class="ruby-identifier">color</span>), <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000235" class="method-detail">
+        <a name="M000235"></a>
+
+        <div class="method-heading">
+          <a href="#M000235" class="method-signature">
+          <span class="method-name">player_joined</span><span class="method-args">(player_info)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inform this observer that a player has joined the game.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000235-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000235-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 239</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_joined</span>(<span class="ruby-identifier">player_info</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000229" class="method-detail">
+        <a name="M000229"></a>
+
+        <div class="method-heading">
+          <a href="#M000229" class="method-signature">
+          <span class="method-name">player_moved_bandit</span><span class="method-args">(player_info, new_hex)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin anytime another player moves the bandit
+</p>
+<dl>
+<dt>player</dt><dd>the player that moved the bandit
+
+</dd>
+<dt>new_hex</dt><dd>the hex that the bandit is now on.
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000229-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000229-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 200</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_moved_bandit</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">new_hex</span>)
+    <span class="ruby-identifier">boards_hex</span> = <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">getTile</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">new_hex</span>.<span class="ruby-identifier">coords</span>)
+    <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">move_bandit</span>(<span class="ruby-identifier">new_hex</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">boards_hex</span>.<span class="ruby-identifier">has_bandit</span>
+    <span class="ruby-keyword kw">nil</span>   
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000230" class="method-detail">
+        <a name="M000230"></a>
+
+        <div class="method-heading">
+          <a href="#M000230" class="method-signature">
+          <span class="method-name">player_received_cards</span><span class="method-args">(player_info, cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin anytime a player receives <a
+href="Player.html#M000219">cards</a>.
+</p>
+<dl>
+<dt>player</dt><dd>the player that received the <a href="Player.html#M000219">cards</a>
+
+</dd>
+<dt><a href="Player.html#M000219">cards</a></dt><dd>a list of Card Classes
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000230-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000230-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 209</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_received_cards</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">cards</span>)
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000231" class="method-detail">
+        <a name="M000231"></a>
+
+        <div class="method-heading">
+          <a href="#M000231" class="method-signature">
+          <span class="method-name">player_rolled</span><span class="method-args">(player_info, roll)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin when anyone rolls the dice
+</p>
+<dl>
+<dt>player</dt><dd>the acting player
+
+</dd>
+<dt>roll</dt><dd>A list (length 2) of the numbers that were rolled
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000231-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000231-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 216</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_rolled</span>(<span class="ruby-identifier">player_info</span>, <span class="ruby-identifier">roll</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000232" class="method-detail">
+        <a name="M000232"></a>
+
+        <div class="method-heading">
+          <a href="#M000232" class="method-signature">
+          <span class="method-name">player_stole_card</span><span class="method-args">(theif, victim, num_cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called by the admin whenever a player steals <a
+href="Player.html#M000219">cards</a> from another player
+</p>
+<dl>
+<dt>theif</dt><dd>the player who took the <a href="Player.html#M000219">cards</a>
+
+</dd>
+<dt>victim</dt><dd>the player who lost <a href="Player.html#M000219">cards</a>
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000232-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000232-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 222</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">player_stole_card</span>(<span class="ruby-identifier">theif</span>, <span class="ruby-identifier">victim</span>, <span class="ruby-identifier">num_cards</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000242" class="method-detail">
+        <a name="M000242"></a>
+
+        <div class="method-heading">
+          <a href="#M000242" class="method-signature">
+          <span class="method-name">resource_cards</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets all the resource <a href="Player.html#M000219">cards</a> this user has
+returns a list of ResourceTypes
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000242-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000242-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 281</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource_cards</span>
+    <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">t</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">c</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">superclass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Resource</span> }.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000228" class="method-detail">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+          <a href="#M000228" class="method-signature">
+          <span class="method-name">select_player</span><span class="method-args">(players)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ask the player to choose a player among the given list
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000228-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000228-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_player</span>(<span class="ruby-identifier">players</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Not Implemented'</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000227" class="method-detail">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+          <a href="#M000227" class="method-signature">
+          <span class="method-name">select_resource_cards</span><span class="method-args">(cards, count)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ask the player to select some <a href="Player.html#M000219">cards</a> from
+a list. This is used when a player must discard or resource monopoly or
+year of plenty
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000227-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000227-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 186</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_resource_cards</span>(<span class="ruby-identifier">cards</span>, <span class="ruby-identifier">count</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Not Implemented'</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000224" class="method-detail">
+        <a name="M000224"></a>
+
+        <div class="method-heading">
+          <a href="#M000224" class="method-signature">
+          <span class="method-name">take_turn</span><span class="method-args">(turn)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000224-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000224-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 167</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_turn</span>(<span class="ruby-identifier">turn</span>)
+    <span class="ruby-ivar">@currentTurn</span> = <span class="ruby-identifier">turn</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000245" class="method-detail">
+        <a name="M000245"></a>
+
+        <div class="method-heading">
+          <a href="#M000245" class="method-signature">
+          <span class="method-name">to_json</span><span class="method-args">(*a)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000245-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000245-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/settlers_json.rb, line 321</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+    {
+      <span class="ruby-value str">'fromclass'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'PlayerProxy'</span>,
+      <span class="ruby-value str">'remote_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object_id</span>,
+      <span class="ruby-value str">'name'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@name</span>,
+      <span class="ruby-value str">'preferred_color'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@preferred_color</span>,
+      <span class="ruby-value str">'color'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@color</span>
+    }.<span class="ruby-identifier">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000243" class="method-detail">
+        <a name="M000243"></a>
+
+        <div class="method-heading">
+          <a href="#M000243" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000243-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000243-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 285</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-node">%Q{&lt;Player name=&quot;#{name}&quot; color=&quot;#{color}&quot;/&gt;}</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000237" class="method-detail">
+        <a name="M000237"></a>
+
+        <div class="method-heading">
+          <a href="#M000237" class="method-signature">
+          <span class="method-name">update_board</span><span class="method-args">(board)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Update this observer&#8216;s version of the board
+</p>
+<dl>
+<dt>board</dt><dd>the <a href="Player.html#M000212">new</a> version of the board
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000237-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000237-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/player.rb, line 248</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_board</span>(<span class="ruby-identifier">board</span>)
+    <span class="ruby-ivar">@board</span> = <span class="ruby-identifier">board</span>
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

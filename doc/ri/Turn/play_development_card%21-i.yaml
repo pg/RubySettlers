@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Turn#play_development_card!
+is_singleton: false
+name: play_development_card!
+params: (card)
+visibility: public

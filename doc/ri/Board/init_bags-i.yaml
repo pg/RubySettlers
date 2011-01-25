@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method initializes tile_bag, port_bag, number_bag This should be overriden by the subclasses
+full_name: Board#init_bags
+is_singleton: false
+name: init_bags
+params: ()
+visibility: public

@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_boards
+- !ruby/object:RI::MethodSummary 
+  name: load_board
+- !ruby/object:RI::MethodSummary 
+  name: save_board
+- !ruby/object:RI::MethodSummary 
+  name: save_out_standard_boards
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This module handles the saving and loading of Boards to the filesystem
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BOARD_DIR
+  value: "'lib/boards/'"
+full_name: BoardManager
+includes: []
+
+instance_methods: []
+
+name: BoardManager
+superclass: 

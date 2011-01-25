@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: ensure that the nodeVertices are calculated
+full_name: BoardViewer#calculate_proximities
+is_singleton: false
+name: calculate_proximities
+params: (prox)
+visibility: public

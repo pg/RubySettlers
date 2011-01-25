@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+full_name: MainWindow#make_button
+is_singleton: false
+name: make_button
+params: (text, icon=nil) {|| ...}
+visibility: public

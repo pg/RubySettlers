@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This gets called by the admin to give a card to somebody
+full_name: DevelopmentCardBag#get_card
+is_singleton: false
+name: get_card
+params: ()
+visibility: public

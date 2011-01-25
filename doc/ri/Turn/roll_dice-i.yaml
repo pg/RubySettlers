@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Turn#roll_dice
+is_singleton: false
+name: roll_dice
+params: ()
+visibility: public

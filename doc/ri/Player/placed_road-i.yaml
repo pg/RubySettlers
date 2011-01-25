@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Notify this observer that a road was placed
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: player
+    body: The player that placed the road
+  - !ruby/struct:SM::Flow::LI 
+    label: x, y, edge
+    body: The edge coordinates
+  type: :LABELED
+full_name: Player#placed_road
+is_singleton: false
+name: placed_road
+params: (player, x, y, edge)
+visibility: public

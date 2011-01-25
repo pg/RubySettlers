@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Given a hex and an edge, this method will return the xy coords of the other side of the edge. For instance, if you give this a hex on the side of the board and an edge on the side of the board, this will return the xy coords of the imaginary hex.
+full_name: BoardViewer#getOppositeCoords
+is_singleton: false
+name: getOppositeCoords
+params: (hex, edge)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A master list of all unique nodes on the board.
+full_name: Board#all_nodes
+is_singleton: false
+name: all_nodes
+params: ()
+visibility: public

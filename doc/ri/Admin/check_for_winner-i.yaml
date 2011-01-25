@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check to see if someone one. If so, end the game
+full_name: Admin#check_for_winner
+is_singleton: false
+name: check_for_winner
+params: ()
+visibility: public

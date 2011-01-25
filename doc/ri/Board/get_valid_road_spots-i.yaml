@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Get all the valid places to put a road. NOTE: if someone else builds a settlement, you can't build a road through it."
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: touching_node
+    body: If specified, valid road spots MUST touch this node.
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: This is used during setup when players can only place a road touching the settlement they just placed.
+full_name: Board#get_valid_road_spots
+is_singleton: false
+name: get_valid_road_spots
+params: (road_color, touching_node=nil)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This bot will offer trades if it has more than 4 of 1 kind of card.
+full_name: RandomPlayer#get_user_quotes
+is_singleton: false
+name: get_user_quotes
+params: (wantList, giveList)
+visibility: public

@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: delay
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An AI player that just chooses moves at random
+constants: []
+
+full_name: RandomPlayer
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_user_quotes
+- !ruby/object:RI::MethodSummary 
+  name: move_bandit
+- !ruby/object:RI::MethodSummary 
+  name: select_player
+- !ruby/object:RI::MethodSummary 
+  name: select_resource_cards
+- !ruby/object:RI::MethodSummary 
+  name: take_turn
+name: RandomPlayer
+superclass: Player

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Randomize any Hexes that need to be taken from the Hex bag Or randomize any hex numbers or ports. i.e. The standard board is all random, so this should randomize the whole board.
+full_name: Board#randomize_board!
+is_singleton: false
+name: randomize_board!
+params: ()
+visibility: public

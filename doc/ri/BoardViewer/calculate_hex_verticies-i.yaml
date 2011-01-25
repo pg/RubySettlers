@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Calculate all 6 vertex pairs for a particular hex coordinates
+full_name: BoardViewer#calculate_hex_verticies
+is_singleton: false
+name: calculate_hex_verticies
+params: (x, y)
+visibility: public

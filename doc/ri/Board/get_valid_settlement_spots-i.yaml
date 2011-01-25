@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets a list of Nodes that settlements can be placed on.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: roadConstraint
+    body: A boolean that ensures that settlements can only be placed
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: on pre-existing roads. For SetupTurns, this should be false. (Players don't need to connect settlements to roads during setup. )
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: roadColor
+    body: The color of the road to constrain against. For a normal turn,
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: you need to ask which spots are valid for your player's color. returns a list of Node objects
+full_name: Board#get_valid_settlement_spots
+is_singleton: false
+name: get_valid_settlement_spots
+params: (roadConstraint, roadColor)
+visibility: public

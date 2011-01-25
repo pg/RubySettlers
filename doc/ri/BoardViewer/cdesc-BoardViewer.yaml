@@ -1,0 +1,77 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hex_centers
+  rw: R
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Base module for any GUI that wants to draw the board this includes math to calculate the cartesian coordinates for hexes and nodes
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Some simple math contants
+  name: Angle60
+  value: PI / 3
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SinAngle60
+  value: Math::sin(Angle60)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CosAngle60
+  value: Math::cos(Angle60)
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The ratio of height to width of a hexagon height * HeightRatio = width HeightRation = 1/2 + (cos60 / sin 60)
+  name: HeightRatio
+  value: 0.5 + (CosAngle60 / SinAngle60)
+full_name: BoardViewer
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Math
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: calculate_all_vertices
+- !ruby/object:RI::MethodSummary 
+  name: calculate_height_from_side
+- !ruby/object:RI::MethodSummary 
+  name: calculate_hex_centers
+- !ruby/object:RI::MethodSummary 
+  name: calculate_hex_verticies
+- !ruby/object:RI::MethodSummary 
+  name: calculate_proximities
+- !ruby/object:RI::MethodSummary 
+  name: calculate_side_from_full_width
+- !ruby/object:RI::MethodSummary 
+  name: calculate_width_from_side
+- !ruby/object:RI::MethodSummary 
+  name: calculated_coordinate_data?
+- !ruby/object:RI::MethodSummary 
+  name: getOppositeCoords
+- !ruby/object:RI::MethodSummary 
+  name: getTouchingPiece
+- !ruby/object:RI::MethodSummary 
+  name: get_real_hexXY_coords
+- !ruby/object:RI::MethodSummary 
+  name: get_real_hex_coords
+- !ruby/object:RI::MethodSummary 
+  name: get_real_node_coords
+- !ruby/object:RI::MethodSummary 
+  name: initialize_viewer
+- !ruby/object:RI::MethodSummary 
+  name: isTouchingEdge?
+- !ruby/object:RI::MethodSummary 
+  name: isTouchingNode?
+- !ruby/object:RI::MethodSummary 
+  name: is_in_proximity
+- !ruby/object:RI::MethodSummary 
+  name: set_board
+- !ruby/object:RI::MethodSummary 
+  name: set_board_dimensions
+name: BoardViewer
+superclass: 

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BoardBuilder#build_menubar
+is_singleton: false
+name: build_menubar
+params: ()
+visibility: public

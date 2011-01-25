@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TradeDialog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TradeDialog</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/trade_dialog_rb.html">
+                lib/ui/fxruby/trade_dialog.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                FXDialogBox
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000149">new</a>&nbsp;&nbsp;
+      <a href="#M000150">validate</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="#M000149" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(player, app)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000149-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000149-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/trade_dialog.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">app</span>)
+    <span class="ruby-ivar">@fxplayer</span> = <span class="ruby-identifier">player</span>
+    <span class="ruby-ivar">@quote_list</span> = []
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">app</span>, <span class="ruby-value str">&quot;Trade dialog&quot;</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">DECOR_ALL</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">600</span>, <span class="ruby-identifier">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">350</span>)
+    <span class="ruby-identifier">main</span> = <span class="ruby-constant">FXHorizontalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+
+    <span class="ruby-identifier">left_panel</span> = <span class="ruby-constant">FXSpring</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_Y</span>, <span class="ruby-identifier">:relw=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">100</span>)
+    <span class="ruby-identifier">left_frame</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">left_panel</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)    
+    <span class="ruby-identifier">w_box</span> = <span class="ruby-constant">FXGroupBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">left_frame</span>, <span class="ruby-value str">&quot;Want&quot;</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">FRAME_SUNKEN</span>)
+    <span class="ruby-identifier">want</span> = <span class="ruby-constant">CardNumberPanel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fxplayer</span>, <span class="ruby-identifier">w_box</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">MATRIX_BY_COLUMNS</span>)
+    <span class="ruby-identifier">g_box</span> = <span class="ruby-constant">FXGroupBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">left_frame</span>, <span class="ruby-value str">&quot;Give&quot;</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">FRAME_SUNKEN</span>)
+    <span class="ruby-identifier">give</span> = <span class="ruby-constant">CardNumberPanel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fxplayer</span>, <span class="ruby-identifier">g_box</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">MATRIX_BY_COLUMNS</span>)
+    <span class="ruby-constant">RESOURCE_TYPES</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">give</span>.<span class="ruby-identifier">resources</span>[<span class="ruby-identifier">r</span>].<span class="ruby-identifier">disable</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@fxplayer</span>.<span class="ruby-identifier">cards</span>[<span class="ruby-identifier">r</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    } 
+    <span class="ruby-identifier">prop_button</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">left_frame</span>, <span class="ruby-value str">&quot;Propose Trade&quot;</span>)
+    <span class="ruby-identifier">prop_button</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">quotes</span> = <span class="ruby-identifier">player</span>.<span class="ruby-identifier">currentTurn</span>.<span class="ruby-identifier">get_quotes</span>(<span class="ruby-identifier">want</span>.<span class="ruby-identifier">get_checked</span>, <span class="ruby-identifier">give</span>.<span class="ruby-identifier">get_checked</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">quotes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@quotes</span>.<span class="ruby-identifier">clearItems</span> 
+        <span class="ruby-ivar">@quote_list</span> = <span class="ruby-identifier">quotes</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">q</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">quotes</span>
+        <span class="ruby-identifier">giver</span> = <span class="ruby-value str">&quot;The Bank&quot;</span>
+        <span class="ruby-identifier">giver</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">tradee</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">tradee</span>
+        <span class="ruby-identifier">give_name</span> = <span class="ruby-ivar">@fxplayer</span>.<span class="ruby-identifier">get_resource_alias</span>(<span class="ruby-identifier">q</span>.<span class="ruby-identifier">giveType</span>)
+        <span class="ruby-identifier">want_name</span> = <span class="ruby-ivar">@fxplayer</span>.<span class="ruby-identifier">get_resource_alias</span>(<span class="ruby-identifier">q</span>.<span class="ruby-identifier">recieveType</span>)  
+        <span class="ruby-identifier">line</span> = <span class="ruby-node">&quot;#{giver} will give you #{q.giveNum} #{give_name} for #{q.recieveNum} #{want_name}&quot;</span>
+        <span class="ruby-ivar">@quotes</span>.<span class="ruby-identifier">appendItem</span>(<span class="ruby-identifier">line</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">validate</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">mid_spring</span> = <span class="ruby-constant">FXSpring</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_Y</span>, <span class="ruby-identifier">:relw=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">300</span>)
+    <span class="ruby-identifier">mid_frame</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mid_spring</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_X</span>)
+    <span class="ruby-ivar">@quotes</span> = <span class="ruby-constant">FXList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mid_frame</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-ivar">@accept_button</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mid_frame</span>, <span class="ruby-value str">&quot;Accept Quote&quot;</span>)
+    <span class="ruby-ivar">@accept_button</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">q</span> = <span class="ruby-ivar">@quote_list</span>[<span class="ruby-ivar">@quotes</span>.<span class="ruby-identifier">currentItem</span>]
+      <span class="ruby-ivar">@fxplayer</span>.<span class="ruby-identifier">currentTurn</span>.<span class="ruby-identifier">accept_quote</span>(<span class="ruby-identifier">q</span>)
+      <span class="ruby-identifier">validate</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">chat_frame</span> = <span class="ruby-constant">FXVerticalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main</span>, <span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">LAYOUT_FILL_Y</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_X</span>)
+    <span class="ruby-ivar">@chat</span> = <span class="ruby-constant">FXList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">chat_frame</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">LAYOUT_FILL_X</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_FILL_Y</span>)
+    <span class="ruby-identifier">c_frame</span> = <span class="ruby-constant">FXHorizontalFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">chat_frame</span>)
+    <span class="ruby-identifier">chat_text</span> = <span class="ruby-constant">FXTextField</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">c_frame</span>, <span class="ruby-value">30</span>)
+    <span class="ruby-identifier">send_button</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">c_frame</span>, <span class="ruby-value str">&quot;Send&quot;</span>)
+    <span class="ruby-identifier">send_button</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">selector</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword kw">end</span>
+  
+    <span class="ruby-identifier">validate</span>
+    <span class="ruby-identifier">layout</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="#M000150" class="method-signature">
+          <span class="method-name">validate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000150-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000150-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/trade_dialog.rb, line 76</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate</span>
+   <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@quote_list</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-ivar">@accept_button</span>.<span class="ruby-identifier">enable</span> 
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-ivar">@accept_button</span>.<span class="ruby-identifier">disable</span> 
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

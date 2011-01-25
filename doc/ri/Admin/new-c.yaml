@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create a new game Admin This class only lasts for one single game. Once it's over, you have to create a new Admin for another game.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: board
+    body: The Board object that will be used in this game
+  - !ruby/struct:SM::Flow::LI 
+    label: maxPlayers
+    body: The number of Players required to start the game.
+  type: :LABELED
+- !ruby/struct:SM::Flow::P 
+  body: The game will NOT start untill all players have registered.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: maxPoints
+    body: The number of points to play to.
+  type: :LABELED
+full_name: Admin::new
+is_singleton: true
+name: new
+params: (board, maxPlayers, maxPoints=10)
+visibility: public

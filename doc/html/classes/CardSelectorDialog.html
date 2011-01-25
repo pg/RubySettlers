@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: CardSelectorDialog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">CardSelectorDialog</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/ui/fxruby/card_selector_dialog_rb.html">
+                lib/ui/fxruby/card_selector_dialog.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                FXDialogBox
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000310">add_resource</a>&nbsp;&nbsp;
+      <a href="#M000307">get_card_counts</a>&nbsp;&nbsp;
+      <a href="#M000311">get_values</a>&nbsp;&nbsp;
+      <a href="#M000308">new</a>&nbsp;&nbsp;
+      <a href="#M000309">validate</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">final_values</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">total</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The total number of cards to select
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000307" class="method-detail">
+        <a name="M000307"></a>
+
+        <div class="method-heading">
+          <a href="#M000307" class="method-signature">
+          <span class="method-name">get_card_counts</span><span class="method-args">(app, title, list_items, total)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets a hash of &lt;CardType, int&gt; from the user
+</p>
+<dl>
+<dt>list_items</dt><dd>a list of [id, display_string, max]
+
+</dd>
+</dl>
+<p>
+where id is any object that can act as a unique identifier and max is an
+int value of the spinner
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000307-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000307-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/card_selector_dialog.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">CardSelectorDialog</span>.<span class="ruby-identifier">get_card_counts</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">list_items</span>, <span class="ruby-identifier">total</span>)
+    <span class="ruby-identifier">csd</span> = <span class="ruby-constant">CardSelectorDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">list_items</span>, <span class="ruby-identifier">total</span>)
+<span class="ruby-comment cmt">#    csd.create</span>
+    <span class="ruby-identifier">csd</span>.<span class="ruby-identifier">execute</span>
+    <span class="ruby-identifier">csd</span>.<span class="ruby-identifier">get_values</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000308" class="method-detail">
+        <a name="M000308"></a>
+
+        <div class="method-heading">
+          <a href="#M000308" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(app, title, list_items, total)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000308-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000308-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/card_selector_dialog.rb, line 39</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">list_items</span>, <span class="ruby-identifier">total</span>) 
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">title</span>,<span class="ruby-identifier">:opts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">DECOR_ALL</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">300</span>, <span class="ruby-identifier">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">160</span>)
+    <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">total</span>
+    <span class="ruby-ivar">@resource_fields</span> = [] <span class="ruby-comment cmt">#&lt;item_id, field, initial_max&gt;</span>
+    <span class="ruby-ivar">@matrix</span> = <span class="ruby-constant">FXMatrix</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">:opts=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">MATRIX_BY_COLUMNS</span>)
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">max</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">list_items</span>
+      <span class="ruby-identifier">add_resource</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">max</span>)
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-constant">FXHorizontalSeparator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-ivar">@accept</span> = <span class="ruby-constant">FXButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;      &amp;Ok      &quot;</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">self</span>, <span class="ruby-constant">ID_ACCEPT</span>,
+      <span class="ruby-constant">FRAME_RAISED</span><span class="ruby-operator">|</span><span class="ruby-constant">FRAME_THICK</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_RIGHT</span><span class="ruby-operator">|</span><span class="ruby-constant">LAYOUT_CENTER_Y</span>, <span class="ruby-identifier">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">120</span>)
+      
+    <span class="ruby-identifier">validate</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000310" class="method-detail">
+        <a name="M000310"></a>
+
+        <div class="method-heading">
+          <a href="#M000310" class="method-signature">
+          <span class="method-name">add_resource</span><span class="method-args">(id, name, max)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000310-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000310-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/card_selector_dialog.rb, line 72</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_resource</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">max</span>)
+    <span class="ruby-constant">FXLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@matrix</span>, <span class="ruby-identifier">name</span>)
+    <span class="ruby-identifier">option</span> = <span class="ruby-constant">FXSpinner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@matrix</span>, <span class="ruby-value">5</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-constant">DECOR_ALL</span>)
+    <span class="ruby-identifier">option</span>.<span class="ruby-identifier">setRange</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">max</span>)
+    <span class="ruby-identifier">option</span>.<span class="ruby-identifier">value</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">option</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-constant">SEL_COMMAND</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sender</span>, <span class="ruby-identifier">sel</span>, <span class="ruby-identifier">event</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">validate</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@resource_fields</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">id</span>, <span class="ruby-identifier">option</span>, <span class="ruby-identifier">max</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000311" class="method-detail">
+        <a name="M000311"></a>
+
+        <div class="method-heading">
+          <a href="#M000311" class="method-signature">
+          <span class="method-name">get_values</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000311-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000311-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/card_selector_dialog.rb, line 83</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_values</span>
+    <span class="ruby-identifier">result</span> = {}
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">max</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@resource_fields</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000309" class="method-detail">
+        <a name="M000309"></a>
+
+        <div class="method-heading">
+          <a href="#M000309" class="method-signature">
+          <span class="method-name">validate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000309-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000309-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ui/fxruby/card_selector_dialog.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate</span>
+    <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">get_values</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span> <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">val</span>}
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">total</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@total</span>
+      <span class="ruby-ivar">@accept</span>.<span class="ruby-identifier">disable</span>
+      <span class="ruby-ivar">@resource_fields</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">max</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">field</span>.<span class="ruby-identifier">range</span> = <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">max</span>
+      }
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-ivar">@accept</span>.<span class="ruby-identifier">enable</span>
+      <span class="ruby-ivar">@resource_fields</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">max</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">field</span>.<span class="ruby-identifier">range</span> = <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">field</span>.<span class="ruby-identifier">value</span>
+      }
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

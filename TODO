@@ -1,0 +1,84 @@
+This document is a high level list of things I have to do.
+Low level TODO items are marked in the code as 
+#TODO: <do something>
+============================================================
+
+-Document every method and class with short statements.
+	
+-Make the Admin detect a draw.  While it is not very common for a game to end
+	in a draw. it IS theoretically possible.
+  	
+-Make a flash port of the core code and write a UI in flash.  
+ 	This would be really sweet if the flash code could connect to the ruby server.
+ 	
+-Write a GUI in FXRuby
+	-Users should be able to customize and build their own boards. 
+	-Host Network Game should be a Wizard. At the end, it should have a checkbox 
+		saying "Join the game" and have a text box for the player's name and 
+		maybe a combo box of preferred colors.
+	-Join a network game
+	-User Preferences should be saved and loaded. They're nothing right now.
+        -There should be a chat window somewhere	
+
+
+-Write tests for 
+        -Write more full game scenarios
+        GetQuotes - not getting the same resource for want and give 4 Wheat for 1 Wheat
+        		  - not getting 4:1 for resources you don't want
+        Adding more settlements than you have pieces for
+        -A turn that plays the road building card, then ends the turn before the roads are placed.
+		-Admin.get_player_piece
+		-when you move the bandit, you should also select a player to take a card from.
+		-in randomize! in board, it was using the same port multiple times 
+		     Write a test to ensure that each port in the game are different objects
+		-Observers - make sure that the methods are returning the correct types of objects (PlayerInfo)
+	Accepting invalid quotes that weren't given to you or when you don't have enough cards.
+   	-longest road should be broken up with a settlemtn.
+    Roll a 7 and Don't move the bandit, end the turn, it should raise an exception
+    
+   
+-Make the Admin able to handle rule variations
+
+-Make selecting cards to discard, use drag and drop
+
+-Should Resource Hexes be their own classes?
+  Differences:
+  	resource types
+  	random/static resources tiles
+  	deserts shouldn't have :get_cards
+  	expansions will have different values for get 2 cards
+  	  -should there be different classes for the expansion packs?
+  	  
+  ANSWER: No, The only differences are the types of cards that get returned.  
+  There aren't any real differences in functionality.
+  
+  
+I don't think PlayerInfo is useful anymore.  I was using it to pass around safe
+user info (info that wouldn't let other players cheat), but now it's just a way
+to identify a user.  So, maybe I should just pass around playername as a unique 
+identifier.  Or better yet, have the admin generate a player ID int, and send that around.
+That way, players could change their names without affecting the game. 
+
+============
+    BUGS   
+============
+Maybe have a different way of showing what was rolled in the gui.
+-I didn't pick up on a 9.  Something was wrong.
+
+
+Bot not finishing turn
+Q rolled a 6
+Q recieved cards
+Then, hang
+Everybody had 2 points
+
+
+Sometimes, the card selection dialog won't let me increase the number of cards
+oops, it let me use the controls, but only after a minute.  like it was busy processing
+something else.  Then, it crashed with a segmentation fault.
+
+
+Something is definately wrong with the card selection dialog.  I can select cards
+from it, hit ok. And nothing ever happens.
+I think when I click on the dialog, it's trying to update the main gui frame.  maybe because it's modal?
+I'm not sure.

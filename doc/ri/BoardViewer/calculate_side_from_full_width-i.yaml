@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Given the width of a hex, this will calculate the Length of a single side.
+full_name: BoardViewer#calculate_side_from_full_width
+is_singleton: false
+name: calculate_side_from_full_width
+params: (width)
+visibility: public

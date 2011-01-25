@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: HighestProbablitySetup
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: do_setup_turn
+name: HighestProbablitySetup
+superclass: 

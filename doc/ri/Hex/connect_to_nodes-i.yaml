@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: helper for connectHex
+full_name: Hex#connect_to_nodes
+is_singleton: false
+name: connect_to_nodes
+params: (edge, edgeIndex, i2, hex2 = nil)
+visibility: public

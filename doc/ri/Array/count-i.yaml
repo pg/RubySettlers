@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Array#count
+is_singleton: false
+name: count
+params: (o)
+visibility: public

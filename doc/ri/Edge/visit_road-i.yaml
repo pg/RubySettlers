@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: self
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An iterator to visit every connected road with the same color yields the edge containing the road
+full_name: Edge#visit_road
+is_singleton: false
+name: visit_road
+params: (visitedEdges=[]) {|self| ...}
+visibility: public

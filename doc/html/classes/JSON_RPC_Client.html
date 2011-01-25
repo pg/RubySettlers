@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: JSON_RPC_Client</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">JSON_RPC_Client</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/core/proxies/json_rpc_rb.html">
+                lib/core/proxies/json_rpc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="JSONConnection.html">
+                JSONConnection
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000273">close</a>&nbsp;&nbsp;
+      <a href="#M000270">new</a>&nbsp;&nbsp;
+      <a href="#M000272">nil_response</a>&nbsp;&nbsp;
+      <a href="#M000271">should_listen</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">main_object</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000270" class="method-detail">
+        <a name="M000270"></a>
+
+        <div class="method-heading">
+          <a href="#M000270" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(host, port, log=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000270-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000270-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 407</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>, <span class="ruby-identifier">log</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@should_listen</span> = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-ivar">@sock</span> = <span class="ruby-constant">TCPSocket</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-ivar">@sock</span>)
+    <span class="ruby-identifier">initial_json_object</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">get_next_message</span>)
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">nil_response</span>(<span class="ruby-identifier">initial_json_object</span>[<span class="ruby-value str">'id'</span>]))
+    <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">flush</span>
+    
+    <span class="ruby-identifier">a</span> = <span class="ruby-identifier">initial_json_object</span>[<span class="ruby-value str">'params'</span>][<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">remote_id</span> = <span class="ruby-identifier">a</span>[<span class="ruby-value str">'remote_id'</span>]
+    <span class="ruby-identifier">klass</span> = <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">a</span>[<span class="ruby-value str">'fromclass'</span>])
+    <span class="ruby-ivar">@main_object</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">from_json</span>(<span class="ruby-identifier">a</span>, <span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">log</span>
+      <span class="ruby-identifier">log_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">'client.log'</span>, <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">WRONLY</span> <span class="ruby-operator">|</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">CREAT</span>)
+      <span class="ruby-identifier">log</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">log_file</span>)    
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@log</span> = <span class="ruby-identifier">log</span>
+    <span class="ruby-identifier">listen</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000273" class="method-detail">
+        <a name="M000273"></a>
+
+        <div class="method-heading">
+          <a href="#M000273" class="method-signature">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000273-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000273-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 437</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Socket is nil'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-ivar">@should_listen</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">close</span>
+      <span class="ruby-keyword kw">until</span> <span class="ruby-ivar">@sock</span>.<span class="ruby-identifier">closed?</span>
+        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">'waiting for the server to close'</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">'closed player'</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">$!</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'\n'</span>)
+      <span class="ruby-comment cmt">#Stream already closed, don't do anything</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000272" class="method-detail">
+        <a name="M000272"></a>
+
+        <div class="method-heading">
+          <a href="#M000272" class="method-signature">
+          <span class="method-name">nil_response</span><span class="method-args">(req_id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000272-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000272-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 431</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nil_response</span>(<span class="ruby-identifier">req_id</span>)
+    {<span class="ruby-value str">'result'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+     <span class="ruby-value str">'error'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+     <span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">req_id</span>}.<span class="ruby-identifier">to_json</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000271" class="method-detail">
+        <a name="M000271"></a>
+
+        <div class="method-heading">
+          <a href="#M000271" class="method-signature">
+          <span class="method-name">should_listen</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000271-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000271-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/proxies/json_rpc.rb, line 427</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_listen</span>
+    <span class="ruby-ivar">@should_listen</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

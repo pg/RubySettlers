@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Inform the observer that the game has finished.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: player
+    body: the player who won
+  - !ruby/struct:SM::Flow::LI 
+    label: points
+    body: the number of points they won with.
+  type: :LABELED
+full_name: Player#game_end
+is_singleton: false
+name: game_end
+params: (winner, points)
+visibility: public

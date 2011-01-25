@@ -1,0 +1,100 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: card_pile
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The game definition that this board applies to
+  name: expansion
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The human readable name for this board
+  name: name
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: nodes
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The RandomBag of numbers.
+  name: number_bag
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The RandomBag of Port objects.
+  name: port_bag
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The number of recomended players for this board. (Range)
+  name: recomended_players
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The RandomBag of Hex tiles.
+  name: tile_bag
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: tiles
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The central data structure for the game. This holds all the user game pieces (Cities, Settlements, Roads) and also all the admin pieces(Cards, Tiles etc.) This is an abstract class that must be implemented by a subclass
+constants: []
+
+full_name: Board
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: all_edges
+- !ruby/object:RI::MethodSummary 
+  name: all_nodes
+- !ruby/object:RI::MethodSummary 
+  name: find_longest_road
+- !ruby/object:RI::MethodSummary 
+  name: getEdge
+- !ruby/object:RI::MethodSummary 
+  name: getNode
+- !ruby/object:RI::MethodSummary 
+  name: getTile
+- !ruby/object:RI::MethodSummary 
+  name: get_cards
+- !ruby/object:RI::MethodSummary 
+  name: get_ports
+- !ruby/object:RI::MethodSummary 
+  name: get_valid_city_spots
+- !ruby/object:RI::MethodSummary 
+  name: get_valid_road_spots
+- !ruby/object:RI::MethodSummary 
+  name: get_valid_settlement_spots
+- !ruby/object:RI::MethodSummary 
+  name: has_longest_road?
+- !ruby/object:RI::MethodSummary 
+  name: init_bags
+- !ruby/object:RI::MethodSummary 
+  name: longest_road
+- !ruby/object:RI::MethodSummary 
+  name: move_bandit
+- !ruby/object:RI::MethodSummary 
+  name: place_city!
+- !ruby/object:RI::MethodSummary 
+  name: place_road!
+- !ruby/object:RI::MethodSummary 
+  name: randomize_board!
+name: Board
+superclass: Object

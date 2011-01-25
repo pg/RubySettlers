@@ -1,0 +1,40 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Observer interface to watch the game. Every player must implement this so they can monitor game events.
+constants: []
+
+full_name: IObserver
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: game_end
+- !ruby/object:RI::MethodSummary 
+  name: game_start
+- !ruby/object:RI::MethodSummary 
+  name: get_turn
+- !ruby/object:RI::MethodSummary 
+  name: placed_city
+- !ruby/object:RI::MethodSummary 
+  name: placed_road
+- !ruby/object:RI::MethodSummary 
+  name: placed_settlement
+- !ruby/object:RI::MethodSummary 
+  name: player_joined
+- !ruby/object:RI::MethodSummary 
+  name: player_moved_bandit
+- !ruby/object:RI::MethodSummary 
+  name: player_recieved_cards
+- !ruby/object:RI::MethodSummary 
+  name: player_rolled
+- !ruby/object:RI::MethodSummary 
+  name: player_stole_card
+- !ruby/object:RI::MethodSummary 
+  name: update_board
+name: IObserver
+superclass: 

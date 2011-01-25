@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Move the bandit to a new tile. This is called by the admin and the soldier card
+full_name: Turn#move_bandit
+is_singleton: false
+name: move_bandit
+params: (new_tile)
+visibility: public

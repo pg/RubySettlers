@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: p if p != player
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An iterator for all other players
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: player
+    body: the player to exclude
+  type: :LABELED
+full_name: Admin#other_players
+is_singleton: false
+name: other_players
+params: (player) {|p if p != player| ...}
+visibility: public

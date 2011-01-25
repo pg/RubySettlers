@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: CNExpansionGame#make_admin
+is_singleton: false
+name: make_admin
+params: (board, maxPlayers, maxPoints=10)
+visibility: public

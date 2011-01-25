@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BoardViewer#initialize_viewer
+is_singleton: false
+name: initialize_viewer
+params: ()
+visibility: public
