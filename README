@@ -35,7 +35,7 @@ run them all, use this command:
 Individual test suites are kept in files named <name>_tests.rb.  To
 run these files separately, use this command:
 
-	ruby tests\<name>_tests.rb
+	ruby tests/<name>_tests.rb
 
 	
 	
@@ -50,6 +50,8 @@ Running from source:
 	FXRuby - is the Ruby bridge to the FOX GUI toolkit.  If you have RubyGems 
 			 installed you can just run the command: 
 			 	gem install fxruby
+				
+	Gems - FlexMock, WXRuby
 			 	
 On Windows, you can just run the rubysettlers.exe.  But, it's just a "compiled" 
 version of the ruby code.
